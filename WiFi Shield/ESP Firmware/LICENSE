@@ -1,0 +1,13 @@
+hackAIR Arduino Library - ESP Firmware
+Author: Thanasis Georgiou, Technology Transfer & Smart Materials - TEI of Athens
+
+A library for the Arduino platform for using a variety
+of air quality and dust sensors with the aim of croudsourcing
+data.
+
+(C) hackAIR Consortium, 2016
+This deliverable contains original unpublished work except
+where clearly indicated otherwise. Acknowledgement of previously
+published material and of the work of others has been made through
+appropriate citation, quotation or both.
+Reproduction is authorised provided the source is acknowledged.

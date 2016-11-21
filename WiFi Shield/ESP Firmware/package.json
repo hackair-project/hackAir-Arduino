@@ -1,0 +1,16 @@
+{
+  "name": "hackair-esp-firware",
+  "version": "0.1.0",
+  "description": "ESP Firmware for the HackAIR Arduino WiFi Shield",
+  "author": "Thanasis Georgiou",
+  "license": "GPL-2.0",
+  "repository": "https://github.com/sakisds/hackAIR-Arduino",
+  "devDependencies": {
+    "nodemcu-tool": "^2.0.1"
+  },
+  "scripts": {
+    "upload": "nodemcu-tool upload src/init.lua",
+    "format": "nodemcu-tool mkfs",
+    "terminal": "nodemcu-tool terminal"
+  }
+}
