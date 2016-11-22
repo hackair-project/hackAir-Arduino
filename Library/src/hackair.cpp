@@ -99,6 +99,9 @@ int hackAIR::refresh() {
             }
         }
     }
+    
+    // Invalid sensor ID means something surely went wrong
+    return 1;
 }
 
 float hackAIR::readPM25() {
