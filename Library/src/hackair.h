@@ -15,8 +15,16 @@
 #ifndef hackAIR_h
 #define hackAIR_h
 
+// Sensors
 #define SENSOR_DFROBOT 1
 #define SENSOR_SDS011 2
+#define SENSOR_GP2Y1010AU0F 3
+
+// Shield pins
+#define PIN_SERIAL_TX 7
+#define PIN_SERIAL_RX 8
+#define PIN_IO_1 A0
+#define PIN_IO_2 A1
 
 #include "Arduino.h"
 #include <SoftwareSerial.h>
@@ -51,6 +59,11 @@ public:
      * Get the value of 0.1um particles
      */
     float readPM01();
+    
+    /**
+     * Get the raw reading value. For sensors that don't exactly measure particulate matter.
+     */
+    int readRaw();
 
 private:
     int _sensorType;

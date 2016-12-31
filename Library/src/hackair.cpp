@@ -15,7 +15,7 @@
 #include "Arduino.h"
 #include "hackair.h"
 
-SoftwareSerial _serial(8, 7);
+SoftwareSerial _serial(PIN_SERIAL_RX, PIN_SERIAL_TX);
 
 /* Constructors */
 hackAIR::hackAIR(int sensorType) {
@@ -24,7 +24,17 @@ hackAIR::hackAIR(int sensorType) {
 }
 
 void hackAIR::begin() {
-	_serial.begin(9600);
+    if (_sensorType == SENSOR_DFROBOT || _sensorType == SENSOR_SDS011) {
+        // Serial sensors just need a software serial port
+        _serial.begin(9600);
+    } else if (_sensorType == SENSOR_GP2Y1010AU0F) {
+        // Analog LED sensor
+        pinMode(PIN_IO_1, INPUT);
+        pinMode(PIN_IO_2, OUTPUT);
+        
+        // Sensor needs ~1 second to settle down
+        delay(1500);
+    }
 }
 
 int hackAIR::refresh() {
@@ -126,4 +136,32 @@ float hackAIR::readPM01() {
     } else {
         return _pm01;
     }    
+}
+
+int hackAIR::readRaw() {
+    if (_sensorType == SENSOR_GP2Y1010AU0F) {
+        // Average a couple of readings
+        int readingSum = 0
+        for (i = 0; i < 4; i++) {
+            // Pulse LED for 0.32ms, sample after 0.25ms
+            digitalWrite(PIN_IO_1, HIGH);
+            delayMicroseconds(250);
+            
+            // Take a reading
+            readingSum += analogRead(PIN_IO_2);
+            
+            // Turn off LED after a small while
+            delayMicroseconds(100);
+            digitalWrite(PIN_IO_1, LOW);
+            
+            // Wait settle time
+            delay(10);
+        }
+        
+        // Return reading (ADC counts)
+        readingSum /= 4;
+        return readingSeum;
+    } else {
+        return 0f
+    }
 }
