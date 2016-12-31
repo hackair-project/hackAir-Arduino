@@ -19,6 +19,7 @@
 #define SENSOR_DFROBOT 1
 #define SENSOR_SDS011 2
 #define SENSOR_GP2Y1010AU0F 3
+#define SENSOR_DN7C3CA006 4
 
 // Shield pins
 #define PIN_SERIAL_TX 7

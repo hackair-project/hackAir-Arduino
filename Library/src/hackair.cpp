@@ -139,7 +139,7 @@ float hackAIR::readPM01() {
 }
 
 int hackAIR::readRaw() {
-    if (_sensorType == SENSOR_GP2Y1010AU0F) {
+    if (_sensorType == SENSOR_GP2Y1010AU0F || _sensorType == SENSOR_DN7C3CA006) {
         // Average a couple of readings
         int readingSum = 0
         for (i = 0; i < 4; i++) {
@@ -162,6 +162,6 @@ int hackAIR::readRaw() {
         readingSum /= 4;
         return readingSeum;
     } else {
-        return 0f
+        return 0f;
     }
 }
