@@ -24,7 +24,7 @@ hackAIR::hackAIR(int sensorType) {
 }
 
 void hackAIR::begin() {
-    if (_sensorType == SENSOR_DFROBOT || _sensorType == SENSOR_SDS011) {
+    if (_sensorType == SENSOR_DFROBOT || _sensorType == SENSOR_SDS011 || _sensorType == SENSOR_PMS5003) {
         // Serial sensors just need a software serial port
         _serial.begin(9600);
     } else if (_sensorType == SENSOR_GP2Y1010AU0F) {
@@ -141,7 +141,8 @@ float hackAIR::readPM01() {
 int hackAIR::readRaw() {
     if (_sensorType == SENSOR_GP2Y1010AU0F || _sensorType == SENSOR_DN7C3CA006) {
         // Average a couple of readings
-        int readingSum = 0
+        int readingSum = 0;
+        int i;
         for (i = 0; i < 4; i++) {
             // Pulse LED for 0.32ms, sample after 0.25ms
             digitalWrite(PIN_IO_1, HIGH);
@@ -160,8 +161,8 @@ int hackAIR::readRaw() {
         
         // Return reading (ADC counts)
         readingSum /= 4;
-        return readingSeum;
+        return readingSum;
     } else {
-        return 0f;
+        return 0.0f;
     }
 }

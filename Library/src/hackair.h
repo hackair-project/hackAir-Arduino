@@ -20,6 +20,7 @@
 #define SENSOR_SDS011 2
 #define SENSOR_GP2Y1010AU0F 3
 #define SENSOR_DN7C3CA006 4
+#define SENSOR_PMS5003 1 // Rebrand of DFRobot sensor (or DFRobot is a rebrand of this one?)
 
 // Shield pins
 #define PIN_SERIAL_TX 7
