@@ -34,6 +34,8 @@ void hackAIR::begin() {
         
         // Sensor needs ~1 second to settle down
         delay(1500);
+    } else if (_sensorType == SENSOR_GROVE) {
+        pinMode(8, INPUT);
     }
 }
 
@@ -98,18 +100,29 @@ int hackAIR::refresh() {
                 _pm25 = ((_buff[3] << 8) + _buff[2]);
                 _pm10 = ((_buff[5] << 8) + _buff[4]);
                 _pm01 = -1;
-                
+
                 return 0;
             } else {
                 _pm10 = -1;
                 _pm25 = -1;
                 _pm01 = -1;
-                
+
                 return 1;
             }
         }
+    } else if (_sensorType == SENSOR_GROVE) {
+        _lastTime = millis();
+        _pulseDuration = 0;
+
+        while (millis() - _lastTime <= 2000) {
+            _pulseDuration += pulseIn(8, LOW);
+        }
+        
+        int ratio = _pulseDuration / 20000.0;
+        _pm10 = 1.1 * pow(ratio, 3) - 3.8 * pow(ratio, 2) + 520 * ratio + 0.62; // From manual
+        return 0;
     }
-    
+
     // Invalid sensor ID means something surely went wrong
     return 1;
 }

@@ -17,10 +17,11 @@
 
 // Sensors
 #define SENSOR_DFROBOT 1
+#define SENSOR_PMS5003 1 // Rebrand of DFRobot sensor (or DFRobot is a rebrand of this one?)
 #define SENSOR_SDS011 2
 #define SENSOR_GP2Y1010AU0F 3
 #define SENSOR_DN7C3CA006 4
-#define SENSOR_PMS5003 1 // Rebrand of DFRobot sensor (or DFRobot is a rebrand of this one?)
+#define SENSOR_GROVE 5
 
 // Shield pins
 #define PIN_SERIAL_TX 7
@@ -69,9 +70,11 @@ public:
 
 private:
     int _sensorType;
-    int _pm25;
-    int _pm10;
-    int _pm01;
+    float _pm25;
+    float _pm10;
+    float _pm01;
+    long _lastTime;
+    long _pulseDuration;
     unsigned char _buff[32];
 };
 
