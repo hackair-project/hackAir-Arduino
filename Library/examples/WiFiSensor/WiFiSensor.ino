@@ -1,8 +1,15 @@
+/**
+ * @file WiFi Sensor example
+ * This example reads data from a sensor (default choice is the serial SDS011)
+ * and sends it to the hackAIR servers using the hackAIR WiFi Shield.
+ *
+ * This example is part of the hackAIR Arduino Library and is available
+ * in the Public Domain.
+ */
+
 #include "hackair.h"
 #include "hackair_wifi.h"
 
-// Use SENSOR_DFROBOT or SENSOR_SDS011 depanding
-// on your hardware.
 hackAIR sensor(SENSOR_SDS011);
 
 void setup() {  

@@ -1,15 +1,24 @@
-/**
+/*
  * hackAIR Arduino Library
- * A library for the Arduino platform for using a variety
- * of air quality and dust sensors with the aim of croudsourcing
- * data.
+ * Copyright © 2016-2017 hackAir Consortium
  *
- * (C) hackAIR Consortium, 2016
- * This deliverable contains original unpublished work except
- * where clearly indicated otherwise. Acknowledgement of previously
- * published material and of the work of others has been made through
- * appropriate citation, quotation or both.
- * Reproduction is authorised provided the source is acknowledged.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * @file Header file for the hackAIR library
+ * @author Thanasis Georgiou
  */
 
 #ifndef hackAIR_h
