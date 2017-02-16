@@ -4,14 +4,14 @@
 -- @author Thanasis Georgiou
 
 --- The server URL used for sending data to the hackAIR project
-server_URL = "http://hackair.draxis.gr:8000/v1/sensors/arduino/measurements"
+server_URL = "http://hackair.draxis.gr:8000/sensors/arduino/measurements"
 auth_token = ""
 
 function send_to_hackAIR(args)
     -- Parse args
     local pm25, pm10, battery, tamper, error = string.match(args, "([^,]+),([^,]+),([^,]+),([^,]+),([^,]*)")
     local requestJson = '{"reading":{"PM2.5_AirPollutantValue":"' .. pm25 .. '","PM10_AirPollutantValue":"' .. pm10 ..'"},"battery":"' .. battery ..'","tamper":"' .. tamper ..'","error":"' .. error .. '"}'
-    http.post(server_URL, 'Content-Type: application/json\r\nAuthorization: '..auth_token..'\r\n', requestJson,
+    http.post(server_URL, 'Content-Type: application/json\r\nHTTP Accept header: application/vnd.hackair.v1+json\r\nAuthorization: '..auth_token..'\r\n', requestJson,
         function(code, data)
             uart.write(0, tostring(code))
         end
