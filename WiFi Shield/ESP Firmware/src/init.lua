@@ -27,13 +27,15 @@ function handle_uart(data)
     local com, args = string.match(data, "([^%s]+)%s([^%s]+)")
     -- print("command: "..com)
     -- if args ~= nil then print("args: "..args) end
-    
+
     -- Execute commands
     if com == 'e+raw' then -- Enter raw mode (lua console)
         uart.on("data")
         uart.setup(0, 115200, 8, uart.PARITY_NONE, uart.STOPBITS_1, 1)
     elseif com == 'e+restart' then -- Restart ESP
         node.restart()
+    elseif com == 'e+version' then -- Version info
+        uart.write(0, 'v2')
     elseif com == 'e+send' then -- Send data to server
         send_to_hackAIR(args)
     elseif com == 'e+clearap' then -- Clear saved access points
@@ -64,10 +66,10 @@ enduser_setup.start(
     function()
         -- WiFi information is stored in wifi.sta.config so we don't have
         -- to do anything special here.
-        
+
         -- Print debug info
         print("Connected to wifi as:" .. wifi.sta.getip())
- 
+
         -- Stop portal
         enduser_setup.stop()
         wifi.setmode(wifi.NULLMODE)
