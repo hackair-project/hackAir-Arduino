@@ -11,6 +11,7 @@
   "scripts": {
     "upload": "nodemcu-tool upload src/init.lua",
     "format": "nodemcu-tool mkfs",
-    "terminal": "nodemcu-tool terminal"
+    "terminal": "nodemcu-tool terminal",
+    "build-image": "spiffsimg -f app.bin -S 4MB -c 50000 -r build-image.spiffsh"
   }
 }
