@@ -1,6 +1,6 @@
 --- hackAIR ESP Firmware
 -- Handles WiFi setup and network communications
--- @version 0.1.0
+-- @version 0.2.0
 -- @author Thanasis Georgiou
 
 --- The server URL used for sending data to the hackAIR project
