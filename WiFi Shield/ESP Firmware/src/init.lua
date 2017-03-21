@@ -43,8 +43,9 @@ end
 function handle_uart(data)
     -- Parse parameters
     local com, args = string.match(data, "([^%s]+)%s([^%s]+)")
-    -- print("command: "..com)
-    -- if args ~= nil then print("args: "..args) end
+    if com == nil then
+        com = string.sub(data, 1, -2)
+    end
 
     -- Execute commands
     if com == 'e+raw' then -- Enter raw mode (lua console)
@@ -55,18 +56,28 @@ function handle_uart(data)
     elseif com == 'e+version' then -- Version info
         uart.write(0, 'v2')
     elseif com == 'e+send' then -- Send data to server
-        sent_data(args)
+        if args == nil then
+            print('Command e+send requires parameters (pm25, pm10, battery, tamper, error)')
+        else
+            sent_data(args)
+        end
     elseif com == 'e+clearap' then -- Clear saved access points
         wifi.sta.config('', '')
         node.restart()
     elseif com == 'e+token' then -- Grab the token for authorization
-	    auth_token = args
+        if args == nil then
+            print('Command e+token required parameters (token)')
+        else
+            auth_token = args
+        end
     elseif com == 'e+isready' then -- Is the ESP ready and connected?
         if wifi.sta.getip() ~= nil then
             uart.write(0, tostring(1))
         else
             uart.write(0, tostring(0))
         end
+    else
+        print('Unknown command ' .. com)
     end
 end
 
