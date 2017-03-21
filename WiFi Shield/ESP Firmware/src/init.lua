@@ -7,11 +7,29 @@
 server_URL = "http://hackair.draxis.gr:8000/sensors/arduino/measurements"
 auth_token = ""
 
-function send_to_hackAIR(args)
-    -- Parse args
-    local pm25, pm10, battery, tamper, error = string.match(args, "([^,]+),([^,]+),([^,]+),([^,]+),([^,]*)")
-    local requestJson = '{"reading":{"PM2.5_AirPollutantValue":"' .. pm25 .. '","PM10_AirPollutantValue":"' .. pm10 ..'"},"battery":"' .. battery ..'","tamper":"' .. tamper ..'","error":"' .. error .. '"}'
-    http.post(server_URL, 'Content-Type: application/json\r\nHTTP Accept header: application/vnd.hackair.v1+json\r\nAuthorization: '..auth_token..'\r\n', requestJson,
+function sent_data(args)
+    -- Prepare HTTP headers
+    local headers = 'Content-Type: application/json\r\n' ..
+                    'HTTP Accept header: application/vnd.hackair.v1+json\r\n' ..
+                    'Authorization: ' .. auth_token .. '\r\n'
+
+    -- Parse arguments from serial and encode them in JSON
+    local pm25, pm10, battery, tamper, error =
+        string.match(args, "([^,]+),([^,]+),([^,]+),([^,]+),([^,]*)")
+
+    local body = string.format([[{
+        { "reading": {
+            "PM2.5_AirPollutantValue":"%s",
+            "PM10_AirPollutantValue":"%s"
+        },
+        "battery":"%s",
+        "tamper":"%s",
+        "error":"%s"
+    }]], pm25, pm10, battery, tamper, error)
+
+    -- Make the request
+    --noinspection UnusedDef
+    http.post(server_URL, headers, body,
         function(code, data)
             uart.write(0, tostring(code))
         end
@@ -37,7 +55,7 @@ function handle_uart(data)
     elseif com == 'e+version' then -- Version info
         uart.write(0, 'v2')
     elseif com == 'e+send' then -- Send data to server
-        send_to_hackAIR(args)
+        sent_data(args)
     elseif com == 'e+clearap' then -- Clear saved access points
         wifi.sta.config('', '')
         node.restart()
