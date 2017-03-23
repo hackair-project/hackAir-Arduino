@@ -41,6 +41,18 @@
 #include "Arduino.h"
 #include <SoftwareSerial.h>
 
+/**
+ * Structure for storing & sending hackAir-related data to a
+ * server
+ */
+struct hackAirData {
+  float pm25;   /**< Amount of PM2.5 */
+  float pm10;   /**< Amount of PM1.0 */
+  int battery;  /**< Battery level */
+  int tamper;   /**< Tamper indicator */
+  int error;    /**< Error status */
+};
+
 class hackAIR {
 public:
 	// Constructors
