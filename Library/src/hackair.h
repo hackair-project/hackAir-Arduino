@@ -28,15 +28,11 @@
 #define SENSOR_DFROBOT 1
 #define SENSOR_PMS5003 1 // Rebrand of DFRobot sensor (or DFRobot is a rebrand of this one?)
 #define SENSOR_SDS011 2
-#define SENSOR_GP2Y1010AU0F 3
-#define SENSOR_DN7C3CA006 4
-#define SENSOR_GROVE 5
+#define SENSOR_GROVE 3
 
 // Shield pins
 #define PIN_SERIAL_TX 7
 #define PIN_SERIAL_RX 8
-#define PIN_IO_1 A0
-#define PIN_IO_2 A1
 
 #include "Arduino.h"
 #include <SoftwareSerial.h>
@@ -69,13 +65,8 @@ public:
     */
     void refresh(hackAirData &data);
 
-    int readRaw();
-
 private:
     int _sensorType;
-    float _pm25;
-    float _pm10;
-    float _pm01;
     long _lastTime;
     long _pulseDuration;
     unsigned char _buff[32];

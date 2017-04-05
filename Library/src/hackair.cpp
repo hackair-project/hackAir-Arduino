@@ -36,19 +36,12 @@ void hackAIR::begin() {
     if (_sensorType == SENSOR_DFROBOT || _sensorType == SENSOR_SDS011 || _sensorType == SENSOR_PMS5003) {
         // Serial sensors just need a software serial port
         _serial.begin(9600);
-    } else if (_sensorType == SENSOR_GP2Y1010AU0F) {
-        // Analog LED sensor
-        pinMode(PIN_IO_1, INPUT);
-        pinMode(PIN_IO_2, OUTPUT);
-
-        // Sensor needs ~1 second to settle down
-        delay(1500);
     } else if (_sensorType == SENSOR_GROVE) {
         pinMode(8, INPUT);
     }
 }
 
-int hackAIR::refresh() {
+void hackAIR::refresh(hackAirData &data) {
     if (_sensorType == SENSOR_DFROBOT) {
         // DFRobot
         char index = 0;
@@ -139,33 +132,4 @@ int hackAIR::refresh() {
 
     // Invalid sensor ID means something surely went wrong
     data.error = 1;
-}
-
-int hackAIR::readRaw() {
-    if (_sensorType == SENSOR_GP2Y1010AU0F || _sensorType == SENSOR_DN7C3CA006) {
-        // Average a couple of readings
-        int readingSum = 0;
-        int i;
-        for (i = 0; i < 4; i++) {
-            // Pulse LED for 0.32ms, sample after 0.25ms
-            digitalWrite(PIN_IO_1, HIGH);
-            delayMicroseconds(250);
-            
-            // Take a reading
-            readingSum += analogRead(PIN_IO_2);
-            
-            // Turn off LED after a small while
-            delayMicroseconds(100);
-            digitalWrite(PIN_IO_1, LOW);
-            
-            // Wait settle time
-            delay(10);
-        }
-        
-        // Return reading (ADC counts)
-        readingSum /= 4;
-        return readingSum;
-    } else {
-        return 0.0f;
-    }
 }
