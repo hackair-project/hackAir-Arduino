@@ -24,6 +24,27 @@
 #ifndef hackAIRethernet_h
 #define hackAIRethernet_h
 
-void ethernet_sendData(const String &token, float pm25, float pm10, int battery, int tamper, int error);
+#include <Ethernet.h>
+#include <hackair.h>
+
+class hackAirEthernet {
+public:
+    /**
+     * Create a hackAirEthernet helper
+     * @param ethernet  EthernetClient class
+     * @param token     The authentication token
+     */
+    hackAirEthernet(EthernetClient ethernet, char *token);
+    
+    /**
+     * Send data to the hackAir servers
+     * @param data      Structure containing the data
+     */
+    int sendData(hackAirData &data);
+
+private:
+    EthernetClient _ethernet;
+    char *_token;
+};
 
 #endif

@@ -26,29 +26,55 @@
 #include <Ethernet.h>
 #include "hackair_ethernet.h"
 
-void ethernet_sendData(const String &token, float pm25, float pm10, int battery, int tamper, int error) {
+hackAirEthernet::hackAirEthernet(EthernetClient ethernet, char *token) {
+  _ethernet = ethernet;
+  _token = token;
+}
+
+int hackAirEthernet::sendData(hackAirData &data) {
+    // Convert data to string
+    String dataJson = "{\"reading\":{\"PM2.5_AirPollutantValue\":\"";
+    dataJson += data.pm25;
+    dataJson += "\",\"PM10_AirPollutantValue\":\"";
+    dataJson += data.pm10;
+    dataJson += "\"},\"battery\":\"";
+    dataJson += data.battery;
+    dataJson += "\",\"tamper\":\"";
+    dataJson += data.tamper;
+    dataJson += "\",\"error\":\"";
+    dataJson += data.error;
+    dataJson += "\"}";
+
     // Open a connection
-    client.connect("hackair.draxis.gr", 8000);
-    
-    // Send request header
-    client.println("POST /sensors/arduino/measurements");
-    client.println("Host: hackair.draxis.gr");
-    client.println("Content-Type: application/json");
-    client.print("Authorization: ");
-    client.println(token);
-    client.println("Connection: close");
-    client.println("");
-    
+    if (!_ethernet.connect("hackair.draxis.gr", 8000)) {
+        return 1;
+    }
+
+    // Send request headers
+    _ethernet.println("POST /sensors/arduino/measurments");
+
+    _ethernet.println("Host: hackair.draxis.gr");
+    _ethernet.println("Content-Type: application/json");
+    _ethernet.println("Accept: application/vnd.hackair.v1+json");
+    _ethernet.println("Connection: close");
+
+    _ethernet.print("Authorization: ");
+    _ethernet.println(_token);
+
+    _ethernet.print("Content-Length: ");
+    _ethernet.println(dataJson.length() + 2);
+
+    _ethernet.println("");
+
     // Send content
-    client.print("{\"reading\":{\"PM2.5_AirPollutantValue\":\"");
-    client.print(pm25);
-    client.print(",\"PM10_AirPollutantValue\":\"");
-    client.print(pm10);
-    client.print("\"},\"battery\":\"");
-    client.print(battery);
-    client.print("\",\"tamper\":\"");
-    client.print(tamper);
-    client.print("\",\"error\":\"");
-    client.print(error);
-    client.prinln("\"}");
+    _ethernet.println(dataJson);
+
+    // Disconnect
+    delay(500);
+    while (_ethernet.available()) {
+        _ethernet.read();
+    }
+    _ethernet.stop();
+
+    return 0;
 }
