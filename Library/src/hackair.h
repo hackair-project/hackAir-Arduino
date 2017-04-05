@@ -1,25 +1,25 @@
 /*
- * hackAIR Arduino Library
- * Copyright © 2016-2017 hackAir Consortium
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+* hackAIR Arduino Library
+* Copyright © 2016-2017 hackAir Consortium
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 /**
- * @file Header file for the hackAIR library
- * @author Thanasis Georgiou
- */
+* @file Header file for the hackAIR library
+* @author Thanasis Georgiou
+*/
 
 #ifndef hackAIR_h
 #define hackAIR_h
@@ -42,51 +42,33 @@
 #include <SoftwareSerial.h>
 
 /**
- * Structure for storing & sending hackAir-related data to a
- * server
- */
+* Structure for storing & sending hackAir-related data to a
+* server
+*/
 struct hackAirData {
-  float pm25;   /**< Amount of PM2.5 */
-  float pm10;   /**< Amount of PM1.0 */
-  int battery;  /**< Battery level */
-  int tamper;   /**< Tamper indicator */
-  int error;    /**< Error status */
+float pm25;   /**< Amount of PM2.5 */
+float pm10;   /**< Amount of PM1.0 */
+int battery;  /**< Battery level */
+int tamper;   /**< Tamper indicator */
+int error;    /**< Error status */
 };
 
 class hackAIR {
 public:
-	// Constructors
-	hackAIR(int sensor);
-
-	/**
-	 * Initialize the sensor (pin modes, buses, etc)
-	 */
-	void begin();
-    
-    /**
-     * Read data from the sensor and process packages. Mainly used for digital/serial
-     * sensors.
-     */
-    int refresh();
+    // Constructors
+    hackAIR(int sensor);
 
     /**
-     * Get the value of 2.5um particles
-     */
-	float readPM25();
-    
+    * Initialize the sensor (pin modes, buses, etc)
+    */
+    void begin();
+
     /**
-     * Get the value of 10um particles
-     */
-    float readPM10();
-    
-     /**
-     * Get the value of 0.1um particles
-     */
-    float readPM01();
-    
-    /**
-     * Get the raw reading value. For sensors that don't exactly measure particulate matter.
-     */
+    * Read data from the sensor and process packages. Mainly used for digital/serial
+    * sensors.
+    */
+    void refresh(hackAirData &data);
+
     int readRaw();
 
 private:

@@ -1,25 +1,25 @@
 /*
- * hackAIR Arduino Library
- * Copyright © 2016-2017 hackAir Consortium
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+* hackAIR Arduino Library
+* Copyright © 2016-2017 hackAir Consortium
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 /**
- * @file Implementation of hackAIR library
- * @author Thanasis Georgiou
- */
+* @file Implementation of hackAIR library
+* @author Thanasis Georgiou
+*/
 
 #include "Arduino.h"
 #include "hackair.h"
@@ -28,8 +28,8 @@ SoftwareSerial _serial(PIN_SERIAL_RX, PIN_SERIAL_TX);
 
 /* Constructors */
 hackAIR::hackAIR(int sensorType) {
-	// Initialize last reading
-	_sensorType = sensorType;
+    // Initialize last reading
+    _sensorType = sensorType;
 }
 
 void hackAIR::begin() {
@@ -40,7 +40,7 @@ void hackAIR::begin() {
         // Analog LED sensor
         pinMode(PIN_IO_1, INPUT);
         pinMode(PIN_IO_2, OUTPUT);
-        
+
         // Sensor needs ~1 second to settle down
         delay(1500);
     } else if (_sensorType == SENSOR_GROVE) {
@@ -57,7 +57,7 @@ int hackAIR::refresh() {
             index++;
         }
         while (_serial.read() != -1) {}
-        
+
         // Check the package integrity
         if (_buff[0] == 0x42 && _buff[1] == 0x4d) {
             char receiveflag = 0;
@@ -66,25 +66,29 @@ int hackAIR::refresh() {
             for (int i = 0; i < 30; i++) {
                 receiveSum += _buff[i];
             }
-     
+
             if (receiveSum == ((_buff[30] << 8) + _buff[31])) {
                 receiveSum = 0;
                 receiveflag = 1;
             }
-            
+
             // If package is valid
             if (receiveflag > 0) {
-                _pm10 = ((_buff[8] << 8) + _buff[9]);
-                _pm25 = ((_buff[6] << 8) + _buff[7]);
-                _pm01 = ((_buff[4] << 8) + _buff[5]);
-                
-                return 0;
+                // Set the error flag
+                data.error = 0;
+
+                // Set data
+                data.pm25 = ((_buff[8] << 8) + _buff[9]);
+                data.pm10 = ((_buff[6] << 8) + _buff[7]);
+
+                // We don't use pm0.1
+                //_pm01 = ((_buff[4] << 8) + _buff[5]);
+
+                return;
             } else {
-                _pm10 = -1;
-                _pm25 = -1;
-                _pm01 = -1;
-                
-                return 1;
+                // Set the error flag and exit
+                data.error = 1;
+                return;
             }
         }
     } else if (_sensorType == SENSOR_SDS011) {
@@ -95,28 +99,28 @@ int hackAIR::refresh() {
             index++;
         }
         while (_serial.read() != -1) {}
-        
+
         // Check package integrity
         if (_buff[0] == 0xAA && _buff[1] == 0xC0 && _buff[9] == 0xAB) {
             int receiveSum = 0;
-            
+
             for (int i = 2; i < 8; i++) {
                 receiveSum += _buff[i];
             }
-            
+
             if ((receiveSum & 0xFF) == _buff[8]) {
-                // Package is OK
-                _pm25 = ((_buff[3] << 8) + _buff[2]);
-                _pm10 = ((_buff[5] << 8) + _buff[4]);
-                _pm01 = -1;
+                // Set the error flag
+                data.error = 0;
 
-                return 0;
+                // Set data
+                data.pm25 = ((_buff[3] << 8) + _buff[2]);
+                data.pm10 = ((_buff[5] << 8) + _buff[4]);
+
+                return;
             } else {
-                _pm10 = -1;
-                _pm25 = -1;
-                _pm01 = -1;
-
-                return 1;
+                // Invalid package, set the error flag
+                data.error = 1;
+                return;
             }
         }
     } else if (_sensorType == SENSOR_GROVE) {
@@ -126,38 +130,15 @@ int hackAIR::refresh() {
         while (millis() - _lastTime <= 2000) {
             _pulseDuration += pulseIn(8, LOW);
         }
-        
+
         int ratio = _pulseDuration / 20000.0;
-        _pm10 = 1.1 * pow(ratio, 3) - 3.8 * pow(ratio, 2) + 520 * ratio + 0.62; // From manual
-        return 0;
+        data.pm10 = 1.1 * pow(ratio, 3) - 3.8 * pow(ratio, 2) + 520 * ratio + 0.62; // From manual
+        data.error = 0;
+        return;
     }
 
     // Invalid sensor ID means something surely went wrong
-    return 1;
-}
-
-float hackAIR::readPM25() {
-    if (_sensorType == SENSOR_SDS011) {
-        return _pm25 / 10;
-    } else {
-        return _pm25;
-    }    
-}
-
-float hackAIR::readPM10() {
-    if (_sensorType == SENSOR_SDS011) {
-        return _pm10 / 10;
-    } else {
-        return _pm10;
-    }    
-}
-
-float hackAIR::readPM01() {
-    if (_sensorType == SENSOR_SDS011) {
-        return _pm01 / 10;
-    } else {
-        return _pm01;
-    }    
+    data.error = 1;
 }
 
 int hackAIR::readRaw() {
