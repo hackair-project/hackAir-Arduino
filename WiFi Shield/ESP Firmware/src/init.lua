@@ -14,7 +14,7 @@ function sent_data(args)
                     'Authorization: ' .. auth_token .. '\r\n'
 
     -- Parse arguments from serial and encode them in JSON
-    local pm25, pm10, battery, tamper, error =
+    local pm25, pm10, battery, tamper, err =
         string.match(args, "([^,]+),([^,]+),([^,]+),([^,]+),([^,]*)")
 
     local body = string.format([[{
@@ -25,7 +25,7 @@ function sent_data(args)
         "battery":"%s",
         "tamper":"%s",
         "error":"%s"
-    }]], pm25, pm10, battery, tamper, error)
+    }]], pm25, pm10, battery, tamper, err)
 
     -- Make the request
     --noinspection UnusedDef
