@@ -1,6 +1,6 @@
 --- hackAIR ESP Firmware
 -- Handles WiFi setup and network communications
--- @version 0.3.0
+-- @version 0.3.1
 -- @author Thanasis Georgiou
 
 --- The server URL used for sending data to the hackAIR project
@@ -18,7 +18,7 @@ function sent_data(args)
         string.match(args, "([^,]+),([^,]+),([^,]+),([^,]+),([^,]*)")
 
     local body = string.format([[{
-        { "reading": {
+        "reading": {
             "PM2.5_AirPollutantValue":"%s",
             "PM10_AirPollutantValue":"%s"
         },
