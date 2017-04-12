@@ -51,6 +51,7 @@ function handle_uart(data)
     if com == 'e+raw' then -- Enter raw mode (lua console)
         uart.on("data")
         uart.setup(0, 115200, 8, uart.PARITY_NONE, uart.STOPBITS_1, 1)
+        print('Lua Shell mode')
     elseif com == 'e+restart' then -- Restart ESP
         node.restart()
     elseif com == 'e+version' then -- Version info
@@ -81,10 +82,6 @@ function handle_uart(data)
     end
 end
 
--- Display a warning message to the prompt
-print('hackAir ESP Firmware')
-print('Entering serial command mode, to use the Lua terminal send "e+raw"')
-
 -- Start listening to UART for commands
 uart.setup(0, 115200, 8, uart.PARITY_NONE, uart.STOPBITS_1, 0)
 uart.on('data', "\n", handle_uart, 0)
@@ -113,4 +110,6 @@ enduser_setup.start(
         print("enduser_setup: Err #" .. err .. ": " .. str)
     end)
 
-wifiConfig = nil
+-- Display a warning message to the prompt
+print('hackAir ESP Firmware')
+print('Entering serial command mode, to use the Lua terminal send "e+raw"')
