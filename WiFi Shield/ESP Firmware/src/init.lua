@@ -63,7 +63,12 @@ function handle_uart(data)
             sent_data(args)
         end
     elseif com == 'e+clearap' then -- Clear saved access points
-        wifi.sta.config('', '')
+        local station_cfg = {}
+        station_cfg.ssid = "Invalid AP"
+        station_cfg.bssid = "AA:BB:CC:AA:BB:CC"
+        station_cfg.pwd = "Invalid AP"
+        station_cfg.save = true
+        wifi.sta.config(station_cfg)
         node.restart()
     elseif com == 'e+token' then -- Grab the token for authorization
         if args == nil then
@@ -86,12 +91,13 @@ end
 uart.setup(0, 115200, 8, uart.PARITY_NONE, uart.STOPBITS_1, 0)
 uart.on('data', "\n", handle_uart, 0)
 
+-- If the
+
 -- Create AP for configuration
 wifi.ap.config({ssid = "hackAIR-"..node.chipid(), pwd = "hackAIR-"..node.chipid()})
-wifi.setmode(wifi.STATIONAP)
 
 -- Manual mode
-enduser_setup.manual(true)
+enduser_setup.manual(false)
 enduser_setup.start(
     function()
         -- WiFi information is stored in wifi.sta.config so we don't have
@@ -99,12 +105,6 @@ enduser_setup.start(
 
         -- Print debug info
         print("Connected to wifi as:" .. wifi.sta.getip())
-
-        -- Stop portal
-        enduser_setup.stop()
-        wifi.setmode(wifi.NULLMODE)
-        wifi.setmode(wifi.STATION)
-        wifi.sta.connect()
     end,
     function(err, str)
         print("enduser_setup: Err #" .. err .. ": " .. str)
