@@ -26,30 +26,32 @@ void setup() {
 }
 
 void loop() {
-  // Reading sums for averaging
-  float pm25 = 0;
-  float pm10 = 0;
+  // Struct for storing data
+  struct hackAirData data;
+  sensor.refresh(data);
+
+  // Average readings
+  float pm25 = data.pm25;
+  float pm10 = data.pm10;
 
   // We will take 60 averages
   for (int i = 0; i < 60; i++) {
     // Read from the sensor
-    int error = sensor.refresh();
+    sensor.refresh(data);
 
     // If error is not zero something went wrong with this measurment
     // and we should not send it.
-    if (error == 0) {
-      // Add current data to sum
-      pm25 += sensor.readPM25();
-      pm10 += sensor.readPM10();
+    if (data.error == 0) {
+      // Calculate average between the new reading and the old average
+      pm25 = (pm25 + data.pm25) / 2;
+      pm10 = (pm10 + data.pm10) / 2;
     }
 
     delay(1000); // Wait one second
   }
 
-  // Divide data by 60 so we get the mean value
-  pm25 /= 60;
-  pm10 /= 60;
-  
   // Send data to the hackAIR server
-  wifi_sendData(pm25, pm10, 100, 0, 0);
+  data.pm25 = pm25;
+  data.pm10 = pm10;
+  wifi_sendData(data);
 }

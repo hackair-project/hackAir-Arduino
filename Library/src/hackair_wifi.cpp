@@ -22,23 +22,24 @@
  */
 
 #include "Arduino.h"
+#include "hackair.h"
 #include "hackair_wifi.h"
 
 void wifi_begin() {
     // Begin serial communications
     Serial.begin(115200);
-    
+
     // Pin modes
     pinMode(ESP_PIN_CS, OUTPUT);
     pinMode(ESP_PIN_RST, OUTPUT);
-    
+
     // Power up
     wifi_powerOn();
     wifi_hardReset();
-    
+
     // Wait for boot
     delay(3000);
-    
+
     // Clean up serial
     while (Serial.read() != -1) {}
 }
@@ -49,17 +50,17 @@ void wifi_setToken(const String &token) {
     Serial.print('\n');
 }
 
-void wifi_sendData(float pm25, float pm10, int battery, int tamper, int error) {
+void wifi_sendData(hackAirData &data) {
     Serial.print("e+send ");
-    Serial.print(pm25);
+    Serial.print(data.pm25);
     Serial.print(',');
-    Serial.print(pm10);
+    Serial.print(data.pm10);
     Serial.print(',');
-    Serial.print(battery);
+    Serial.print(data.battery);
     Serial.print(',');
-    Serial.print(tamper);
+    Serial.print(data.tamper);
     Serial.print(',');
-    Serial.print(error);
+    Serial.print(data.error);
     Serial.print('\n');
 }
 

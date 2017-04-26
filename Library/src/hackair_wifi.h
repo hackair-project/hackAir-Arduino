@@ -29,7 +29,7 @@
 
 void wifi_begin();
 void wifi_setToken(const String &token);
-void wifi_sendData(float pm25, float pm10, int battery, int tamper, int error);
+void wifi_sendData(hackAirData &data);
 void wifi_waitForReady();
 void wifi_clearAPs();
 void wifi_reset();
