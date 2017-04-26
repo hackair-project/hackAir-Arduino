@@ -1,9 +1,24 @@
-# hackAIR-Arduino
-[!hackAIR logo](https://raw.githubusercontent.com/wiki/ee-ttss/hackAIR-Arduino/images/logo.png)
+# hackAIR Arduino Library
+An open-source Arduino library for using a variety of air quality sensors.
 
-Arduino libraries and resources for the hackAIR project. For detailed information please check the [repository wiki](https://github.com/ee-ttss/hackAIR-Arduino/wiki).
+## Description
+The purpose of this library is to eventually support a variety of
+air quality sensors so the user can easily measure and contribute
+to the hackAIR air quality database.
 
-### Quick Start Guide
-Download the latest library release from the [releases](https://github.com/ee-ttss/hackAIR-Arduino/releases) page. Run the Arduino IDE and select `Sketch > Include Library > Add .ZIP Library`. The IDE will install the library for you and the examples will be available at `File > Examples > hackAIR`.
+## Licensing
+    hackAIR Arduino Library
+    Copyright © 2016-2017 hackAir Consortium
 
-If you require detailed information on the hackAIR software or hardware please consult the [wiki](https://github.com/ee-ttss/hackAIR-Arduino/wiki).
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
