@@ -25,8 +25,9 @@
  * @author Thanasis Georgiou
  */
 
- #include <hackair_wifi.h>
- #include "firmware.h"
+#include <hackair.h>
+#include <hackair_wifi.h>
+#include "firmware.h"
 
 void setup() {
   // First of all, we need to detect whether the ESP is attached
