@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arduino Library on hackAIR-Arduino</title>
+    <link>https://hackair-project.github.io/hackAir-Arduino/library/</link>
+    <description>Recent content in Arduino Library on hackAIR-Arduino</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Apr 2017 12:22:04 +0300</lastBuildDate>
+    
+	<atom:link href="https://hackair-project.github.io/hackAir-Arduino/library/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installation</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/installation/</link>
+      <pubDate>Fri, 21 Apr 2017 12:55:25 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/installation/</guid>
+      <description>The latest version of the hackAIR Arduino library is always available for download at the project&amp;rsquo;s Github page. The easiest way to add the library to your Arduino IDE is by using the release .ZIP file. You can download this file from the &amp;ldquo;Releases&amp;rdquo; page on Github. The file you need is called hackAir-vX.Y.Z.zip, always prefer the latest version.
+At the Arduino IDE, navigate to Sketch → Include Library → Add .</description>
+    </item>
+    
+    <item>
+      <title>How it works</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/</link>
+      <pubDate>Sat, 22 Apr 2017 14:02:40 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/</guid>
+      <description>This article offers a general view on how the library works and on how to use it. Detailed information is available at the Library Reference article.
+Initialization To use the library you must first initialize the hackAIR class in your sketch with the sensor type you are using.
+// Include the library in your sketch #include &amp;quot;hackair.h&amp;quot; // Specify your sensor hackAIR sensor(SENSOR_SDS011); void setup() { } void loop() { }  The code above is a minimal example, it includes the hackAIR library and creates an object called sensor for use with the SDS011 module.</description>
+    </item>
+    
+    <item>
+      <title>Example: Serial Sensor</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/example-serial/</link>
+      <pubDate>Thu, 20 Apr 2017 12:22:04 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/example-serial/</guid>
+      <description>In this example project we will create an Arduino measuring station and send data to a computer using the Ardunio&amp;rsquo;s USB connection.
+Required materials &amp;amp; software For this project the following resources are needed:
+ An Arduino compatible board A supported sensor (see supported sensor list) The Arduino IDE with the hackAIR library installed  While all Arduino-compatible boards can be used, we recommend the official Arduino Uno since it&amp;rsquo;s the easiest to use.</description>
+    </item>
+    
+    <item>
+      <title>Example: LCD</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</link>
+      <pubDate>Sat, 22 Apr 2017 15:10:23 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</guid>
+      <description>In this example project we will create an Arduino measuring station with a Liquid Crystal Display.
+Required materials &amp;amp; software  An Arduino compatible board A supported sensor (see supported sensor list) An LCD screen (compatible with the Hitachi HD44780 driver) 10kΩ potentiometer 220Ω resistor Hook-up wires (jumpers) Breadboard The Arduino IDE with the hackAIR library installed  Assembling the hardware The sensor should be connected accoarding the it&amp;rsquo;s information page (sensor support).</description>
+    </item>
+    
+    <item>
+      <title>Library Reference</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/reference/</link>
+      <pubDate>Thu, 27 Apr 2017 14:26:46 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/reference/</guid>
+      <description>Constructor hackAIR(int sensor)
+Creates a new hackAIR class for the given sensor type.
+Parameters:
+-int sensor: Sensor type
+Method void hackAIR::begin()
+Initializes the sensors. You should put this in your setup().
+Method void hackAIR::refresh(hackAirData &amp;amp;data)
+Reads data from the sensor to the given struct.
+Parameters: -hackAirData &amp;amp;data: Struct used to store the data
+Struct hackAirData
+A structure used to store sensor readings and status information. It contains the following fields:</description>
+    </item>
+    
+  </channel>
+</rss>

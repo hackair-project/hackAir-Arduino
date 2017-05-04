@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.20.6" />
+    <meta name="description" content="hackAIR Arduino Documentation">
+<meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
+
+    <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon" />
+
+    
+    <title>Example: Serial Sensor</title>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css" rel="stylesheet">
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js"></script>
+    <style type="text/css">:root #header + #content > #left > #rlblock_left
+    {display:none !important;}</style>
+    <link href="../../css/custom.css" rel="stylesheet"/>
+
+  </head>
+  <body class="" data-url="/hackAir-Arduino/library/example-serial/">
+    
+    <nav id="sidebar">
+  <div id="header-wrapper">
+    <div id="header">
+      <img src="../../img/logo_small_white.png" alt="hackAir Logo">
+
+    </div>
+    
+</div>
+
+
+  <div class="highlightable">
+    <ul class="topics">
+      
+        
+        
+          
+          
+            
+          
+        
+          
+          
+            
+          
+        
+          
+          
+            
+          
+        
+          
+          
+            
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/hackAir-Arduino/general/">
+        <a href="../../hackAir-Arduino/general/">
+          <span>
+            
+              <b>1. </b>
+            
+             About hackAIR
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  parent" data-nav-id="/hackAir-Arduino/library/">
+        <a href="../../hackAir-Arduino/library/">
+          <span>
+            
+              <b>2. </b>
+            
+             Arduino Library
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/installation/">
+              <a href="../../hackAir-Arduino/library/installation/">
+                <span>Installation     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/how-it-works/">
+              <a href="../../hackAir-Arduino/library/how-it-works/">
+                <span>How it works     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item active" data-nav-id="/hackAir-Arduino/library/example-serial/">
+              <a href="../../hackAir-Arduino/library/example-serial/">
+                <span>Example: Serial Sensor     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/example-lcd/">
+              <a href="../../hackAir-Arduino/library/example-lcd/">
+                <span>Example: LCD     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/reference/">
+              <a href="../../hackAir-Arduino/library/reference/">
+                <span>Library Reference     </i></span>
+              </a>
+            </li>
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/hackAir-Arduino/ethernet/">
+        <a href="../../hackAir-Arduino/ethernet/">
+          <span>
+            
+              <b>3. </b>
+            
+             Ethernet
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/ethernet/supported-hardware/">
+              <a href="../../hackAir-Arduino/ethernet/supported-hardware/">
+                <span>Supported Hardware     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/ethernet/example-ethernet-node/">
+              <a href="../../hackAir-Arduino/ethernet/example-ethernet-node/">
+                <span>Example: Ethernet Node     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/ethernet/library-reference/">
+              <a href="../../hackAir-Arduino/ethernet/library-reference/">
+                <span>Library Reference     </i></span>
+              </a>
+            </li>
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/hackAir-Arduino/sensors/">
+        <a href="../../hackAir-Arduino/sensors/">
+          <span>
+            
+              <b>4. </b>
+            
+             Sensor Support
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/support-matrix/">
+              <a href="../../hackAir-Arduino/sensors/support-matrix/">
+                <span>Support matrix     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/dfrobot/">
+              <a href="../../hackAir-Arduino/sensors/dfrobot/">
+                <span>DFRobot PM2.5     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/pms5003/">
+              <a href="../../hackAir-Arduino/sensors/pms5003/">
+                <span>PMS5003     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/sds011/">
+              <a href="../../hackAir-Arduino/sensors/sds011/">
+                <span>SDS011     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/grove/">
+              <a href="../../hackAir-Arduino/sensors/grove/">
+                <span>PPD42NS (Grove)     </i></span>
+              </a>
+            </li>
+          
+        </ul>
+        
+      </li>
+      
+      
+    </ul>
+    <hr>
+     
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+        <section id="body">
+        <div id="overlay"></div>
+
+        <div class="padding highlightable">
+
+            <div id="top-bar">
+              
+              <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                  <span id="sidebar-toggle-span">
+                      <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                        <i class="fa fa-bars"></i>
+                      </a>
+                  </span>
+                
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+                  
+                  
+                  
+                    
+                    
+                <a href="../../hackAir-Arduino/library/" itemprop="url"><span itemprop="title">Arduino Library</span></a> <i class="fa fa-angle-right"></i>
+                    
+                  
+                
+                <span itemprop="title"> Example: Serial Sensor</span>
+              </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#required-materials-software">Required materials &amp; software</a></li>
+<li><a href="#assembling-the-hardware">Assembling the hardware</a></li>
+<li><a href="#programming-the-arduino">Programming the Arduino</a></li>
+<li><a href="#advanced-csv-data">Advanced: CSV data</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+              
+
+            </div>
+            
+              <div id="body-inner">
+                
+                <h1>Example: Serial Sensor</h1>
+                
+
+
+
+<p>In this example project we will create an Arduino measuring station and send data to a computer using the Ardunio&rsquo;s USB connection.</p>
+
+<h2 id="required-materials-software">Required materials &amp; software</h2>
+
+<p>For this project the following resources are needed:</p>
+
+<ul>
+<li>An Arduino compatible board</li>
+<li>A supported sensor (see supported sensor list)</li>
+<li>The Arduino IDE with the hackAIR library installed</li>
+</ul>
+
+<div class="notices note" ><p>While all Arduino-compatible boards can be used, we recommend the official <a href="https://www.arduino.cc/en/Main/arduinoBoardUno">Arduino Uno</a> since it&rsquo;s the easiest to use. Clone boards such as the <a href="https://www.sparkfun.com/products/13975">Sparkfun Redboard</a> are also a great choice.</p>
+</div>
+
+
+<h2 id="assembling-the-hardware">Assembling the hardware</h2>
+
+<p>The only assembly required for this project is connecting your sensor to the Arduino board. Since every sensor is different we recommend reading the corresponding page of our sensor support section.</p>
+
+<h2 id="programming-the-arduino">Programming the Arduino</h2>
+
+<p>This example sketch is included with the hackAIR library and you can open it in the Arduino IDE by selecting <code>Files → Examples → hackAIR → Serial-PlainText</code>. You can also copy paste the code from the box below.</p>
+<div class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span></span><span class="cm">/**</span>
+<span class="cm"> * @file Serial Sensor example</span>
+<span class="cm"> * This example reads data from a sensor (default choice is the serial SDS011)</span>
+<span class="cm"> * and sends it to a computer using USB serial communications.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This example is part of the hackAIR Arduino Library and is available</span>
+<span class="cm"> * in the Public Domain.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;hackair.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// Specify your sensor</span>
+<span class="n">hackAIR</span> <span class="nf">sensor</span><span class="p">(</span><span class="n">SENSOR_SDS011</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Initialize the sensor</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+  <span class="c1">// Open serial port</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Take a reading</span>
+  <span class="k">struct</span> <span class="n">hackAirData</span> <span class="n">data</span><span class="p">;</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+  <span class="c1">// If it was invalid, print error</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">error</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Error!&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Print the values to serial</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;PM2.5: &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pm25</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;PM10: &quot;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pm10</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&quot;---&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Wait a bit so the data is readable</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">2500</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The sketch begins by including the <code>hackair.h</code> file which includes the necessary functions for the sensor support. Before <code>setup()</code> you should create a <code>hackAIR</code> object with the sensor you are going to use. In the example above <code>SENSOR_SDS011</code> is used. Inside <code>setup()</code> we initialize the air quality sensor and begin a serial communication with the computer (through USB) at 9600 bits per second.</p>
+
+<p>After <code>setup()</code> is complete, the <code>loop()</code> function will run forever. In each loop we take a new set of readings from the sensor and write them to the serial console. You can read the data using the IDE&rsquo;s serial monitor (magnifying glass icon at the top right of the window).</p>
+
+<p><img src="../../img/library/ide-serial-monitor-button.png" alt="Location of the serial monitor button" /></p>
+
+<div class="notices note" ><p>If you are not getting any data or the serial monitor displays gibberish make sure the baud rate (transfer speed) is set at 9600 bps (bottom right). You can change this value at the <code>Serial.begin(9600);</code> line.</p>
+</div>
+
+
+<h2 id="advanced-csv-data">Advanced: CSV data</h2>
+
+<p>A second example sketch based on this one is available, called <code>Serial-CSV</code>. It has the same behaviour as the example above but the data is sent as comma seperated pairs for easier logging and parsing in your favourite data analysis software.</p>
+
+
+      
+      
+      </div>
+    </div>
+
+    
+
+    <div id="navigation">
+        
+        
+        
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js"></script>
+    
+
+  </body>
+</html>
+

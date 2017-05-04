@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/</loc>
+    <lastmod>2017-04-29T15:16:11+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/</loc>
+    <lastmod>2017-04-27T15:30:44+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/library/installation/</loc>
+    <lastmod>2017-04-21T12:55:25+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</loc>
+    <lastmod>2017-04-29T15:29:07+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</loc>
+    <lastmod>2017-04-29T15:29:07+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/</loc>
+    <lastmod>2017-04-27T16:12:10+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/</loc>
+    <lastmod>2017-04-22T14:02:40+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/library/example-serial/</loc>
+    <lastmod>2017-04-20T12:22:04+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/</loc>
+    <lastmod>2017-04-29T15:55:54+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</loc>
+    <lastmod>2017-04-29T15:05:15+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/ethernet/</loc>
+    <lastmod>2017-04-27T15:27:35+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/</loc>
+    <lastmod>2017-04-29T15:14:05+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</loc>
+    <lastmod>2017-04-22T15:10:23+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/grove/</loc>
+    <lastmod>2017-05-04T13:08:26+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/library/reference/</loc>
+    <lastmod>2017-04-27T14:26:46+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/general/</loc>
+    <lastmod>2017-04-20T12:22:04+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/library/</loc>
+    <lastmod>2017-04-20T12:22:04+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/</loc>
+    <lastmod>2017-04-29T15:16:11+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

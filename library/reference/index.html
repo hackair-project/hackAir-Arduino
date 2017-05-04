@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.20.6" />
+    <meta name="description" content="hackAIR Arduino Documentation">
+<meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
+
+    <link rel="shortcut icon" href="../../images/favicon.png" type="image/x-icon" />
+
+    
+    <title>Library Reference</title>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css" rel="stylesheet">
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js"></script>
+    <style type="text/css">:root #header + #content > #left > #rlblock_left
+    {display:none !important;}</style>
+    <link href="../../css/custom.css" rel="stylesheet"/>
+
+  </head>
+  <body class="" data-url="/hackAir-Arduino/library/reference/">
+    
+    <nav id="sidebar">
+  <div id="header-wrapper">
+    <div id="header">
+      <img src="../../img/logo_small_white.png" alt="hackAir Logo">
+
+    </div>
+    
+</div>
+
+
+  <div class="highlightable">
+    <ul class="topics">
+      
+        
+        
+          
+          
+            
+          
+        
+          
+          
+            
+          
+        
+          
+          
+            
+          
+        
+          
+          
+            
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/hackAir-Arduino/general/">
+        <a href="../../hackAir-Arduino/general/">
+          <span>
+            
+              <b>1. </b>
+            
+             About hackAIR
+            
+           </span>
+        </a>
+        
+      </li>
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  parent" data-nav-id="/hackAir-Arduino/library/">
+        <a href="../../hackAir-Arduino/library/">
+          <span>
+            
+              <b>2. </b>
+            
+             Arduino Library
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/installation/">
+              <a href="../../hackAir-Arduino/library/installation/">
+                <span>Installation     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/how-it-works/">
+              <a href="../../hackAir-Arduino/library/how-it-works/">
+                <span>How it works     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/example-serial/">
+              <a href="../../hackAir-Arduino/library/example-serial/">
+                <span>Example: Serial Sensor     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/library/example-lcd/">
+              <a href="../../hackAir-Arduino/library/example-lcd/">
+                <span>Example: LCD     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item active" data-nav-id="/hackAir-Arduino/library/reference/">
+              <a href="../../hackAir-Arduino/library/reference/">
+                <span>Library Reference     </i></span>
+              </a>
+            </li>
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/hackAir-Arduino/ethernet/">
+        <a href="../../hackAir-Arduino/ethernet/">
+          <span>
+            
+              <b>3. </b>
+            
+             Ethernet
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/ethernet/supported-hardware/">
+              <a href="../../hackAir-Arduino/ethernet/supported-hardware/">
+                <span>Supported Hardware     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/ethernet/example-ethernet-node/">
+              <a href="../../hackAir-Arduino/ethernet/example-ethernet-node/">
+                <span>Example: Ethernet Node     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/ethernet/library-reference/">
+              <a href="../../hackAir-Arduino/ethernet/library-reference/">
+                <span>Library Reference     </i></span>
+              </a>
+            </li>
+          
+        </ul>
+        
+      </li>
+      
+      
+      
+
+      
+      
+      
+        
+          
+        
+      
+      
+      
+
+      <li class="dd-item  " data-nav-id="/hackAir-Arduino/sensors/">
+        <a href="../../hackAir-Arduino/sensors/">
+          <span>
+            
+              <b>4. </b>
+            
+             Sensor Support
+            
+           </span>
+        </a>
+        
+        <ul>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/support-matrix/">
+              <a href="../../hackAir-Arduino/sensors/support-matrix/">
+                <span>Support matrix     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/dfrobot/">
+              <a href="../../hackAir-Arduino/sensors/dfrobot/">
+                <span>DFRobot PM2.5     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/pms5003/">
+              <a href="../../hackAir-Arduino/sensors/pms5003/">
+                <span>PMS5003     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/sds011/">
+              <a href="../../hackAir-Arduino/sensors/sds011/">
+                <span>SDS011     </i></span>
+              </a>
+            </li>
+          
+            <li class="dd-item " data-nav-id="/hackAir-Arduino/sensors/grove/">
+              <a href="../../hackAir-Arduino/sensors/grove/">
+                <span>PPD42NS (Grove)     </i></span>
+              </a>
+            </li>
+          
+        </ul>
+        
+      </li>
+      
+      
+    </ul>
+    <hr>
+     
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fa fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+        <section id="body">
+        <div id="overlay"></div>
+
+        <div class="padding highlightable">
+
+            <div id="top-bar">
+              
+              <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                  <span id="sidebar-toggle-span">
+                      <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                        <i class="fa fa-bars"></i>
+                      </a>
+                  </span>
+                
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+                  
+                  
+                  
+                    
+                    
+                <a href="../../hackAir-Arduino/library/" itemprop="url"><span itemprop="title">Arduino Library</span></a> <i class="fa fa-angle-right"></i>
+                    
+                  
+                
+                <span itemprop="title"> Library Reference</span>
+              </div>
+              
+                  <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+              
+
+            </div>
+            
+              <div id="body-inner">
+                
+                <h1>Library Reference</h1>
+                
+
+<p><strong>Constructor</strong> <code>hackAIR(int sensor)</code><br />
+Creates a new hackAIR class for the given sensor type.<br />
+<strong>Parameters:</strong><br />
+-<code>int sensor</code>: Sensor type</p>
+
+<hr />
+
+<p><strong>Method</strong> <code>void hackAIR::begin()</code><br />
+Initializes the sensors. You should put this in your <code>setup()</code>.</p>
+
+<hr />
+
+<p><strong>Method</strong> <code>void hackAIR::refresh(hackAirData &amp;data)</code><br />
+Reads data from the sensor to the given struct.<br />
+<strong>Parameters</strong>:
+-<code>hackAirData &amp;data</code>: Struct used to store the data</p>
+
+<hr />
+
+<p><strong>Struct</strong> <code>hackAirData</code><br />
+A structure used to store sensor readings and status information. It contains the following fields:</p>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Content</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td><code>pm25</code></td>
+<td>PM2.5 Measurement</td>
+</tr>
+
+<tr>
+<td><code>float</code></td>
+<td><code>pm10</code></td>
+<td>PM10 Measurement</td>
+</tr>
+
+<tr>
+<td><code>int</code></td>
+<td><code>error</code></td>
+<td>Error code</td>
+</tr>
+
+<tr>
+<td><code>int</code></td>
+<td><code>tamper</code></td>
+<td>Tamper indicator</td>
+</tr>
+
+<tr>
+<td><code>int</code></td>
+<td><code>battery</code></td>
+<td>Battery level</td>
+</tr>
+</tbody>
+</table>
+
+<p>The values <code>error</code>, <code>tamper</code> and <code>battery</code> and to be modified by the user in any way useful for their application.</p>
+
+
+      
+      
+      </div>
+    </div>
+
+    
+
+    <div id="navigation">
+        
+        
+        
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js"></script>
+    
+
+  </body>
+</html>
+

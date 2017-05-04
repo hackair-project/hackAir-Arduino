@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hackAIR-Arduino</title>
+    <link>https://hackair-project.github.io/hackAir-Arduino/</link>
+    <description>Recent content on hackAIR-Arduino</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Apr 2017 15:16:11 +0300</lastBuildDate>
+    
+	<atom:link href="https://hackair-project.github.io/hackAir-Arduino/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Support matrix</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/</link>
+      <pubDate>Sat, 29 Apr 2017 15:16:11 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/</guid>
+      <description>   Sensor Name Manufacturer Type Connection Supported Power Saving Support Page     DFRobot PM2.5 DFRobot Laser Serial Yes No Link   SDS011 Inovafit Laser Serial Yes No Link   PPD42NS (Grove) Shinyei LED Pulse Yes No Link   PMS5003 Plantower Laser Serial Yes No Link    </description>
+    </item>
+    
+    <item>
+      <title>Supported Hardware</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/</link>
+      <pubDate>Thu, 27 Apr 2017 15:30:44 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/</guid>
+      <description>For the Ethernet support we used the official Ethernet Library. This means we currently support all Ethernet shields using the W5100 chip.
+   Shield name Manufacturer Supported? Tested? Info     Ethernet Shield v1 Arduino Yes Yes Link   Ethernet Shield v2 Arduino WIP No Link   Arduino Ethernet Arduino WIP No Link    As a general rule, if your shield uses the Wiznet W5100 chip it should work with the hackAir library.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/installation/</link>
+      <pubDate>Fri, 21 Apr 2017 12:55:25 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/installation/</guid>
+      <description>The latest version of the hackAIR Arduino library is always available for download at the project&amp;rsquo;s Github page. The easiest way to add the library to your Arduino IDE is by using the release .ZIP file. You can download this file from the &amp;ldquo;Releases&amp;rdquo; page on Github. The file you need is called hackAir-vX.Y.Z.zip, always prefer the latest version.
+At the Arduino IDE, navigate to Sketch → Include Library → Add .</description>
+    </item>
+    
+    <item>
+      <title>DFRobot PM2.5</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</link>
+      <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</guid>
+      <description>General Information Photo Source: DFRobot Store Page
+ Type: Laser Connection: Serial Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_DFROBOT  The sensor comes with a breakout/level shifter board that can be used with the Arduino.
+How to connect First connect the sensor to it&amp;rsquo;s breakout daughterboard and then connect that to the Arduino using the following pin assignment:
+   Sensor Pin Description Arduino Pin WiFi Shield pin     GND Power Ground GND GND   VCC Power 5V 5V   RST Reset &amp;ndash; &amp;ndash;   RX Receive data 7 STX   TX Transmit data 8 SRX    The board has two more unmarked pins, you can leave those unconnected.</description>
+    </item>
+    
+    <item>
+      <title>PMS5003</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</link>
+      <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</guid>
+      <description>General Information  Type: Laser Connection: Serial @ 3.3V Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_PMS5003 Datasheet: Chinese  This sensor is very similar to the DFRobot PM2.5 sensor.
+This sensor communicates at 3.3V and does NOT include a level shifter. If you can&amp;rsquo;t use an external level shifter we don&amp;rsquo;t recommend this sensor.
+ How to connect According to the datasheet, the pin closest to the sensor&amp;rsquo;s edge is Pin 8.</description>
+    </item>
+    
+    <item>
+      <title>Example: Ethernet Node</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/</link>
+      <pubDate>Thu, 27 Apr 2017 16:12:10 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/</guid>
+      <description>In this example project we will create an Arduino measuring station with a Ethernet support.
+Required hardware  An Arduino compatible board A supported sensor (see supported sensor list) A compatible Ethernet shield (see list)  Assembling the hardware The sensor should be connected according the it&amp;rsquo;s information page (sensor support) after stacking the Ethernet shield on top of your Arduino board.
+When inserting the Ethernet shield make sure that:</description>
+    </item>
+    
+    <item>
+      <title>How it works</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/</link>
+      <pubDate>Sat, 22 Apr 2017 14:02:40 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/</guid>
+      <description>This article offers a general view on how the library works and on how to use it. Detailed information is available at the Library Reference article.
+Initialization To use the library you must first initialize the hackAIR class in your sketch with the sensor type you are using.
+// Include the library in your sketch #include &amp;quot;hackair.h&amp;quot; // Specify your sensor hackAIR sensor(SENSOR_SDS011); void setup() { } void loop() { }  The code above is a minimal example, it includes the hackAIR library and creates an object called sensor for use with the SDS011 module.</description>
+    </item>
+    
+    <item>
+      <title>Example: Serial Sensor</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/example-serial/</link>
+      <pubDate>Thu, 20 Apr 2017 12:22:04 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/example-serial/</guid>
+      <description>In this example project we will create an Arduino measuring station and send data to a computer using the Ardunio&amp;rsquo;s USB connection.
+Required materials &amp;amp; software For this project the following resources are needed:
+ An Arduino compatible board A supported sensor (see supported sensor list) The Arduino IDE with the hackAIR library installed  While all Arduino-compatible boards can be used, we recommend the official Arduino Uno since it&amp;rsquo;s the easiest to use.</description>
+    </item>
+    
+    <item>
+      <title>SDS011</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/</link>
+      <pubDate>Sat, 29 Apr 2017 15:55:54 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/</guid>
+      <description>General Information  Type: Laser Connection: Serial Fan: Yes Power saving: &amp;ndash; Library Reference: SENSOR_SDS011  Other sensors of the same family (SDSxxx) are potentially supported since most of them use the same data packet format.
+How to connect This sensors comes with a USB-to-Serial adapter. To connect the sensor to the Arduino we recommend cutting the wire that goes to the serial adapter and connecting the wires to the Arduino as follows:</description>
+    </item>
+    
+    <item>
+      <title>Library Reference</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</link>
+      <pubDate>Sat, 29 Apr 2017 15:05:15 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</guid>
+      <description>To use the Ethernet functions you must include hackair_ethernet.h after hackair.h and Ethernet.h.
+#include &amp;lt;Ethernet.h&amp;gt; #include &amp;lt;hackair.h&amp;gt; #include &amp;lt;hackair_ethernet.h&amp;gt;  Constructor hackAirEthernet(EthernetClient ethernet, char *token)
+Creates a container class for the Ethernet functions
+Parameters:
+ ethernet: Ethernet shield&amp;rsquo;s library client token: Pointer to the Authentication token used by the API  Usage:
+// MAC Address for the ethernet shield // Some shields should have the MAC address printed on them byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Initialize the Ethernet libraries EthernetClient client; hackAirEthernet hackAirNet(client, &amp;quot;AUTHORIZATION TOKEN&amp;quot;); // Write your API key here  Method int sendData(hackAirData &amp;amp;data)</description>
+    </item>
+    
+    <item>
+      <title>Example: LCD</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</link>
+      <pubDate>Sat, 22 Apr 2017 15:10:23 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</guid>
+      <description>In this example project we will create an Arduino measuring station with a Liquid Crystal Display.
+Required materials &amp;amp; software  An Arduino compatible board A supported sensor (see supported sensor list) An LCD screen (compatible with the Hitachi HD44780 driver) 10kΩ potentiometer 220Ω resistor Hook-up wires (jumpers) Breadboard The Arduino IDE with the hackAIR library installed  Assembling the hardware The sensor should be connected accoarding the it&amp;rsquo;s information page (sensor support).</description>
+    </item>
+    
+    <item>
+      <title>PPD42NS (Grove)</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/grove/</link>
+      <pubDate>Thu, 04 May 2017 13:08:26 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/grove/</guid>
+      <description> General Information  Type: LED Connection: Digital @ 5V Fan: No Power saving: No Library Reference: SENSOR_GROVE  How to connect    Sensor wire Arduino Pin Shield Pin     Red wire 5V 5V   Black Wire GND GND   Yellow wire D8 D8    Specifications  Operating Voltage: 4.95 - 5.05 V Maximum input current: 90mA Operating Temperature Range: 0 - 45 °C Operating Humidity Range: 0 - 95%  </description>
+    </item>
+    
+    <item>
+      <title>Library Reference</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/library/reference/</link>
+      <pubDate>Thu, 27 Apr 2017 14:26:46 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/library/reference/</guid>
+      <description>Constructor hackAIR(int sensor)
+Creates a new hackAIR class for the given sensor type.
+Parameters:
+-int sensor: Sensor type
+Method void hackAIR::begin()
+Initializes the sensors. You should put this in your setup().
+Method void hackAIR::refresh(hackAirData &amp;amp;data)
+Reads data from the sensor to the given struct.
+Parameters: -hackAirData &amp;amp;data: Struct used to store the data
+Struct hackAirData
+A structure used to store sensor readings and status information. It contains the following fields:</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ethernet on hackAIR-Arduino</title>
+    <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/</link>
+    <description>Recent content in Ethernet on hackAIR-Arduino</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Apr 2017 15:27:35 +0300</lastBuildDate>
+    
+	<atom:link href="https://hackair-project.github.io/hackAir-Arduino/ethernet/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Supported Hardware</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/</link>
+      <pubDate>Thu, 27 Apr 2017 15:30:44 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/</guid>
+      <description>For the Ethernet support we used the official Ethernet Library. This means we currently support all Ethernet shields using the W5100 chip.
+   Shield name Manufacturer Supported? Tested? Info     Ethernet Shield v1 Arduino Yes Yes Link   Ethernet Shield v2 Arduino WIP No Link   Arduino Ethernet Arduino WIP No Link    As a general rule, if your shield uses the Wiznet W5100 chip it should work with the hackAir library.</description>
+    </item>
+    
+    <item>
+      <title>Example: Ethernet Node</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/</link>
+      <pubDate>Thu, 27 Apr 2017 16:12:10 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/</guid>
+      <description>In this example project we will create an Arduino measuring station with a Ethernet support.
+Required hardware  An Arduino compatible board A supported sensor (see supported sensor list) A compatible Ethernet shield (see list)  Assembling the hardware The sensor should be connected according the it&amp;rsquo;s information page (sensor support) after stacking the Ethernet shield on top of your Arduino board.
+When inserting the Ethernet shield make sure that:</description>
+    </item>
+    
+    <item>
+      <title>Library Reference</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</link>
+      <pubDate>Sat, 29 Apr 2017 15:05:15 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</guid>
+      <description>To use the Ethernet functions you must include hackair_ethernet.h after hackair.h and Ethernet.h.
+#include &amp;lt;Ethernet.h&amp;gt; #include &amp;lt;hackair.h&amp;gt; #include &amp;lt;hackair_ethernet.h&amp;gt;  Constructor hackAirEthernet(EthernetClient ethernet, char *token)
+Creates a container class for the Ethernet functions
+Parameters:
+ ethernet: Ethernet shield&amp;rsquo;s library client token: Pointer to the Authentication token used by the API  Usage:
+// MAC Address for the ethernet shield // Some shields should have the MAC address printed on them byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Initialize the Ethernet libraries EthernetClient client; hackAirEthernet hackAirNet(client, &amp;quot;AUTHORIZATION TOKEN&amp;quot;); // Write your API key here  Method int sendData(hackAirData &amp;amp;data)</description>
+    </item>
+    
+  </channel>
+</rss>

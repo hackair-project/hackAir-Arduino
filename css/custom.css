@@ -1,0 +1,35 @@
+/* Body font according to style guide */
+body {
+  font-family: "Open Sans", "Cambria", "Calibri", sans-serif;
+}
+
+/* Don't center text in chapter headings */
+#chapter p {
+  text-align: left;
+}
+
+/* background behind the logo*/
+#header-wrapper {
+  background: #00A3AC;
+  border-bottom: 4px solid #FF6666;
+}
+
+/* Background color of the menu */
+#sidebar {
+  background-color: #4D4D4D;
+  color: #ffffff;
+}
+
+/* Background color of the menu, when clicked */
+#sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
+  background-color: #4D4D4D;
+  color: #ffffff;
+}
+
+/* Color of all links, including arrows to get to previous and next pages */
+a {
+    color: #FF6666;
+}
+a:hover {
+   color: #ad4343;
+}
