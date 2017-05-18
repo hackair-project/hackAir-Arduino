@@ -51,7 +51,7 @@ int hackAirEthernet::sendData(hackAirData &data) {
     }
 
     // Send request headers
-    _ethernet.println("POST /sensors/arduino/measurments");
+    _ethernet.println("POST /sensors/arduino/measurements");
 
     _ethernet.println("Host: hackair.draxis.gr");
     _ethernet.println("Content-Type: application/json");
