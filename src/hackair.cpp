@@ -133,3 +133,11 @@ void hackAIR::refresh(hackAirData &data) {
     // Invalid sensor ID means something surely went wrong
     data.error = 1;
 }
+
+void hackAIR::clearData(hackAirData &data) {
+    data.pm25 = 0;
+    data.pm10 = 0;
+    data.error = 0;
+    data.tamper = 0;
+    data.battery = 0;
+}

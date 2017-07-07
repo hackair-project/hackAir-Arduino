@@ -12,9 +12,13 @@
 
 hackAIR sensor(SENSOR_SDS011);
 
-void setup() {  
+// Struct for storing data
+struct hackAirData data;
+
+void setup() {
   // Initialize the sensor
   sensor.begin();
+  sensor.clearData(data);
 
   // Boot WiFi module
   wifi_begin();
@@ -22,17 +26,16 @@ void setup() {
   // At this point you should use your mobile phone to setup the WiFi connection
   wifi_waitForReady();
   // Set authentication token
-  wifi_setToken("REPLACE WITH AUTHENTICATION TOKEN");  
+  wifi_setToken("REPLACE WITH AUTHENTICATION TOKEN");
 }
 
 void loop() {
-  // Struct for storing data
-  struct hackAirData data;
   sensor.refresh(data);
 
   // Average readings
-  float pm25 = data.pm25;
-  float pm10 = data.pm10;
+  double pm25 = data.pm25;
+  double pm10 = data.pm10;
+  int error = 0;
 
   // We will take 60 averages
   for (int i = 0; i < 60; i++) {
@@ -45,6 +48,8 @@ void loop() {
       // Calculate average between the new reading and the old average
       pm25 = (pm25 + data.pm25) / 2;
       pm10 = (pm10 + data.pm10) / 2;
+    } else {
+      error++;
     }
 
     delay(1000); // Wait one second
@@ -53,5 +58,6 @@ void loop() {
   // Send data to the hackAIR server
   data.pm25 = pm25;
   data.pm10 = pm10;
+  data.error = error;
   wifi_sendData(data);
 }

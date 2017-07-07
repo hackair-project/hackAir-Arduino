@@ -55,15 +55,20 @@ public:
     hackAIR(int sensor);
 
     /**
-    * Initialize the sensor (pin modes, buses, etc)
-    */
+     * Initialize the sensor (pin modes, buses, etc)
+     */
     void begin();
 
     /**
-    * Read data from the sensor and process packages. Mainly used for digital/serial
-    * sensors.
-    */
+     * Read data from the sensor and process packages. Mainly used for digital/serial
+     * sensors.
+     */
     void refresh(hackAirData &data);
+    
+    /**
+     * Empties a hackAir data structure
+     */
+    void clearData(hackAirData &data);
 
 private:
     int _sensorType;

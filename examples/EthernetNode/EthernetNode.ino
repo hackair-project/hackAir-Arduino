@@ -60,6 +60,7 @@ void loop() {
 
   // Collect data
   struct hackAirData data;
+  sensor.clearData(data);
   sensor.refresh(data);
 
   // Send with ethernet shield
