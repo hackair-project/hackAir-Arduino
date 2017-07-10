@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
@@ -10,7 +11,7 @@
     <link rel="shortcut icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 
     
-    <title>DFRobot PM2.5</title>
+    <title>WiFi shield</title>
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css" rel="stylesheet">
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css" rel="stylesheet">
@@ -25,7 +26,7 @@
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/custom.css" rel="stylesheet"/>
 
   </head>
-  <body class="" data-url="/sensors/dfrobot/">
+  <body class="" data-url="/wifi/">
     
     <nav id="sidebar">
   <div id="header-wrapper">
@@ -180,7 +181,7 @@
       
       
 
-      <li class="dd-item  " data-nav-id="/wifi/">
+      <li class="dd-item active parent" data-nav-id="/wifi/">
         <a href="https://hackair-project.github.io/hackAir-Arduino/wifi/">
           <span>
             
@@ -270,7 +271,7 @@
       
       
 
-      <li class="dd-item  parent" data-nav-id="/sensors/">
+      <li class="dd-item  " data-nav-id="/sensors/">
         <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/">
           <span>
             
@@ -289,7 +290,7 @@
               </a>
             </li>
           
-            <li class="dd-item active" data-nav-id="/sensors/dfrobot/">
+            <li class="dd-item " data-nav-id="/sensors/dfrobot/">
               <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/">
                 <span>DFRobot PM2.5     </i></span>
               </a>
@@ -343,235 +344,36 @@
                       </a>
                   </span>
                 
-                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
-                
                 
                   
                   
                   
                     
                     
-                <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/" itemprop="url"><span itemprop="title">Sensor Support</span></a> <i class="fa fa-angle-right"></i>
-                    
                   
                 
-                <span itemprop="title"> DFRobot PM2.5</span>
+                <span itemprop="title"> WiFi shield</span>
               </div>
-              
-                  <div class="progress">
-    <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#general-information">General Information</a></li>
-<li><a href="#how-to-connect">How to connect</a></li>
-<li><a href="#specificiations">Specificiations</a></li>
-<li><a href="#data-packet">Data packet</a></li>
-</ul></li>
-</ul>
-</nav>
-    </div>
-</div>
-
               
             </div>
 
             </div>
             
+              <div id="chapter">
+            
               <div id="body-inner">
                 
-                <h1>DFRobot PM2.5</h1>
-                
 
 
 
-<h2 id="general-information">General Information</h2>
+<h1 id="wifi-shield">WiFi Shield</h1>
 
-<p><img src="http://image.dfrobot.com/image/cache//data/SEN0177/6-900x600.jpg" alt="Sensor Photo, Source: DFRobot Store" />
-Photo Source: <a href="https://www.dfrobot.com/product-1272.html">DFRobot Store Page</a></p>
-
-<ul>
-<li><strong>Type</strong>: Laser</li>
-<li><strong>Connection</strong>: Serial</li>
-<li><strong>Fan</strong>: Yes</li>
-<li><strong>Power saving</strong>: Yes, currently not supported</li>
-<li><strong>Library Reference</strong>: <code>SENSOR_DFROBOT</code></li>
-</ul>
-
-<p>The sensor comes with a breakout/level shifter board that can be used with the Arduino.</p>
-
-<h2 id="how-to-connect">How to connect</h2>
-
-<p>First connect the sensor to it&rsquo;s breakout daughterboard and then connect that to the Arduino using the following pin assignment:</p>
-
-<table>
-<thead>
-<tr>
-<th>Sensor Pin</th>
-<th>Description</th>
-<th>Arduino Pin</th>
-<th>WiFi Shield pin</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>GND</td>
-<td>Power Ground</td>
-<td>GND</td>
-<td>GND</td>
-</tr>
-
-<tr>
-<td>VCC</td>
-<td>Power</td>
-<td>5V</td>
-<td>5V</td>
-</tr>
-
-<tr>
-<td>RST</td>
-<td>Reset</td>
-<td>&ndash;</td>
-<td>&ndash;</td>
-</tr>
-
-<tr>
-<td>RX</td>
-<td>Receive data</td>
-<td>7</td>
-<td>STX</td>
-</tr>
-
-<tr>
-<td>TX</td>
-<td>Transmit data</td>
-<td>8</td>
-<td>SRX</td>
-</tr>
-</tbody>
-</table>
-
-<p>The board has two more unmarked pins, you can leave those unconnected.</p>
-
-<div class="notices warning" ><p>The small daughterboard is not optional since this sensor communicates at 3.3V and most Arduino&rsquo;s communicate at 5V. Always connect the sensor through the daughterboard and never directly.</p>
-</div>
-
-
-<h2 id="specificiations">Specificiations</h2>
-
-<ul>
-<li><strong>Operating Voltage</strong>: 4.95 - 5.05 V</li>
-<li><strong>Maximum input current</strong>: 120mA</li>
-<li><strong>Operating Temperature Range</strong>: -20 - 50 °C</li>
-<li><strong>Operating Humidity Range</strong>: 0 - 99%</li>
-</ul>
-
-<h2 id="data-packet">Data packet</h2>
-
-<p>The sensor communicates using an UART port at 9600 bps, no parity and 1 stop bit. Each packet contains the following (32-bytes length):</p>
-
-<table>
-<thead>
-<tr>
-<th>Content</th>
-<th>Description</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Start Character 1</td>
-<td>0x42 (fixed byte)</td>
-</tr>
-
-<tr>
-<td>Start Character 2</td>
-<td>0x4d (fixed byte)</td>
-</tr>
-
-<tr>
-<td>Frame Length</td>
-<td>Length of packer (2 * 9 + 2)</td>
-</tr>
-
-<tr>
-<td>Data 1</td>
-<td>Concentration of PM1.0, ug/m3</td>
-</tr>
-
-<tr>
-<td>Data 2</td>
-<td>Concentration of PM2.5, ug/m3</td>
-</tr>
-
-<tr>
-<td>Data 3</td>
-<td>Concentration of PM10.0, ug/m3</td>
-</tr>
-
-<tr>
-<td>Data 4</td>
-<td>Unknown (test data)</td>
-</tr>
-
-<tr>
-<td>Data 5</td>
-<td>Unknown (test data)</td>
-</tr>
-
-<tr>
-<td>Data 6</td>
-<td>Unknown (test data)</td>
-</tr>
-
-<tr>
-<td>Data 7</td>
-<td>The number of particulate of diameter above 0.3um in 0.1 liters of air</td>
-</tr>
-
-<tr>
-<td>Data 8</td>
-<td>The number of particulate of diameter above 0.5um in 0.1 liters of air</td>
-</tr>
-
-<tr>
-<td>Data 9</td>
-<td>The number of particulate of diameter above 1.0um in 0.1 liters of air</td>
-</tr>
-
-<tr>
-<td>Data 10</td>
-<td>The number of particulate of diameter above 2.5um in 0.1 liters of air</td>
-</tr>
-
-<tr>
-<td>Data 11</td>
-<td>The number of particulate of diameter above 5.0um in 0.1 liters of air</td>
-</tr>
-
-<tr>
-<td>Data 12</td>
-<td>The number of particulate of diameter above 10.0um in 0.1 liters of air</td>
-</tr>
-
-<tr>
-<td>Data 13</td>
-<td>Unknown (test data)</td>
-</tr>
-
-<tr>
-<td>Checksum</td>
-<td>Sum of all data</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Frame Length</strong> and <strong>Data #</strong> are all 16-bits in length.</p>
+<p>Learn how to connect your hackAir node to the Internet using the hackAir WiFi shield</p>
 
 
       
+      
+        </div> 
       
       </div>
     </div>
@@ -603,4 +405,5 @@ Photo Source: <a href="https://www.dfrobot.com/product-1272.html">DFRobot Store 
 
   </body>
 </html>
+
 

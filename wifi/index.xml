@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WiFi shield on hackAIR-Arduino</title>
+    <link>https://hackair-project.github.io/hackAir-Arduino/wifi/</link>
+    <description>Recent content in WiFi shield on hackAIR-Arduino</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 09 Jul 2017 14:26:46 +0300</lastBuildDate>
+    
+	<atom:link href="https://hackair-project.github.io/hackAir-Arduino/wifi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Quick start guide</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/wifi/quick-start/</link>
+      <pubDate>Sun, 09 Jul 2017 14:26:46 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/quick-start/</guid>
+      <description>This guide is for users that own an assembled and programmed WiFi shield and are ready to connect their node to the Internet.
+Step 1: Download the Arduino IDE and the hackAir library The Arduino IDE is required to write and upload sketches to your Arduino board. The web editor is currently missing the hackAir library so for the moment it&amp;rsquo;s not supported.
+The hackAir Arduino Library contains the support code for the various air quality sensors and internet connectivity using either the Ethernet Shield or the official WiFi shield.</description>
+    </item>
+    
+    <item>
+      <title>Advanced Commands</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/wifi/reference/</link>
+      <pubDate>Sun, 09 Jul 2017 14:26:46 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/reference/</guid>
+      <description>The WiFi shield communicates with the Arduino using a serial (Tx/Rx, 5V) connection. This page contains all the information regarding the communication protocol to develop custom libraries or use the shield without an Arduino.
+General The shield SoC (ESP8266) runs the NodeMCU firmware with the hackAir routine (init.lua). The routine will listen on the serial port for any incoming commands. In the meantime it will handle WiFi connectivity, if a configuration is stored (SSID &amp;amp; password) Internet connection will be established.</description>
+    </item>
+    
+  </channel>
+</rss>
