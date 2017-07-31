@@ -46,14 +46,14 @@ int hackAirEthernet::sendData(hackAirData &data) {
     dataJson += "\"}";
 
     // Open a connection
-    if (!_ethernet.connect("hackair.draxis.gr", 8000)) {
+    if (!_ethernet.connect("api.hackair.eu", 443)) {
         return 1;
     }
 
     // Send request headers
-    _ethernet.println("POST /sensors/arduino/measurments");
+    _ethernet.println("POST /sensors/arduino/measurements");
 
-    _ethernet.println("Host: hackair.draxis.gr");
+    _ethernet.println("Host: api.hackair.eu");
     _ethernet.println("Content-Type: application/json");
     _ethernet.println("Accept: application/vnd.hackair.v1+json");
     _ethernet.println("Connection: close");
