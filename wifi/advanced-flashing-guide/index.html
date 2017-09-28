@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 
-    <title>Example: Ethernet Node :: hackAIR-Arduino</title>
+    <title>Advanced: Flashing Guide :: hackAIR-Arduino</title>
     
     
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1506605044" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ethernet/example-ethernet-node/">
+  <body class="" data-url="/wifi/advanced-flashing-guide/">
     <nav id="sidebar" class="">
 
 
@@ -225,7 +225,7 @@
   
     
     <li data-nav-id="/ethernet/" title="Ethernet" class="dd-item 
-        parent
+        
         
         
         ">
@@ -268,7 +268,7 @@
  
   
     
-      <li data-nav-id="/ethernet/example-ethernet-node/" title="Example: Ethernet Node" class="dd-item active">
+      <li data-nav-id="/ethernet/example-ethernet-node/" title="Example: Ethernet Node" class="dd-item ">
         <a href="https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/">
         Example: Ethernet Node
         
@@ -314,7 +314,7 @@
   
     
     <li data-nav-id="/wifi/" title="WiFi shield" class="dd-item 
-        
+        parent
         
         
         ">
@@ -357,7 +357,7 @@
  
   
     
-      <li data-nav-id="/wifi/advanced-flashing-guide/" title="Advanced: Flashing Guide" class="dd-item ">
+      <li data-nav-id="/wifi/advanced-flashing-guide/" title="Advanced: Flashing Guide" class="dd-item active">
         <a href="https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/">
         Advanced: Flashing Guide
         
@@ -570,7 +570,7 @@
             
           
           
-            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/ethernet/'>Ethernet</a> > Example: Ethernet Node
+            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/wifi/'>WiFi shield</a> > Advanced: Flashing Guide
           
          
           
@@ -586,12 +586,14 @@
 <ul>
 <li>
 <ul>
-<li><a href="#required-hardware">Required hardware</a></li>
-<li><a href="#assembling-the-hardware">Assembling the hardware</a></li>
-<li><a href="#programming-the-arduino">Programming the Arduino</a>
+<li>
 <ul>
-<li><a href="#installing-the-libraries">Installing the libraries</a></li>
-<li><a href="#writing-the-sketch">Writing the sketch</a></li>
+<li><a href="#required-hardware">Required Hardware</a></li>
+<li><a href="#setting-up-the-software">Setting up the software</a></li>
+<li><a href="#downloading-the-hackair-firmware-nodemcu">Downloading the hackAIR firmware (nodeMCU)</a></li>
+<li><a href="#preparing-the-hardware">Preparing the hardware</a></li>
+<li><a href="#uploading-the-firmware">Uploading the firmware</a></li>
+<li><a href="#adding-the-hackair-sketch">Adding the hackAIR sketch</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -607,100 +609,129 @@
         
         <div id="body-inner">
           
-            <h1>Example: Ethernet Node</h1>
+            <h1>Advanced: Flashing Guide</h1>
           
 
         
 
 
 
-<p>In this example project we will create an Arduino measuring station with a Ethernet support.</p>
+<p>This guide is for users that own an assembled WiFi shield and want to flash the hackAIR firmware.</p>
 
-<h2 id="required-hardware">Required hardware</h2>
+<h3 id="required-hardware">Required Hardware</h3>
 
 <ul>
-<li>An Arduino compatible board</li>
-<li>A supported sensor (see supported sensor list)</li>
-<li>A compatible Ethernet shield (see <a href="https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware">list</a>)</li>
+<li>An assembled hackAIR WiFi Shield v.2</li>
+<li>A 5V USB-to-Serial converter <a href="https://www.sparkfun.com/products/9716">Example</a></li>
+<li>Jumper Wires</li>
 </ul>
 
-<h2 id="assembling-the-hardware">Assembling the hardware</h2>
+<h3 id="setting-up-the-software">Setting up the software</h3>
 
-<p>The sensor should be connected according the it&rsquo;s information page (<a href="#">sensor support</a>) after stacking the Ethernet shield on top of your Arduino board.</p>
+<p>The official ESP8622 flashing tool, <a href="https://github.com/espressif/esptool">esptool</a>, runs on the Python interpreter. On Windows system you can download Python from the <a href="https://www.python.org/downloads/">official website</a> (3.6.2 or newer). On Linux, <code>python</code> should be already installed and ready to use.</p>
 
-<div class="notices warning" ><p>When inserting the Ethernet shield make sure that:<br />
-1. All pins are inserted on the correct headers and none are bent out of the way<br />
-2. The USB connector of the Arduino board doesn&rsquo;t touch the Ethernet shield. This can cause a short-circuit</p>
+<div class="notices note" ><p><code>pip</code>, the Python package manager, is recommended for easy installation of <code>esptool</code>. Make sure it&rsquo;s marked for installation when setting up python.</p>
 </div>
 
 
-<h2 id="programming-the-arduino">Programming the Arduino</h2>
-
-<h3 id="installing-the-libraries">Installing the libraries</h3>
-
-<p>The hackAir library can be installed by following the instructions on the <a href="https://hackair-project.github.io/hackAir-Arduino/library/installation">Arduino Library → Installation</a> page. Since the Ethernet support depends on the official Ethernet library, you should make sure it&rsquo;s installed using the Library Manager (<code>Sketch → Libraries → Manage Libraries</code>).</p>
-
-<p><img src="https://hackair-project.github.io/hackAir-Arduino/img/ethernet/library-manager.png" alt="Library Manager Screenshot" /></p>
-
-<h3 id="writing-the-sketch">Writing the sketch</h3>
-
-<p>This example sketch is included with the hackAIR library and you can open it in the Arduino IDE by selecting <code>Files → Examples → hackAIR → Ethernet</code>. You can also copy paste the code from the box below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s1770">/**
-</span><span class="s1770"> * @file Ethernet node example sketch
-</span><span class="s1770"> * This example is part of the hackAIR Arduino Library and is available
-</span><span class="s1770"> * in the Public Domain.
-</span><span class="s1770"> *
-</span><span class="s1770"> * @author Thanasis Georgiou
-</span><span class="s1770"> */</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&lt;Ethernet.h&gt;</span><span class="s1770">
-</span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&#34;hackair.h&#34;</span><span class="s1770">
-</span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&#34;hackair_ethernet.h&#34;</span><span class="s1770">
-</span><span class="s1770"></span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">// MAC Address of the Ethernet Shield
-</span><span class="s1770">// Nnewer shields should have a MAC address printed on a sticker
-</span><span class="s1770"></span><span class="s7d0">byte</span><span class="s1f40"> </span><span class="s7d0">mac</span><span class="s1388">[]</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc80">0xDE</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xAD</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xBE</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xEF</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xFE</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xED</span><span class="s1f40"> </span><span class="s1388">};</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">// Initialize the Ethernet client library and the hackAir helper class
-</span><span class="s1770"></span><span class="s7d0">EthernetClient</span><span class="s1f40"> </span><span class="s7d0">client</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s7d0">hackAirEthernet</span><span class="s1f40"> </span><span class="s7d9">hackAirNet</span><span class="s1388">(</span><span class="s7d0">client</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c"></span><span class="sc1c">&#34;AUTHORIZATION TOKEN&#34;</span><span class="s1388">);</span><span class="s1f40"> </span><span class="s1770">// Write your API key here
-</span><span class="s1770"></span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">// Specify your sensor
-</span><span class="s1770"></span><span class="s7d0">hackAIR</span><span class="s1f40"> </span><span class="s7d9">sensor</span><span class="s1388">(</span><span class="s7d0">SENSOR_SDS011</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">setup</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Open serial communications and wait for port to open
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">(</span><span class="sc80">9600</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s3e8">while</span><span class="s1f40"> </span><span class="s1388">(</span><span class="sfa0">!</span><span class="s7d0">Serial</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s1388">{;}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Start the ethernet connection
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">Ethernet</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">(</span><span class="s7d0">mac</span><span class="s1388">)</span><span class="s1f40"> </span><span class="sfa0">==</span><span class="s1f40"> </span><span class="sc80">0</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">println</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;Failed to configure Ethernet using DHCP&#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s3e8">while</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">true</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s1388">{;}</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Give the Ethernet shield a second to initialize
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">delay</span><span class="s1388">(</span><span class="sc80">1000</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Initialize the sensor
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">();</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">loop</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Check DHCP lease
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">Ethernet</span><span class="s1388">.</span><span class="s7d0">maintain</span><span class="s1388">();</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Collect data
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">struct</span><span class="s1f40"> </span><span class="s7d0">hackAirData</span><span class="s1f40"> </span><span class="s7d0">data</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">refresh</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Send with ethernet shield
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">hackAirNet</span><span class="s1388">.</span><span class="s7d0">sendData</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Wait a bit (1 minute)
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">delay</span><span class="s1388">(</span><span class="sc80">60000</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+<div class="notices note" ><p>On Windows systems, adding Python to <code>%PATH%</code> when asked will make working with <code>esptool</code> easier.</p>
 </div>
+
+
+<p>After installing Python the ESP programming tool can be easily installed by running:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="s1770"># On some systems you might have to run this as administrator (sudo)
+</span><span class="s1770"></span><span class="s1f40">&gt; pip install esptool</span></code></pre>
+</div>
+<p>On Windows, you can open a command line prompt by pressing Win+R and typing in <code>cmd</code>.</p>
+
+<h3 id="downloading-the-hackair-firmware-nodemcu">Downloading the hackAIR firmware (nodeMCU)</h3>
+
+<p>The hackAIR sketch for the WiFi shield runs on top of the <a href="http://nodemcu.readthedocs.io/en/master/">nodeMCU platform</a>. You can always find the latest hackAIR-tested release on the WiFi shield project&rsquo;s <a href="https://github.com/hackair-project/hackAir-ArduinoWiFi/releases">Github page</a> or you can supply your own firmware. In case of custom firmware make sure the following modules are present in the build:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">enduser_setup:</span><span class="s1f40"> </span><span class="ss4">Used</span><span class="s1f40"> </span><span class="ss4">for</span><span class="s1f40"> </span><span class="ss4">setting</span><span class="s1f40"> </span><span class="ss4">up</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">WiFi</span><span class="s1f40"> </span><span class="ss4">connection</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">file:</span><span class="s1f40"> </span><span class="ss4">Used</span><span class="s1f40"> </span><span class="ss4">for</span><span class="s1f40"> </span><span class="ss4">upgrading</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">firmware</span><span class="s1f40"> </span><span class="ss4">through</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">Arduino</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">gpio:</span><span class="s1f40"> </span><span class="ss4">General</span><span class="s1f40"> </span><span class="ss4">purpose</span><span class="s1f40"> </span><span class="ss4">module</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">http:</span><span class="s1f40"> </span><span class="ss4">Send</span><span class="s1f40"> </span><span class="ss4">data</span><span class="s1f40"> </span><span class="ss4">to</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">hackAir</span><span class="s1f40"> </span><span class="ss4">servers</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">net:</span><span class="s1f40"> </span><span class="ss4">Send</span><span class="s1f40"> </span><span class="ss4">data</span><span class="s1f40"> </span><span class="ss4">to</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">hackAir</span><span class="s1f40"> </span><span class="ss4">servers</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">node:</span><span class="s1f40"> </span><span class="ss4">Internal</span><span class="s1f40"> </span><span class="ss4">functions</span><span class="s1f40"> </span><span class="ss4">(restart,</span><span class="s1f40"> </span><span class="ss4">etc)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">tmr:</span><span class="s1f40"> </span><span class="ss4">Used</span><span class="s1f40"> </span><span class="ss4">for</span><span class="s1f40"> </span><span class="ss4">measuring</span><span class="s1f40"> </span><span class="ss4">time</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">uart:</span><span class="s1f40"> </span><span class="ss4">Communication</span><span class="s1f40"> </span><span class="ss4">with</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">Arduino</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">wifi:</span><span class="s1f40"> </span><span class="ss4">WiFi</span><span class="s1f40"> </span><span class="ss4">functions</span><span class="s1f40"> </span><span class="ss4">(connect,</span><span class="s1f40"> </span><span class="ss4">etc)</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">tls:</span><span class="s1f40"> </span><span class="ss4">Provides</span><span class="s1f40"> </span><span class="ss4">HTTPS</span><span class="s1f40"> </span><span class="ss4">support</span><span class="s1f40"> </span><span class="ss4">to</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">HTTP</span><span class="s1f40"> </span><span class="ss4">module</span></code></pre>
+</div>
+<h3 id="preparing-the-hardware">Preparing the hardware</h3>
+
+<p>The programming header (P3) is located next to capacitor C2 and C4, near Arduino pins 7 and 8.</p>
+
+<p><img src="https://hackair-project.github.io/hackAir-Arduino/img/wifi/render.png" alt="" /></p>
+
+<p>The pins are numbered right-to-left (pin 1 is the rightmost one with the square pad) and connect as follow:</p>
+
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Name</th>
+<th>Where to Connect</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>RST</td>
+<td>DTR</td>
+<td>Reset pin of the ESP module, connect to the DTR (sometimes called RST) pin of the USB-to-serial converter</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Rx</td>
+<td>Tx</td>
+<td>Receive pin of the WiFi shield&rsquo;s serial connection</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Tx</td>
+<td>Rx</td>
+<td>Transmit pin of the WiFi shield&rsquo;s serial connection</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>GND</td>
+<td>GND</td>
+<td>Ground pin</td>
+</tr>
+</tbody>
+</table>
+
+<p>Additionally you must connect Arduino pin 4 with 5V and short the JP1 jumper.</p>
+
+<p>To power the board stack it on top of an Arduino Uno. To make sure the Arduino board doesn&rsquo;t interfere with the programming you must make sure it&rsquo;s disabled with one of the following ways:</p>
+
+<ul>
+<li>Connect the RST pin of the Arduino with GND (recommended)</li>
+<li>Remove the ATMega328 microcontroller from the Arduino board</li>
+<li>Upload a sketch that doesn&rsquo;t use serial communications (ex. Blink)</li>
+</ul>
+
+<h3 id="uploading-the-firmware">Uploading the firmware</h3>
+
+<p>We can now upload the firmware using <code>esptool</code>. After connecting the USB-serial module to the computer you can run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="s1f40">&gt; esptool erase_flash
+</span><span class="s1f40">&gt; esptool write_flash 0x00 hackair-nodemcu.bin
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770"># In case the tool gets confused with the serial ports you can specify it like this
+</span><span class="s1770"></span><span class="s1f40">&gt; esptool --port /dev/ttyUSB0 write_flash 0x00 hackair-nodemcu.bin</span></code></pre>
+</div>
+<p>If at whatever point the process fails, restart from <code>erase_flash</code> to make sure it&rsquo;s programmed correctly. Finish by removing all the jumper wires.</p>
+
+<h3 id="adding-the-hackair-sketch">Adding the hackAIR sketch</h3>
+
+<p>The final step is adding the hackAir routine to the ESP module. You can do this by uploading the <code>ESPUpgrade</code> sketch to the Arduino Uno.</p>
+
 
 <footer class=" footline" >
 	
@@ -851,6 +882,70 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -979,70 +1074,6 @@
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
             
             
@@ -1085,10 +1116,10 @@
 
 
         
-            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/" title="Supported Hardware"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/wifi/quick-start/" title="Quick start guide"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/" title="Library Reference" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/wifi/reference/" title="Advanced: Serial Commands" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

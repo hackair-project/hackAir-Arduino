@@ -52,6 +52,16 @@ At the Arduino IDE, navigate to Sketch → Include Library → Add .</descriptio
     </item>
     
     <item>
+      <title>Advanced: Flashing Guide</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</link>
+      <pubDate>Thu, 28 Sep 2017 14:26:46 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</guid>
+      <description>This guide is for users that own an assembled WiFi shield and want to flash the hackAIR firmware.
+Required Hardware  An assembled hackAIR WiFi Shield v.2 A 5V USB-to-Serial converter Example Jumper Wires  Setting up the software The official ESP8622 flashing tool, esptool, runs on the Python interpreter. On Windows system you can download Python from the official website (3.6.2 or newer). On Linux, python should be already installed and ready to use.</description>
+    </item>
+    
+    <item>
       <title>DFRobot PM2.5</title>
       <link>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</link>
       <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
@@ -93,7 +103,7 @@ When inserting the Ethernet shield make sure that:</description>
       <guid>https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/</guid>
       <description>This article offers a general view on how the library works and on how to use it. Detailed information is available at the Library Reference article.
 Initialization To use the library you must first initialize the hackAIR class in your sketch with the sensor type you are using.
-// Include the library in your sketch #include &amp;quot;hackair.h&amp;quot; // Specify your sensor hackAIR sensor(SENSOR_SDS011); void setup() { } void loop() { }  The code above is a minimal example, it includes the hackAIR library and creates an object called sensor for use with the SDS011 module.</description>
+// Include the library in your sketch #include&amp;#34;hackair.h&amp;#34;// Specify your sensor hackAIRsensor(SENSOR_SDS011);voidsetup(){}voidloop(){}  The code above is a minimal example, it includes the hackAIR library and creates an object called sensor for use with the SDS011 module.</description>
     </item>
     
     <item>
@@ -124,11 +134,11 @@ How to connect This sensors comes with a USB-to-Serial adapter. To connect the s
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</guid>
       <description>To use the Ethernet functions you must include hackair_ethernet.h after hackair.h and Ethernet.h.
-#include &amp;lt;Ethernet.h&amp;gt; #include &amp;lt;hackair.h&amp;gt; #include &amp;lt;hackair_ethernet.h&amp;gt;  Constructor hackAirEthernet(EthernetClient ethernet, char *token)
+#include&amp;lt;Ethernet.h&amp;gt;#include&amp;lt;hackair.h&amp;gt;#include&amp;lt;hackair_ethernet.h&amp;gt;  Constructor hackAirEthernet(EthernetClient ethernet, char *token)
 Creates a container class for the Ethernet functions
 Parameters:
  ethernet: Ethernet shield&amp;rsquo;s library client token: Pointer to the Authentication token used by the API  Usage:
-// MAC Address for the ethernet shield // Some shields should have the MAC address printed on them byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Initialize the Ethernet libraries EthernetClient client; hackAirEthernet hackAirNet(client, &amp;quot;AUTHORIZATION TOKEN&amp;quot;); // Write your API key here  Method int sendData(hackAirData &amp;amp;data)</description>
+// MAC Address for the ethernet shield // Some shields should have the MAC address printed on them bytemac[]={0xDE,0xAD,0xBE,0xEF,0xFE,0xED};// Initialize the Ethernet libraries EthernetClientclient;hackAirEthernethackAirNet(client,&amp;#34;AUTHORIZATION TOKEN&amp;#34;);//WriteyourAPIkeyhere  Method int sendData(hackAirData &amp;amp;data)</description>
     </item>
     
     <item>
@@ -142,7 +152,7 @@ Required materials &amp;amp; software  An Arduino compatible board A supported s
     </item>
     
     <item>
-      <title>Advanced Commands</title>
+      <title>Advanced: Serial Commands</title>
       <link>https://hackair-project.github.io/hackAir-Arduino/wifi/reference/</link>
       <pubDate>Sun, 09 Jul 2017 14:26:46 +0300</pubDate>
       

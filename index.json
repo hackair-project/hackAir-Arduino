@@ -1,0 +1,169 @@
+[
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/wifi/quick-start/",
+	"title": "Quick start guide",
+	"tags": [],
+	"description": "",
+	"content": " This guide is for users that own an assembled and programmed WiFi shield and are ready to connect their node to the Internet.\nStep 1: Download the Arduino IDE and the hackAir library The Arduino IDE is required to write and upload sketches to your Arduino board. The web editor is currently missing the hackAir library so for the moment it\u0026rsquo;s not supported.\nThe hackAir Arduino Library contains the support code for the various air quality sensors and internet connectivity using either the Ethernet Shield or the official WiFi shield. The latest release can be downloaded from here and installed accoarding to the instructions at Installation.\nStep 2: Stack the shield on top of your Arduino and connect your sensors The WiFi shield should be stacked on top of the Arduino board while making sure all pins are inserted without bending out of the way. The shield shouldn\u0026rsquo;t touch any of the Arduino\u0026rsquo;s components to avoid shorting.\nEach sensor has a page in the Sensor Support section with details on how to connect it to the shield.\nStep 3: Upload the WiFiSensor sketch The WiFiSensor example is a prepared sketch to collect data from the sensors and send the average every 1 minute to the hackAir servers. Before uploading the correct sensor should be specified in line 13 and the authentication token in line 29.\nStep 4: Connect to the hackAir node using a mobile device to setup WiFi Using a mobile device, connect to the SetupGadget-XXXXXX Access Point (XXXXXX being the unique ID of the WiFi shield) and navigate to http://192.168.4.1 to set your SSID and password.\nFinished At this point the hackAir node should be ready to collect and transmit data.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/",
+	"title": "Support matrix",
+	"tags": [],
+	"description": "",
+	"content": "   Sensor Name Manufacturer Type Connection Supported Power Saving Support Page     DFRobot PM2.5 DFRobot Laser Serial Yes No Link   SDS011 Inovafit Laser Serial Yes No Link   PPD42NS (Grove) Shinyei LED Pulse Yes No Link   PMS5003 Plantower Laser Serial Yes No Link    "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/",
+	"title": "Supported Hardware",
+	"tags": [],
+	"description": "",
+	"content": "For the Ethernet support we used the official Ethernet Library. This means we currently support all Ethernet shields using the W5100 chip.\n   Shield name Manufacturer Supported? Tested? Info     Ethernet Shield v1 Arduino Yes Yes Link   Ethernet Shield v2 Arduino WIP No Link   Arduino Ethernet Arduino WIP No Link    As a general rule, if your shield uses the Wiznet W5100 chip it should work with the hackAir library. Support for W5500 is coming very soon but other chips will not be supported. Of course any advanced users can use the hackAir library just for the sensor support and roll their own Ethernet solution.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/library/installation/",
+	"title": "Installation",
+	"tags": [],
+	"description": "",
+	"content": "The latest version of the hackAIR Arduino library is always available for download at the project\u0026rsquo;s Github page. The easiest way to add the library to your Arduino IDE is by using the release .ZIP file. You can download this file from the \u0026ldquo;Releases\u0026rdquo; page on Github. The file you need is called hackAir-vX.Y.Z.zip, always prefer the latest version.\nAt the Arduino IDE, navigate to Sketch → Include Library → Add .ZIP library and select the file you just downloaded. The library and the example sketches should now be available.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/general/",
+	"title": "About hackAIR",
+	"tags": [],
+	"description": "",
+	"content": " hackAIR is an EU-funded project aiming to develop an open technology platform for citizen observatories on air quality. It is supported through the EU programme on “Collective Awareness Platforms for Sustainability and Social Innovation” until December 2018.\nFollowing a co-creation process with users and the development of the hackAIR platform and its components, the hackAIR platform will be pilot tested in Norway and Germany starting in September 2017 in order to validate the service platform and contribute towards individual and collective awareness about air quality in Europe, encouraging changes in behaviour towards air quality improvements.\nBy pilot testing the hackAIR platform and related collective sensing tools, the project aims to raise collective awareness about the daily levels of human exposure to air pollution.\nhackAIR - Arduino The Arduino Module of the hackAIR project provides resources for creating Air Quality sensor nodes at home using the Arduino platform.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/",
+	"title": "Advanced: Flashing Guide",
+	"tags": [],
+	"description": "",
+	"content": " This guide is for users that own an assembled WiFi shield and want to flash the hackAIR firmware.\nRequired Hardware  An assembled hackAIR WiFi Shield v.2 A 5V USB-to-Serial converter Example Jumper Wires  Setting up the software The official ESP8622 flashing tool, esptool, runs on the Python interpreter. On Windows system you can download Python from the official website (3.6.2 or newer). On Linux, python should be already installed and ready to use.\npip, the Python package manager, is recommended for easy installation of esptool. Make sure it\u0026rsquo;s marked for installation when setting up python.\n On Windows systems, adding Python to %PATH% when asked will make working with esptool easier.\n After installing Python the ESP programming tool can be easily installed by running:\n# On some systems you might have to run this as administrator (sudo) \u0026gt; pip install esptool  On Windows, you can open a command line prompt by pressing Win+R and typing in cmd.\nDownloading the hackAIR firmware (nodeMCU) The hackAIR sketch for the WiFi shield runs on top of the nodeMCU platform. You can always find the latest hackAIR-tested release on the WiFi shield project\u0026rsquo;s Github page or you can supply your own firmware. In case of custom firmware make sure the following modules are present in the build:\n-enduser_setup:UsedforsettinguptheWiFiconnection-file:UsedforupgradingthefirmwarethroughtheArduino-gpio:Generalpurposemodule-http:SenddatatothehackAirservers-net:SenddatatothehackAirservers-node:Internalfunctions(restart,etc)-tmr:Usedformeasuringtime-uart:CommunicationwiththeArduino-wifi:WiFifunctions(connect,etc)-tls:ProvidesHTTPSsupporttotheHTTPmodule  Preparing the hardware The programming header (P3) is located next to capacitor C2 and C4, near Arduino pins 7 and 8.\nThe pins are numbered right-to-left (pin 1 is the rightmost one with the square pad) and connect as follow:\n   Pin Name Where to Connect Description     1 RST DTR Reset pin of the ESP module, connect to the DTR (sometimes called RST) pin of the USB-to-serial converter   2 Rx Tx Receive pin of the WiFi shield\u0026rsquo;s serial connection   3 Tx Rx Transmit pin of the WiFi shield\u0026rsquo;s serial connection   4 GND GND Ground pin    Additionally you must connect Arduino pin 4 with 5V and short the JP1 jumper.\nTo power the board stack it on top of an Arduino Uno. To make sure the Arduino board doesn\u0026rsquo;t interfere with the programming you must make sure it\u0026rsquo;s disabled with one of the following ways:\n Connect the RST pin of the Arduino with GND (recommended) Remove the ATMega328 microcontroller from the Arduino board Upload a sketch that doesn\u0026rsquo;t use serial communications (ex. Blink)  Uploading the firmware We can now upload the firmware using esptool. After connecting the USB-serial module to the computer you can run:\n\u0026gt; esptool erase_flash \u0026gt; esptool write_flash 0x00 hackair-nodemcu.bin # In case the tool gets confused with the serial ports you can specify it like this \u0026gt; esptool --port /dev/ttyUSB0 write_flash 0x00 hackair-nodemcu.bin  If at whatever point the process fails, restart from erase_flash to make sure it\u0026rsquo;s programmed correctly. Finish by removing all the jumper wires.\nAdding the hackAIR sketch The final step is adding the hackAir routine to the ESP module. You can do this by uploading the ESPUpgrade sketch to the Arduino Uno.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/",
+	"title": "DFRobot PM2.5",
+	"tags": [],
+	"description": "",
+	"content": " General Information Photo Source: DFRobot Store Page\n Type: Laser Connection: Serial Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_DFROBOT  The sensor comes with a breakout/level shifter board that can be used with the Arduino.\nHow to connect First connect the sensor to it\u0026rsquo;s breakout daughterboard and then connect that to the Arduino using the following pin assignment:\n   Sensor Pin Description Arduino Pin WiFi Shield pin     GND Power Ground GND GND   VCC Power 5V 5V   RST Reset \u0026ndash; \u0026ndash;   RX Receive data 7 STX   TX Transmit data 8 SRX    The board has two more unmarked pins, you can leave those unconnected.\nThe small daughterboard is not optional since this sensor communicates at 3.3V and most Arduino\u0026rsquo;s communicate at 5V. Always connect the sensor through the daughterboard and never directly.\n Specificiations  Operating Voltage: 4.95 - 5.05 V Maximum input current: 120mA Operating Temperature Range: -20 - 50 °C Operating Humidity Range: 0 - 99%  Data packet The sensor communicates using an UART port at 9600 bps, no parity and 1 stop bit. Each packet contains the following (32-bytes length):\n   Content Description     Start Character 1 0x42 (fixed byte)   Start Character 2 0x4d (fixed byte)   Frame Length Length of packer (2 * 9 + 2)   Data 1 Concentration of PM1.0, ug/m3   Data 2 Concentration of PM2.5, ug/m3   Data 3 Concentration of PM10.0, ug/m3   Data 4 Unknown (test data)   Data 5 Unknown (test data)   Data 6 Unknown (test data)   Data 7 The number of particulate of diameter above 0.3um in 0.1 liters of air   Data 8 The number of particulate of diameter above 0.5um in 0.1 liters of air   Data 9 The number of particulate of diameter above 1.0um in 0.1 liters of air   Data 10 The number of particulate of diameter above 2.5um in 0.1 liters of air   Data 11 The number of particulate of diameter above 5.0um in 0.1 liters of air   Data 12 The number of particulate of diameter above 10.0um in 0.1 liters of air   Data 13 Unknown (test data)   Checksum Sum of all data    Frame Length and Data # are all 16-bits in length.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/",
+	"title": "PMS5003",
+	"tags": [],
+	"description": "",
+	"content": " General Information  Type: Laser Connection: Serial @ 3.3V Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_PMS5003 Datasheet: Chinese  This sensor is very similar to the DFRobot PM2.5 sensor.\nThis sensor communicates at 3.3V and does NOT include a level shifter. If you can\u0026rsquo;t use an external level shifter we don\u0026rsquo;t recommend this sensor.\n How to connect According to the datasheet, the pin closest to the sensor\u0026rsquo;s edge is Pin 8.\n   Sensor Pin Name Description Arduino Pin WiFi Shield Pin     Pin 1 VCC Power 5V 5V   Pin 2 GND Power Ground GND GND   Pin 3 Set Unused \u0026ndash; \u0026ndash;   Pin 4 Rx Receive data 7 STX   Pin 5 Tx Transmit data 8 SRX   Pin 6 Reset Unused \u0026ndash; \u0026ndash;   Pin 7 Not connected Unused \u0026ndash; \u0026ndash;   Pin 8 Not connected Unused \u0026ndash; \u0026ndash;    Do not connect this sensor directly to the Arduino. It communicates at 3.3V and the higher voltage of the Arduino might damage it.\n Specificiations  Operating Voltage: 4.95 - 5.05 V Maximum input current: 100mA Operating Temperature Range: -20 - 50 °C Operating Humidity Range: 0 - 99%  Data packet The data packet is identical to the DFRobot sensor.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/",
+	"title": "Example: Ethernet Node",
+	"tags": [],
+	"description": "",
+	"content": " In this example project we will create an Arduino measuring station with a Ethernet support.\nRequired hardware  An Arduino compatible board A supported sensor (see supported sensor list) A compatible Ethernet shield (see list)  Assembling the hardware The sensor should be connected according the it\u0026rsquo;s information page (sensor support) after stacking the Ethernet shield on top of your Arduino board.\nWhen inserting the Ethernet shield make sure that:\n1. All pins are inserted on the correct headers and none are bent out of the way\n2. The USB connector of the Arduino board doesn\u0026rsquo;t touch the Ethernet shield. This can cause a short-circuit\n Programming the Arduino Installing the libraries The hackAir library can be installed by following the instructions on the Arduino Library → Installation page. Since the Ethernet support depends on the official Ethernet library, you should make sure it\u0026rsquo;s installed using the Library Manager (Sketch → Libraries → Manage Libraries).\nWriting the sketch This example sketch is included with the hackAIR library and you can open it in the Arduino IDE by selecting Files → Examples → hackAIR → Ethernet. You can also copy paste the code from the box below.\n/** * @file Ethernet node example sketch * This example is part of the hackAIR Arduino Library and is available * in the Public Domain. * * @author Thanasis Georgiou */#include\u0026lt;Ethernet.h\u0026gt;#include\u0026#34;hackair.h\u0026#34;#include\u0026#34;hackair_ethernet.h\u0026#34;// MAC Address of the Ethernet Shield // Nnewer shields should have a MAC address printed on a sticker bytemac[]={0xDE,0xAD,0xBE,0xEF,0xFE,0xED};// Initialize the Ethernet client library and the hackAir helper class EthernetClientclient;hackAirEthernethackAirNet(client,\u0026#34;AUTHORIZATION TOKEN\u0026#34;);// Write your API key here // Specify your sensor hackAIRsensor(SENSOR_SDS011);voidsetup(){// Open serial communications and wait for port to open Serial.begin(9600);while(!Serial){;}// Start the ethernet connection if(Ethernet.begin(mac)==0){Serial.println(\u0026#34;Failed to configure Ethernet using DHCP\u0026#34;);while(true){;}}// Give the Ethernet shield a second to initialize delay(1000);// Initialize the sensor sensor.begin();}voidloop(){// Check DHCP lease Ethernet.maintain();// Collect data structhackAirDatadata;sensor.refresh(data);// Send with ethernet shield hackAirNet.sendData(data);// Wait a bit (1 minute) delay(60000);} "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/",
+	"title": "How it works",
+	"tags": [],
+	"description": "",
+	"content": " This article offers a general view on how the library works and on how to use it. Detailed information is available at the Library Reference article.\nInitialization To use the library you must first initialize the hackAIR class in your sketch with the sensor type you are using.\n// Include the library in your sketch #include\u0026#34;hackair.h\u0026#34;// Specify your sensor hackAIRsensor(SENSOR_SDS011);voidsetup(){}voidloop(){}  The code above is a minimal example, it includes the hackAIR library and creates an object called sensor for use with the SDS011 module. The first thing you should do afterwards is call sensor.begin() so the library takes care of any configuration your sensor might require. A good place to do this would be init() since we only have to do this once.\nvoidinit(){// Setup the sensor sensor.begin();}  While you can technically create two hackAIR objects, if the specified sensors use the same hardware pins (for example, trying to use two serial sensors) the library won\u0026rsquo;t work correctly. We recommend avoiding using more than one sensor per Arduino unless you are an advanced user.\n Measuring data The library uses a data structure (called struct in C/C++) named hackAirData to store and later send data. You can think of this as a bundle of variables. It contains the following fields:\n   Type Name Content     float pm25 PM2.5 Measurement   float pm10 PM10 Measurement   int error Error code   int tamper Tamper indicator   int battery Battery level    While the two measurments and the error indicator (pm25, pm10 and error) are filled by the library, tamper and battery are available for use if your project requires them. To make a measurment you must first allocate some place in the memory for the structure and then pass it to the library.\nvoidloop(){// Reserve some memory space for the readings structhackAirDatadata;// Read the data sensor.refresh(data);// Check if there was an error if(data.error==0){// No error, the data is available now Serial.print(\u0026#34;PM2.5 Reading: \u0026#34;);Serial.println(data.pm25);}}  The hackAirData struct is used by the Ethernet/WiFi shield libraries to send data to the hackAIR servers.\n The full sketch // Include the library in your sketch #include\u0026#34;hackair.h\u0026#34;// Specify your sensor hackAIRsensor(SENSOR_SDS011);voidsetup(){// Setup the sensor and the serial connection with the computer sensor.begin();Serial.begin(9600);}voidloop(){// Reserve some memory space for the readings structhackAirDatadata;// Read the data sensor.refresh(data);// Check if there was an error if(data.error==0){// No error, the data is available now Serial.print(\u0026#34;PM2.5 Reading: \u0026#34;);Serial.println(data.pm25);}} "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/library/",
+	"title": "Arduino Library",
+	"tags": [],
+	"description": "",
+	"content": "This section contains information related to the Arduino library which handles sensor support and measuring data.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/library/example-serial/",
+	"title": "Example: Serial Sensor",
+	"tags": [],
+	"description": "",
+	"content": " In this example project we will create an Arduino measuring station and send data to a computer using the Ardunio\u0026rsquo;s USB connection.\nRequired materials \u0026amp; software For this project the following resources are needed:\n An Arduino compatible board A supported sensor (see supported sensor list) The Arduino IDE with the hackAIR library installed  While all Arduino-compatible boards can be used, we recommend the official Arduino Uno since it\u0026rsquo;s the easiest to use. Clone boards such as the Sparkfun Redboard are also a great choice.\n Assembling the hardware The only assembly required for this project is connecting your sensor to the Arduino board. Since every sensor is different we recommend reading the corresponding page of our sensor support section.\nProgramming the Arduino This example sketch is included with the hackAIR library and you can open it in the Arduino IDE by selecting Files → Examples → hackAIR → Serial-PlainText. You can also copy paste the code from the box below.\n/** * @file Serial Sensor example * This example reads data from a sensor (default choice is the serial SDS011) * and sends it to a computer using USB serial communications. * * This example is part of the hackAIR Arduino Library and is available * in the Public Domain. */#include\u0026#34;hackair.h\u0026#34;// Specify your sensor hackAIRsensor(SENSOR_SDS011);voidsetup(){// Initialize the sensor sensor.begin();// Open serial port Serial.begin(9600);}voidloop(){// Take a reading structhackAirDatadata;sensor.refresh(data);// If it was invalid, print error if(data.error!=0){Serial.println(\u0026#34;Error!\u0026#34;);}else{// Print the values to serial Serial.print(\u0026#34;PM2.5: \u0026#34;);Serial.println(data.pm25);Serial.print(\u0026#34;PM10: \u0026#34;);Serial.println(data.pm10);Serial.println(\u0026#34;---\u0026#34;);}// Wait a bit so the data is readable delay(2500);}  The sketch begins by including the hackair.h file which includes the necessary functions for the sensor support. Before setup() you should create a hackAIR object with the sensor you are going to use. In the example above SENSOR_SDS011 is used. Inside setup() we initialize the air quality sensor and begin a serial communication with the computer (through USB) at 9600 bits per second.\nAfter setup() is complete, the loop() function will run forever. In each loop we take a new set of readings from the sensor and write them to the serial console. You can read the data using the IDE\u0026rsquo;s serial monitor (magnifying glass icon at the top right of the window).\nIf you are not getting any data or the serial monitor displays gibberish make sure the baud rate (transfer speed) is set at 9600 bps (bottom right). You can change this value at the Serial.begin(9600); line.\n Advanced: CSV data A second example sketch based on this one is available, called Serial-CSV. It has the same behaviour as the example above but the data is sent as comma seperated pairs for easier logging and parsing in your favourite data analysis software.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/",
+	"title": "SDS011",
+	"tags": [],
+	"description": "",
+	"content": " General Information  Type: Laser Connection: Serial Fan: Yes Power saving: \u0026ndash; Library Reference: SENSOR_SDS011  Other sensors of the same family (SDSxxx) are potentially supported since most of them use the same data packet format.\nHow to connect This sensors comes with a USB-to-Serial adapter. To connect the sensor to the Arduino we recommend cutting the wire that goes to the serial adapter and connecting the wires to the Arduino as follows:\n   Sensor Pin Description Arduino Pin WiFi Shield pin     GND Power Ground GND GND   VCC Power 5V 5V   RX Receive data 7 STX   TX Transmit data 8 SRX    Specifications  Operating Voltage: 4.95 - 5.05 V Maximum input current: 220mA Operating Temperature Range: -20 - 50 °C Operating Humidity Range: 0 - 95%  "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/",
+	"title": "Library Reference",
+	"tags": [],
+	"description": "",
+	"content": "To use the Ethernet functions you must include hackair_ethernet.h after hackair.h and Ethernet.h.\n#include\u0026lt;Ethernet.h\u0026gt;#include\u0026lt;hackair.h\u0026gt;#include\u0026lt;hackair_ethernet.h\u0026gt;  Constructor hackAirEthernet(EthernetClient ethernet, char *token)\nCreates a container class for the Ethernet functions\nParameters:\n ethernet: Ethernet shield\u0026rsquo;s library client token: Pointer to the Authentication token used by the API  Usage:\n// MAC Address for the ethernet shield // Some shields should have the MAC address printed on them bytemac[]={0xDE,0xAD,0xBE,0xEF,0xFE,0xED};// Initialize the Ethernet libraries EthernetClientclient;hackAirEthernethackAirNet(client,\u0026#34;AUTHORIZATION TOKEN\u0026#34;);//WriteyourAPIkeyhere  Method int sendData(hackAirData \u0026amp;data)\nParameters:\n \u0026amp;data: Data to send  Usage:\nvoidloop(){// Check DHCP lease Ethernet.maintain();// Collect data structhackAirDatadata;sensor.refresh(data);// Send with ethernet shield hackAirNet.sendData(data);} "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/ethernet/",
+	"title": "Ethernet",
+	"tags": [],
+	"description": "",
+	"content": "Learn how to connect your Arduino hackAir node to the internet using Ethernet\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/",
+	"title": "Example: LCD",
+	"tags": [],
+	"description": "",
+	"content": " In this example project we will create an Arduino measuring station with a Liquid Crystal Display.\nRequired materials \u0026amp; software  An Arduino compatible board A supported sensor (see supported sensor list) An LCD screen (compatible with the Hitachi HD44780 driver) 10kΩ potentiometer 220Ω resistor Hook-up wires (jumpers) Breadboard The Arduino IDE with the hackAIR library installed  Assembling the hardware The sensor should be connected accoarding the it\u0026rsquo;s information page (sensor support). The LCD requires a lot of connections:\n   LCD Pin Pin name Where to connect     1 VSS Ground (GND pin)   2 VDD 5V pin of the Arduino   3 V0 Middle tap of potentiometer   4 RS Pin D12 of the Arduino   5 R/W Ground   6 E Pin D11 of the Arduino   7-10 DB0-3 Unconnected   11 DB4 Pin D5 of the Arduino   12 DB5 Pin D4 of the Arduino   13 DB6 Pin D3 of the Arduino   14 DB7 Pin D2 of the Arduino   15 LED+ See below   16 LED- See below    The last two pins are the anode (pin 15) and the cathode (pin 16) of the backlight. You need to connect them to 5V and GND respectively but through a 220Ω resistor.\n(Schematic source)\nSome LCDs may have multiple backlight pins if they are multicoloured. Refer to the manufacturer\u0026rsquo;s documentation on how to connect these extra pins.\n The potentiometer has 3 pins. The center pin should be connected to pin V0 of the LCD while the other two should be connected to 5V and GND respectively. This pot is used to set the contrast ratio of the LCD.\nProgramming the Arduino This example sketch is included with the hackAIR library and you can open it in the Arduino IDE by selecting Files → Examples → hackAIR → LCD. You can also copy paste the code from the box below.\n/** * @file LCD node example * This example reads data from a sensor (default choice is the serial SDS011) * and displays it on an LCD. * * This example is part of the hackAIR Arduino Library and is available * in the Public Domain. */#include\u0026lt;LiquidCrystal.h\u0026gt;#include\u0026lt;hackair.h\u0026gt;// Specify your sensor hackAIRsensor(SENSOR_DFROBOT);// Initialize the library with the numbers of the interface pins LiquidCrystallcd(12,11,5,4,3,2);voidsetup(){// Initialize the sensor sensor.begin();// Set up the LCD\u0026#39;s number of columns and rows: lcd.begin(16,2);}voidloop(){// Take a reading structhackAirDatadata;sensor.refresh(data);// Clear screen and move cursor to the top left lcd.clear();lcd.setCursor(0,0);// If it was invalid, print error if(data.error!=0){lcd.print(\u0026#34;Error!\u0026#34;);}else{// Print the values to the LCD lcd.print(\u0026#34;PM10 :\u0026#34;);lcd.print(data.pm10);lcd.setCursor(0,1);lcd.print(\u0026#34;PM2.5:\u0026#34;);lcd.print(data.pm25);}// Wait a bit delay(2500);} "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/wifi/",
+	"title": "WiFi shield",
+	"tags": [],
+	"description": "",
+	"content": "Learn how to connect your hackAir node to the Internet using the hackAir WiFi shield\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/wifi/reference/",
+	"title": "Advanced: Serial Commands",
+	"tags": [],
+	"description": "",
+	"content": " The WiFi shield communicates with the Arduino using a serial (Tx/Rx, 5V) connection. This page contains all the information regarding the communication protocol to develop custom libraries or use the shield without an Arduino.\nGeneral The shield SoC (ESP8266) runs the NodeMCU firmware with the hackAir routine (init.lua). The routine will listen on the serial port for any incoming commands. In the meantime it will handle WiFi connectivity, if a configuration is stored (SSID \u0026amp; password) Internet connection will be established. Otherwise an AP will be created so the user can enter their WiFi\u0026rsquo;s credentials.\nCommands Commands begin with e+ so the serial pins can be used with other devices or USB communications. Command parameters, when needed, are comma separated.\n e+raw\nSwitches to Lua interpreter mode. To switch back to command mode one can restart the SoC with node.restart()\n e+restart\nReboots the ESP8266.\n e+version\nReturns the version number as a single integer.\n e+token\nSets the authentication token for sending data to the hackAir servers. Example: e+token 123testtoken\n e+send\nSends data to the hackAir servers and returns the HTTP status code. If the WiFi is not connected it does nothing. The command takes 5 parameters, in this order: PM2.5 counts, PM10 counts, battery level, tamper indicator, error number. Example: e+send 2.5,10,0,0,0\n e+clearap\nClears the stored WiFi configuration and restarts the SoC\n e+isready Returns 1 if the WiFi connection is established.\n e+wifi Sets the SSID and password for the WiFi connection. SSIDs with commas or spaces are currently not supported. Example: e+wifi MyPoint,Password\n  "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/sensors/grove/",
+	"title": "PPD42NS (Grove)",
+	"tags": [],
+	"description": "",
+	"content": " General Information  Type: LED Connection: Digital @ 5V Fan: No Power saving: No Library Reference: SENSOR_GROVE  How to connect    Sensor wire Arduino Pin Shield Pin     Red wire 5V 5V   Black Wire GND GND   Yellow wire D8 D8    Specifications  Operating Voltage: 4.95 - 5.05 V Maximum input current: 90mA Operating Temperature Range: 0 - 45 °C Operating Humidity Range: 0 - 95%  "
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/sensors/",
+	"title": "Sensor Support",
+	"tags": [],
+	"description": "",
+	"content": "This section contains information about every sensor we support in the Arduino library\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/library/reference/",
+	"title": "Library Reference",
+	"tags": [],
+	"description": "",
+	"content": "Constructor hackAIR(int sensor)\nCreates a new hackAIR class for the given sensor type.\nParameters:\n-int sensor: Sensor type\nMethod void hackAIR::begin()\nInitializes the sensors. You should put this in your setup().\nMethod void hackAIR::refresh(hackAirData \u0026amp;data)\nReads data from the sensor to the given struct.\nParameters: -hackAirData \u0026amp;data: Struct used to store the data\nStruct hackAirData\nA structure used to store sensor readings and status information. It contains the following fields:\n   Type Name Content     float pm25 PM2.5 Measurement   float pm10 PM10 Measurement   int error Error code   int tamper Tamper indicator   int battery Battery level    The values error, tamper and battery and to be modified by the user in any way useful for their application.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/",
+	"title": "hackAIR-Arduino",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
