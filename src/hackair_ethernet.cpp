@@ -46,7 +46,7 @@ int hackAirEthernet::sendData(hackAirData &data) {
     dataJson += "\"}";
 
     // Open a connection
-    if (!_ethernet.connect("api.hackair.eu", 443)) {
+    if (!_ethernet.connect("api.hackair.eu", 80)) {
         return 1;
     }
 
