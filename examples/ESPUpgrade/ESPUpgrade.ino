@@ -18,7 +18,7 @@
 
 /**
  * @file This sketch will upgrade the firmware of the WiFi module of the
- *       WiFi shield to version 'v2'. To use, simply upload this sketch
+ *       WiFi shield to version 'v0.5.0'. To use, simply upload this sketch
  *       to your Arduino, connect the shield and tap the RESET button.
  *       The Green LED on the Arduino board will turn on when the
  *       upgrade is complete.
