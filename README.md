@@ -16,6 +16,14 @@ The Arduino platform helps create electronic project easy and fun with the only 
 
 While not mandatory, the library provides helpers to send air quality data over the Internet to the hackAIR platform. The official [Ethernet Shield](https://www.arduino.cc/en/Main/ArduinoEthernetShieldV2) is supported alongside the [hackAIR WiFi shield](https://github.com/hackair-project/hackAir-ArduinoWiFi), a DIY option for adding wireless connectivity to your data collection station.
 
+### Supported Sensors
+
+The following sensors are currently supported by the library:
+ * [DFRobot PM2.5 Air Quality sensor](https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/)
+ * [PMS5003](https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/)
+ * [SDS011](https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/)
+ * [PPD42NS - Grove sensor by SEEDSTUDIO](https://hackair-project.github.io/hackAir-Arduino/sensors/grove/)
+
 ### Documentation
 
 Official documentation is available at the [hackAIR-Arduino wiki](https://hackair-project.github.io/hackAir-Arduino/general/). The website is continiously updated with more examples and helpful info.
