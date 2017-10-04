@@ -7,6 +7,13 @@
 	"content": " This guide is for users that own an assembled and programmed WiFi shield and are ready to connect their node to the Internet.\nStep 1: Download the Arduino IDE and the hackAir library The Arduino IDE is required to write and upload sketches to your Arduino board. The web editor is currently missing the hackAir library so for the moment it\u0026rsquo;s not supported.\nThe hackAir Arduino Library contains the support code for the various air quality sensors and internet connectivity using either the Ethernet Shield or the official WiFi shield. The latest release can be downloaded from here and installed accoarding to the instructions at Installation.\nStep 2: Stack the shield on top of your Arduino and connect your sensors The WiFi shield should be stacked on top of the Arduino board while making sure all pins are inserted without bending out of the way. The shield shouldn\u0026rsquo;t touch any of the Arduino\u0026rsquo;s components to avoid shorting.\nEach sensor has a page in the Sensor Support section with details on how to connect it to the shield.\nStep 3: Upload the WiFiSensor sketch The WiFiSensor example is a prepared sketch to collect data from the sensors and send the average every 1 minute to the hackAir servers. Before uploading the correct sensor should be specified in line 13 and the authentication token in line 29.\nStep 4: Connect to the hackAir node using a mobile device to setup WiFi Using a mobile device, connect to the SetupGadget-XXXXXX Access Point (XXXXXX being the unique ID of the WiFi shield) and navigate to http://192.168.4.1 to set your SSID and password.\nFinished At this point the hackAir node should be ready to collect and transmit data.\n"
 },
 {
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/wifi/where-to-buy/",
+	"title": "Where to Buy &amp; BOM",
+	"tags": [],
+	"description": "",
+	"content": " PCB The shield PCB is available on OSHPark (minimum order 3 boards). The board design files are available on the project repository so anyone can create Gerber files to order the board from another manufacturer. The PCB was designed using KiCad.\n\nParts The following table contains the full parts list (bill-of-materials). This is everything needed to assemble one WiFi shield.\nOnly one WiFi module is needed. The shield has footprints for both the through-hole version (ESP-01) and the SMD version (ESP-12) but only one must be used at a time.\n    A/A Type Qty. Name Marking Description Package Digikey SKU     1 Module/IC 1 ESP-01 U2 WiFi Module - Pick one! Through Hole N/A   2 Module/IC 1 ESP-12 U3 WiFi Module - Pick one! 0.1\u0026rdquo; SMD N/A   3 Module/IC 1 SN74LVC245A U1 Buffer DIP 296-8503-5-ND   4 Module/IC 1 LD1117 U4 3.3V Voltage Regulator TO-220 497-1491-5-ND   5 Module/IC 1 ZVN4206A Q1 N-Channel MOSFET TO-92 ZVN4206A-ND   6 Passive 1 1kΩ Resistor R1  1/4W N/A   7 Passive 1 10kΩ Resistor R3   N/A   8 Passive 1 100kΩ Resistor R2  1/4W N/A   9 Passive 2 100nF Capacitor C2, C5 Ceramic, Disk Through Hole N/A   10 Passive 2 10nF Capacitor C1, C4 Ceramic, Disk Through Hole N/A   11 Passive 2 10uF Capacitor C3, C6 Electrolytic, 16V Through Hole N/A   12 Mechanical 1 Male Pin Header  At least 30 pins. N/A N/A   13 Mechanical 3 Bornier 2-Pins   N/A N/A   14 Mechanical 1 DIP-20 Socket  For U1, optional DIP N/A   15 Mechanical 1 Set of Arduino Headers  These are the headers used to stack Arduino shield on top of the Arduino. You can also do this with long female headers. Example  N/A    "
+},
+{
 	"uri": "https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/",
 	"title": "Support matrix",
 	"tags": [],
@@ -116,7 +123,7 @@
 	"title": "WiFi shield",
 	"tags": [],
 	"description": "",
-	"content": "Learn how to connect your hackAir node to the Internet using the hackAir WiFi shield\n"
+	"content": "The hackAIR WiFi shield is a DIY solution to connecting your Air Quality sensor to the internet wirelessly. The WiFi module on the shield, ESP8266, is programmed to handle all network operations so not to waste the Arduino\u0026rsquo;s processing power. Communication and programming of the WiFi module is done through a serial interface.\nThe shield\u0026rsquo;s hardware and software are open source and available on Github here.\n"
 },
 {
 	"uri": "https://hackair-project.github.io/hackAir-Arduino/wifi/reference/",

@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 
-    <title>WiFi shield :: hackAIR-Arduino</title>
+    <title>Where to Buy &amp; BOM :: hackAIR-Arduino</title>
     
     
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1507112887" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/wifi/">
+  <body class="" data-url="/wifi/where-to-buy/">
     <nav id="sidebar" class="">
 
 
@@ -315,7 +315,7 @@
     
     <li data-nav-id="/wifi/" title="WiFi shield" class="dd-item 
         parent
-        active
+        
         
         ">
       <a href="https://hackair-project.github.io/hackAir-Arduino/wifi/">
@@ -357,7 +357,7 @@
  
   
     
-      <li data-nav-id="/wifi/where-to-buy/" title="Where to Buy &amp; BOM" class="dd-item ">
+      <li data-nav-id="/wifi/where-to-buy/" title="Where to Buy &amp; BOM" class="dd-item active">
         <a href="https://hackair-project.github.io/hackAir-Arduino/wifi/where-to-buy/">
         Where to Buy &amp; BOM
         
@@ -585,7 +585,13 @@
             
           
           
-            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > WiFi shield
+            
+            
+          
+          
+            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/wifi/'>WiFi shield</a> > Where to Buy & BOM
+          
+         
           
          
           
@@ -595,7 +601,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#pcb">PCB</a></li>
+<li><a href="#parts">Parts</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -607,21 +624,214 @@
         
         <div id="body-inner">
           
-            <h1>WiFi shield</h1>
+            <h1>Where to Buy &amp; BOM</h1>
           
 
         
 
-<p><img src="https://hackair-project.github.io/hackAir-Arduino/img/wifi/render-no-mark.png" alt="WiFi shield PCB" /></p>
 
-<p>The hackAIR WiFi shield is a DIY solution to connecting your Air Quality sensor to the internet wirelessly. The WiFi module on the shield, <code>ESP8266</code>, is programmed to handle all network operations so not to waste the Arduino&rsquo;s processing power. Communication and programming of the WiFi module is done through a serial interface.</p>
 
-<p>The shield&rsquo;s hardware and software are open source and available on Github <a href="https://github.com/hackair-project/hackAir-ArduinoWiFi">here</a>.</p>
+<h3 id="pcb">PCB</h3>
+
+<p>The shield PCB is available on OSHPark (minimum order 3 boards). The board design files are available on the <a href="https://github.com/hackair-project/hackAir-ArduinoWiFi">project repository</a> so anyone can create <a href="https://en.wikipedia.org/wiki/Gerber_format">Gerber files</a> to order the board from another manufacturer. The PCB was designed using <a href="http://kicad-pcb.org/">KiCad</a>.</p>
+
+<p><img src="https://oshpark.com/assets/badge-5b7ec47045b78aef6eb9d83b3bac6b1920de805e9a0c227658eac6e19a045b9c.png" alt="Order from OSH Park"></img></a></p>
+
+<h3 id="parts">Parts</h3>
+
+<p>The following table contains the full parts list (bill-of-materials). This is everything needed to assemble <strong>one</strong> WiFi shield.</p>
+
+<div class="notices note" ><p>Only one WiFi module is needed. The shield has footprints for both the through-hole version (ESP-01) and the SMD version (ESP-12) but only one must be used at a time.</p>
+</div>
+
+
+<table>
+<thead>
+<tr>
+<th>A/A</th>
+<th>Type</th>
+<th>Qty.</th>
+<th>Name</th>
+<th>Marking</th>
+<th>Description</th>
+<th>Package</th>
+<th>Digikey SKU</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>Module/IC</td>
+<td>1</td>
+<td>ESP-01</td>
+<td>U2</td>
+<td>WiFi Module - <strong>Pick one!</strong></td>
+<td>Through Hole</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Module/IC</td>
+<td>1</td>
+<td>ESP-12</td>
+<td>U3</td>
+<td>WiFi Module - <strong>Pick one!</strong></td>
+<td>0.1&rdquo; SMD</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Module/IC</td>
+<td>1</td>
+<td>SN74LVC245A</td>
+<td>U1</td>
+<td>Buffer</td>
+<td>DIP</td>
+<td><a href="http://www.digikey.gr/product-detail/en/texas-instruments/SN74LVC245AN/296-8503-5-ND/377483">296-8503-5-ND</a></td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Module/IC</td>
+<td>1</td>
+<td>LD1117</td>
+<td>U4</td>
+<td>3.3V Voltage Regulator</td>
+<td>TO-220</td>
+<td><a href="http://www.digikey.gr/product-detail/en/stmicroelectronics/LD1117V33/497-1491-5-ND/586012">497-1491-5-ND</a></td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Module/IC</td>
+<td>1</td>
+<td>ZVN4206A</td>
+<td>Q1</td>
+<td>N-Channel MOSFET</td>
+<td>TO-92</td>
+<td><a href="http://www.digikey.gr/product-detail/en/diodes-incorporated/ZVN4206A/ZVN4206A-ND/92604">ZVN4206A-ND</a></td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Passive</td>
+<td>1</td>
+<td>1kΩ Resistor</td>
+<td>R1</td>
+<td></td>
+<td>1/4W</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Passive</td>
+<td>1</td>
+<td>10kΩ Resistor</td>
+<td>R3</td>
+<td></td>
+<td></td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Passive</td>
+<td>1</td>
+<td>100kΩ Resistor</td>
+<td>R2</td>
+<td></td>
+<td>1/4W</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>Passive</td>
+<td>2</td>
+<td>100nF Capacitor</td>
+<td>C2, C5</td>
+<td>Ceramic, Disk</td>
+<td>Through Hole</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>Passive</td>
+<td>2</td>
+<td>10nF Capacitor</td>
+<td>C1, C4</td>
+<td>Ceramic, Disk</td>
+<td>Through Hole</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>Passive</td>
+<td>2</td>
+<td>10uF Capacitor</td>
+<td>C3, C6</td>
+<td>Electrolytic, 16V</td>
+<td>Through Hole</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>Mechanical</td>
+<td>1</td>
+<td>Male Pin Header</td>
+<td></td>
+<td>At least 30 pins.</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>Mechanical</td>
+<td>3</td>
+<td>Bornier 2-Pins</td>
+<td></td>
+<td></td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>Mechanical</td>
+<td>1</td>
+<td>DIP-20 Socket</td>
+<td></td>
+<td>For U1, optional</td>
+<td>DIP</td>
+<td>N/A</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>Mechanical</td>
+<td>1</td>
+<td>Set of Arduino Headers</td>
+<td></td>
+<td>These are the headers used to stack Arduino shield on top of the Arduino. You can also do this with long female headers. <a href="https://www.sparkfun.com/products/11417">Example</a></td>
+<td></td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -708,70 +918,6 @@
                     
 
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -928,6 +1074,90 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -971,86 +1201,6 @@
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
             
             
@@ -1077,10 +1227,10 @@
 
 
         
-            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/" title="Library Reference"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/wifi/quick-start/" title="Quick start guide"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/wifi/quick-start/" title="Quick start guide" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/" title="Advanced: Flashing Guide" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1110,3 +1260,4 @@
 
   </body>
 </html>
+
