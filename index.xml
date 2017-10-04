@@ -29,9 +29,8 @@ The hackAir Arduino Library contains the support code for the various air qualit
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/where-to-buy/</guid>
       <description>PCB The shield PCB is available on OSHPark (minimum order 3 boards). The board design files are available on the project repository so anyone can create Gerber files to order the board from another manufacturer. The PCB was designed using KiCad.
-
-Parts The following table contains the full parts list (bill-of-materials). This is everything needed to assemble one WiFi shield.
-Only one WiFi module is needed. The shield has footprints for both the through-hole version (ESP-01) and the SMD version (ESP-12) but only one must be used at a time.</description>
+ Order page  Parts The following table contains the full parts list (bill-of-materials). This is everything needed to assemble one WiFi shield.
+Only one WiFi module is needed.</description>
     </item>
     
     <item>
