@@ -141,3 +141,15 @@ void hackAIR::clearData(hackAirData &data) {
     data.tamper = 0;
     data.battery = 0;
 }
+
+void enablePowerControl() {
+    pinMode(A2, OUTPUT);
+}
+
+void turnOn() {
+    digitalWrite(A2, HIGH);
+}
+
+void turnOff() {
+    digitalWrite(A2, LOW);
+}

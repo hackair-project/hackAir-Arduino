@@ -15,3 +15,6 @@ refresh KEYWORD2
 readPM25 KEYWORD2
 readPM10 KEYWORD2
 readPM01 KEYWORD2
+enablePowerControl KEYWORD2
+turnOn KEYWORD2
+turnOff KEYWORD2

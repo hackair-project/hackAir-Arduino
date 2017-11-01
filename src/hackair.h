@@ -64,11 +64,26 @@ public:
      * sensors.
      */
     void refresh(hackAirData &data);
-    
+
     /**
      * Empties a hackAir data structure
      */
     void clearData(hackAirData &data);
+
+    /**
+     * Uses pin A2 to control the sensor power switch (FET)
+     */
+    void enablePowerControl();
+
+    /**
+     * Turn the sensor power on
+     */
+    void turnOn();
+
+    /**
+     * Turn the sensor power off
+     */
+    void turnOff();
 
 private:
     int _sensorType;
