@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.29" />
+    <meta name="generator" content="Hugo 0.30.2" />
     <meta name="description" content="hackAIR Arduino Documentation">
 <meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
 
@@ -13,19 +13,19 @@
     <title>Example: Serial Sensor :: hackAIR-Arduino</title>
     
     
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1507113310" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/auto-complete.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1509903743" rel="stylesheet">
     
-      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1507113310" rel="stylesheet">
+      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1509903743" rel="stylesheet">
     
 
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1509903743"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1507113310"></script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/horsey.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1509903743"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/auto-complete.js?1509903743"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hackair-project.github.io\/hackAir-Arduino";
     
 </script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1509903743"></script>
 
     
   </div>
@@ -630,6 +630,7 @@
 
 
 
+
 <p>In this example project we will create an Arduino measuring station and send data to a computer using the Ardunio&rsquo;s USB connection.</p>
 
 <h2 id="required-materials-software">Required materials &amp; software</h2>
@@ -648,54 +649,57 @@
 
 <h2 id="assembling-the-hardware">Assembling the hardware</h2>
 
-<p>The only assembly required for this project is connecting your sensor to the Arduino board. Since every sensor is different we recommend reading the corresponding page of our sensor support section.</p>
+<p>The only assembly required for this project is connecting your sensor to the Arduino and the Arduino to your computer. Since every sensor is different we recommend reading the corresponding page of our [sensor support]((../../sensors) section.</p>
 
 <h2 id="programming-the-arduino">Programming the Arduino</h2>
 
 <p>This example sketch is included with the hackAIR library and you can open it in the Arduino IDE by selecting <code>Files → Examples → hackAIR → Serial-PlainText</code>. You can also copy paste the code from the box below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="s1770">/**
-</span><span class="s1770"> * @file Serial Sensor example
-</span><span class="s1770"> * This example reads data from a sensor (default choice is the serial SDS011)
-</span><span class="s1770"> * and sends it to a computer using USB serial communications.
-</span><span class="s1770"> *
-</span><span class="s1770"> * This example is part of the hackAIR Arduino Library and is available
-</span><span class="s1770"> * in the Public Domain.
-</span><span class="s1770"> */</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&#34;hackair.h&#34;</span><span class="s1770">
-</span><span class="s1770"></span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">// Specify your sensor
-</span><span class="s1770"></span><span class="s7d0">hackAIR</span><span class="s1f40"> </span><span class="s7d9">sensor</span><span class="s1388">(</span><span class="s7d0">SENSOR_SDS011</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">setup</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Initialize the sensor
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">();</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Open serial port
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">(</span><span class="sc80">9600</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">loop</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Take a reading
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">struct</span><span class="s1f40"> </span><span class="s7d0">hackAirData</span><span class="s1f40"> </span><span class="s7d0">data</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">refresh</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// If it was invalid, print error
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">.</span><span class="s7d0">error</span><span class="s1f40"> </span><span class="sfa0">!=</span><span class="s1f40"> </span><span class="sc80">0</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">println</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;Error!&#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1388">}</span><span class="s1f40"> </span><span class="s3e8">else</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1770">// Print the values to serial
-</span><span class="s1770"></span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">print</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;PM2.5: &#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">println</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">.</span><span class="s7d0">pm25</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">print</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;PM10: &#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">println</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">.</span><span class="s7d0">pm10</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">println</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;---&#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Wait a bit so the data is readable
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">delay</span><span class="s1388">(</span><span class="sc80">2500</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+
+<div class="notices note" ><p>If you are unfamiliar with the Arduino software or are having issues we recommend checking the <a href="https://www.arduino.cc/en/Guide/Environment">official documentation</a>. Sparkfun&rsquo;s <a href="https://learn.sparkfun.com/tutorials/installing-arduino-ide">Arduino IDE Installation</a> tutorial also contains useful information for beginners.</p>
 </div>
+
+<div class="highlight"><pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cm">/**
+</span><span class="cm"> * @file Serial Sensor example
+</span><span class="cm"> * This example reads data from a sensor (default choice is the serial SDS011)
+</span><span class="cm"> * and sends it to a computer using USB serial communications.
+</span><span class="cm"> *
+</span><span class="cm"> * This example is part of the hackAIR Arduino Library and is available
+</span><span class="cm"> * in the Public Domain.
+</span><span class="cm"> */</span>
+
+<span class="cp">#include</span> <span class="cpf">&#34;hackair.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="c1">// Specify your sensor
+</span><span class="c1"></span><span class="n">hackAIR</span> <span class="nf">sensor</span><span class="p">(</span><span class="n">SENSOR_SDS011</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Initialize the sensor
+</span><span class="c1"></span>  <span class="n">sensor</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+
+  <span class="c1">// Open serial port
+</span><span class="c1"></span>  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Take a reading
+</span><span class="c1"></span>  <span class="k">struct</span> <span class="n">hackAirData</span> <span class="n">data</span><span class="p">;</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+  <span class="c1">// If it was invalid, print error
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">error</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;Error!&#34;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Print the values to serial
+</span><span class="c1"></span>    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;PM2.5: &#34;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pm25</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;PM10: &#34;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pm10</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;---&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Wait a bit so the data is readable
+</span><span class="c1"></span>  <span class="n">delay</span><span class="p">(</span><span class="mi">2500</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
 <p>The sketch begins by including the <code>hackair.h</code> file which includes the necessary functions for the sensor support. Before <code>setup()</code> you should create a <code>hackAIR</code> object with the sensor you are going to use. In the example above <code>SENSOR_SDS011</code> is used. Inside <code>setup()</code> we initialize the air quality sensor and begin a serial communication with the computer (through USB) at 9600 bits per second.</p>
 
 <p>After <code>setup()</code> is complete, the <code>loop()</code> function will run forever. In each loop we take a new set of readings from the sensor and write them to the serial console. You can read the data using the IDE&rsquo;s serial monitor (magnifying glass icon at the top right of the window).</p>
@@ -718,6 +722,8 @@
 
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -1122,20 +1128,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1509903743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1509903743"></script>
 
-    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1507113310" type="text/css" rel="stylesheet" />
-    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1507113310"></script>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1509903743" type="text/css" rel="stylesheet" />
+    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1509903743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

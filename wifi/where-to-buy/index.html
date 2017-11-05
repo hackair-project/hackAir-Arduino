@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.29" />
+    <meta name="generator" content="Hugo 0.30.2" />
     <meta name="description" content="hackAIR Arduino Documentation">
 <meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
 
@@ -13,19 +13,19 @@
     <title>Where to Buy &amp; BOM :: hackAIR-Arduino</title>
     
     
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1507113310" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/auto-complete.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1509903743" rel="stylesheet">
     
-      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1507113310" rel="stylesheet">
+      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1509903743" rel="stylesheet">
     
 
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1509903743"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1507113310"></script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/horsey.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1509903743"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/auto-complete.js?1509903743"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hackair-project.github.io\/hackAir-Arduino";
     
 </script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1509903743"></script>
 
     
   </div>
@@ -631,11 +631,12 @@
 
 
 
+
 <h3 id="pcb">PCB</h3>
 
 <p>The shield PCB is available on <a href="https://oshpark.com/shared_projects/u7Z6d8GR">OSHPark</a> (minimum order 3 boards). The board design files are available on the <a href="https://github.com/hackair-project/hackAir-ArduinoWiFi">project repository</a> so anyone can create <a href="https://en.wikipedia.org/wiki/Gerber_format">Gerber files</a> to order the board from another manufacturer. The PCB was designed using <a href="http://kicad-pcb.org/">KiCad</a>.</p>
 
-<a  href="https://oshpark.com/shared_projects/u7Z6d8GR" target="_blank"  class="btn btn-default">
+<p><a  href="https://oshpark.com/shared_projects/u7Z6d8GR" target="_blank"  class="btn btn-default">
   
   
   
@@ -647,14 +648,22 @@
   
 </a>
 
+<a  href="https://github.com/hackair-project/hackAir-ArduinoWiFi" target="_blank"  class="btn btn-default">
+  
+  
+  
+    
+  <i class="fa fa-github"></i>
+    
+  
+  Design files
+  
+</a>
+</p>
 
 <h3 id="parts">Parts</h3>
 
 <p>The following table contains the full parts list (bill-of-materials). This is everything needed to assemble <strong>one</strong> WiFi shield.</p>
-
-<div class="notices note" ><p>Only one WiFi module is needed. The shield has footprints for both the through-hole version (ESP-01) and the SMD version (ESP-12) but only one must be used at a time.</p>
-</div>
-
 
 <table>
 <thead>
@@ -677,24 +686,13 @@
 <td>1</td>
 <td>ESP-01</td>
 <td>U2</td>
-<td>WiFi Module - <strong>Pick one!</strong></td>
+<td>WiFi Module</td>
 <td>Through Hole</td>
 <td>N/A</td>
 </tr>
 
 <tr>
 <td>2</td>
-<td>Module/IC</td>
-<td>1</td>
-<td>ESP-12</td>
-<td>U3</td>
-<td>WiFi Module - <strong>Pick one!</strong></td>
-<td>0.1&rdquo; SMD</td>
-<td>N/A</td>
-</tr>
-
-<tr>
-<td>3</td>
 <td>Module/IC</td>
 <td>1</td>
 <td>SN74LVC245A</td>
@@ -705,7 +703,7 @@
 </tr>
 
 <tr>
-<td>4</td>
+<td>3</td>
 <td>Module/IC</td>
 <td>1</td>
 <td>LD1117</td>
@@ -716,7 +714,7 @@
 </tr>
 
 <tr>
-<td>5</td>
+<td>4</td>
 <td>Module/IC</td>
 <td>1</td>
 <td>ZVN4206A</td>
@@ -727,7 +725,7 @@
 </tr>
 
 <tr>
-<td>6</td>
+<td>5</td>
 <td>Passive</td>
 <td>1</td>
 <td>1kΩ Resistor</td>
@@ -738,7 +736,7 @@
 </tr>
 
 <tr>
-<td>7</td>
+<td>6</td>
 <td>Passive</td>
 <td>1</td>
 <td>10kΩ Resistor</td>
@@ -749,7 +747,7 @@
 </tr>
 
 <tr>
-<td>8</td>
+<td>7</td>
 <td>Passive</td>
 <td>1</td>
 <td>100kΩ Resistor</td>
@@ -760,7 +758,7 @@
 </tr>
 
 <tr>
-<td>9</td>
+<td>8</td>
 <td>Passive</td>
 <td>2</td>
 <td>100nF Capacitor</td>
@@ -771,7 +769,7 @@
 </tr>
 
 <tr>
-<td>10</td>
+<td>9</td>
 <td>Passive</td>
 <td>2</td>
 <td>10nF Capacitor</td>
@@ -782,7 +780,7 @@
 </tr>
 
 <tr>
-<td>11</td>
+<td>10</td>
 <td>Passive</td>
 <td>2</td>
 <td>10uF Capacitor</td>
@@ -793,7 +791,7 @@
 </tr>
 
 <tr>
-<td>12</td>
+<td>11</td>
 <td>Mechanical</td>
 <td>1</td>
 <td>Male Pin Header</td>
@@ -804,7 +802,7 @@
 </tr>
 
 <tr>
-<td>13</td>
+<td>12</td>
 <td>Mechanical</td>
 <td>3</td>
 <td>Bornier 2-Pins</td>
@@ -815,7 +813,7 @@
 </tr>
 
 <tr>
-<td>14</td>
+<td>13</td>
 <td>Mechanical</td>
 <td>1</td>
 <td>DIP-20 Socket</td>
@@ -826,7 +824,7 @@
 </tr>
 
 <tr>
-<td>15</td>
+<td>14</td>
 <td>Mechanical</td>
 <td>1</td>
 <td>Set of Arduino Headers</td>
@@ -846,6 +844,8 @@
 
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -1250,20 +1250,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1509903743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1509903743"></script>
 
-    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1507113310" type="text/css" rel="stylesheet" />
-    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1507113310"></script>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1509903743" type="text/css" rel="stylesheet" />
+    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1509903743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

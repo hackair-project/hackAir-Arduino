@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.29" />
+    <meta name="generator" content="Hugo 0.30.2" />
     <meta name="description" content="hackAIR Arduino Documentation">
 <meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
 
@@ -13,19 +13,19 @@
     <title>Library Reference :: hackAIR-Arduino</title>
     
     
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1507113310" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/auto-complete.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1509903743" rel="stylesheet">
     
-      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1507113310" rel="stylesheet">
+      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1509903743" rel="stylesheet">
     
 
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1509903743"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1507113310"></script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/horsey.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1509903743"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/auto-complete.js?1509903743"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hackair-project.github.io\/hackAir-Arduino";
     
 </script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1509903743"></script>
 
     
   </div>
@@ -618,11 +618,11 @@
 
         
 
+
 <p>To use the Ethernet functions you must include <code>hackair_ethernet.h</code> after <code>hackair.h</code> and <code>Ethernet.h</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&lt;Ethernet.h&gt;</span><span class="s1770">
-</span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&lt;hackair.h&gt;</span><span class="s1770">
-</span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&lt;hackair_ethernet.h&gt;</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;Ethernet.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;hackair.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;hackair_ethernet.h&gt;</span></code></pre></div>
 <hr />
 
 <p><strong>Constructor</strong> <code>hackAirEthernet(EthernetClient ethernet, char *token)</code><br />
@@ -635,14 +635,13 @@ Creates a container class for the Ethernet functions<br />
 </ul>
 
 <p><strong>Usage:</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s1770">// MAC Address for the ethernet shield
-</span><span class="s1770">// Some shields should have the MAC address printed on them
-</span><span class="s1770"></span><span class="s7d0">byte</span><span class="s1f40"> </span><span class="s7d0">mac</span><span class="s1388">[]</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="sc80">0xDE</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xAD</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xBE</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xEF</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xFE</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc80">0xED</span><span class="s1f40"> </span><span class="s1388">};</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">// Initialize the Ethernet libraries
-</span><span class="s1770"></span><span class="s7d0">EthernetClient</span><span class="s1f40"> </span><span class="s7d0">client</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s7d0">hackAirEthernet</span><span class="s1f40"> </span><span class="s7d9">hackAirNet</span><span class="s1388">(</span><span class="s7d0">client</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c"></span><span class="sc1c">&#34;AUTHORIZATION TOKEN&#34;</span><span class="s1388">);</span><span class="s1f40"> </span><span class="sfa0">//</span><span class="s1f40"> </span><span class="s7d0">Write</span><span class="s1f40"> </span><span class="s7d0">your</span><span class="s1f40"> </span><span class="s7d0">API</span><span class="s1f40"> </span><span class="s7d0">key</span><span class="s1f40"> </span><span class="s7d0">here</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// MAC Address for the ethernet shield
+</span><span class="c1">// Some shields should have the MAC address printed on them
+</span><span class="c1"></span><span class="n">byte</span> <span class="n">mac</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0xDE</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0xBE</span><span class="p">,</span> <span class="mh">0xEF</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">,</span> <span class="mh">0xED</span> <span class="p">};</span>
+
+<span class="c1">// Initialize the Ethernet libraries
+</span><span class="c1"></span><span class="n">EthernetClient</span> <span class="n">client</span><span class="p">;</span>
+<span class="n">hackAirEthernet</span> <span class="nf">hackAirNet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="sa"></span><span class="s">&#34;AUTHORIZATION TOKEN&#34;</span><span class="p">);</span> <span class="o">//</span> <span class="n">Write</span> <span class="n">your</span> <span class="n">API</span> <span class="n">key</span> <span class="n">here</span></code></pre></div>
 <hr />
 
 <p><strong>Method</strong> <code>int sendData(hackAirData &amp;data)</code><br />
@@ -653,18 +652,17 @@ Creates a container class for the Ethernet functions<br />
 </ul>
 
 <p><strong>Usage:</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">loop</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Check DHCP lease
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">Ethernet</span><span class="s1388">.</span><span class="s7d0">maintain</span><span class="s1388">();</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Collect data
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">struct</span><span class="s1f40"> </span><span class="s7d0">hackAirData</span><span class="s1f40"> </span><span class="s7d0">data</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">refresh</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Send with ethernet shield
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">hackAirNet</span><span class="s1388">.</span><span class="s7d0">sendData</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Check DHCP lease
+</span><span class="c1"></span>  <span class="n">Ethernet</span><span class="p">.</span><span class="n">maintain</span><span class="p">();</span>
+
+  <span class="c1">// Collect data
+</span><span class="c1"></span>  <span class="k">struct</span> <span class="n">hackAirData</span> <span class="n">data</span><span class="p">;</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+  <span class="c1">// Send with ethernet shield
+</span><span class="c1"></span>  <span class="n">hackAirNet</span><span class="p">.</span><span class="n">sendData</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
 
 <footer class=" footline" >
 	
@@ -673,6 +671,8 @@ Creates a container class for the Ethernet functions<br />
 
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -1077,20 +1077,20 @@ Creates a container class for the Ethernet functions<br />
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1509903743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1509903743"></script>
 
-    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1507113310" type="text/css" rel="stylesheet" />
-    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1507113310"></script>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1509903743" type="text/css" rel="stylesheet" />
+    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1509903743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

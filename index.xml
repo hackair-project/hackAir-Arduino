@@ -29,8 +29,8 @@ The hackAir Arduino Library contains the support code for the various air qualit
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/where-to-buy/</guid>
       <description>PCB The shield PCB is available on OSHPark (minimum order 3 boards). The board design files are available on the project repository so anyone can create Gerber files to order the board from another manufacturer. The PCB was designed using KiCad.
- Order page  Parts The following table contains the full parts list (bill-of-materials). This is everything needed to assemble one WiFi shield.
-Only one WiFi module is needed.</description>
+ Order page   Design files  Parts The following table contains the full parts list (bill-of-materials). This is everything needed to assemble one WiFi shield.
+   A/A Type Qty.</description>
     </item>
     
     <item>
@@ -49,7 +49,7 @@ Only one WiFi module is needed.</description>
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/</guid>
       <description>For the Ethernet support we used the official Ethernet Library. This means we currently support all Ethernet shields using the W5100 chip.
-   Shield name Manufacturer Supported? Tested? Info     Ethernet Shield v1 Arduino Yes Yes Link   Ethernet Shield v2 Arduino WIP No Link   Arduino Ethernet Arduino WIP No Link    As a general rule, if your shield uses the Wiznet W5100 chip it should work with the hackAir library.</description>
+   Shield name Manufacturer Supported? Tested? Info     Ethernet Shield v1 Arduino Yes Yes Link   Ethernet Shield v2 Arduino Yes No Link   Arduino Ethernet Arduino WIP No Link    As a general rule, if your shield uses the Wiznet W5100 chip it should work with the hackAir library.</description>
     </item>
     
     <item>
@@ -58,8 +58,8 @@ Only one WiFi module is needed.</description>
       <pubDate>Fri, 21 Apr 2017 12:55:25 +0300</pubDate>
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/library/installation/</guid>
-      <description>The latest version of the hackAIR Arduino library is always available for download at the project&amp;rsquo;s Github page. The easiest way to add the library to your Arduino IDE is by using the release .ZIP file. You can download this file from the &amp;ldquo;Releases&amp;rdquo; page on Github. The file you need is called hackAir-vX.Y.Z.zip, always prefer the latest version.
-At the Arduino IDE, navigate to Sketch → Include Library → Add .</description>
+      <description>Arduino IDE The open-source Arduino IDE (Integrated Development Environment) is an easy-to-use software used for writing and uploading code to the Arduino boards. It is available for Windows, Mac OSX and Linux. Windows 10 users can optionally download it from the Microsoft store.
+ Download Arduino IDE (All platforms)   Microsoft Store (Windows 10)  The Arduino website has a &amp;ldquo;Getting Started&amp;rdquo; guide on using the Arduino IDE here.</description>
     </item>
     
     <item>
@@ -101,9 +101,8 @@ This sensor communicates at 3.3V and does NOT include a level shifter. If you ca
       <pubDate>Thu, 27 Apr 2017 16:12:10 +0300</pubDate>
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/</guid>
-      <description>In this example project we will create an Arduino measuring station with a Ethernet support.
-Required hardware  An Arduino compatible board A supported sensor (see supported sensor list) A compatible Ethernet shield (see list)  Assembling the hardware The sensor should be connected according the it&amp;rsquo;s information page (sensor support) after stacking the Ethernet shield on top of your Arduino board.
-When inserting the Ethernet shield make sure that:</description>
+      <description>In this example project we will create an Arduino measuring station with a Ethernet support. We recommend trying the Serial example first to make sure your sensor is working correctly.
+Required hardware  An Arduino compatible board A supported sensor (see supported sensor list) A compatible Ethernet shield (see list)  Assembling the hardware The sensor should be connected according the it&amp;rsquo;s information page (sensor support) after stacking the Ethernet shield on top of your Arduino board.</description>
     </item>
     
     <item>
@@ -114,7 +113,7 @@ When inserting the Ethernet shield make sure that:</description>
       <guid>https://hackair-project.github.io/hackAir-Arduino/library/how-it-works/</guid>
       <description>This article offers a general view on how the library works and on how to use it. Detailed information is available at the Library Reference article.
 Initialization To use the library you must first initialize the hackAIR class in your sketch with the sensor type you are using.
-// Include the library in your sketch #include&amp;#34;hackair.h&amp;#34;// Specify your sensor hackAIRsensor(SENSOR_SDS011);voidsetup(){}voidloop(){}  The code above is a minimal example, it includes the hackAIR library and creates an object called sensor for use with the SDS011 module.</description>
+// Include the library in your sketch #include &amp;#34;hackair.h&amp;#34; // Specify your sensor hackAIR sensor(SENSOR_SDS011); void setup() { } void loop() { } The code above is a minimal example, it includes the hackAIR library and creates an object called sensor for use with the SDS011 module.</description>
     </item>
     
     <item>
@@ -145,11 +144,11 @@ How to connect This sensors comes with a USB-to-Serial adapter. To connect the s
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</guid>
       <description>To use the Ethernet functions you must include hackair_ethernet.h after hackair.h and Ethernet.h.
-#include&amp;lt;Ethernet.h&amp;gt;#include&amp;lt;hackair.h&amp;gt;#include&amp;lt;hackair_ethernet.h&amp;gt;  Constructor hackAirEthernet(EthernetClient ethernet, char *token)
+#include &amp;lt;Ethernet.h&amp;gt;#include &amp;lt;hackair.h&amp;gt;#include &amp;lt;hackair_ethernet.h&amp;gt; Constructor hackAirEthernet(EthernetClient ethernet, char *token)
 Creates a container class for the Ethernet functions
 Parameters:
  ethernet: Ethernet shield&amp;rsquo;s library client token: Pointer to the Authentication token used by the API  Usage:
-// MAC Address for the ethernet shield // Some shields should have the MAC address printed on them bytemac[]={0xDE,0xAD,0xBE,0xEF,0xFE,0xED};// Initialize the Ethernet libraries EthernetClientclient;hackAirEthernethackAirNet(client,&amp;#34;AUTHORIZATION TOKEN&amp;#34;);//WriteyourAPIkeyhere  Method int sendData(hackAirData &amp;amp;data)</description>
+// MAC Address for the ethernet shield // Some shields should have the MAC address printed on them byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Initialize the Ethernet libraries EthernetClient client; hackAirEthernet hackAirNet(client, &amp;#34;AUTHORIZATION TOKEN&amp;#34;); // Write your API key here Method int sendData(hackAirData &amp;amp;data)</description>
     </item>
     
     <item>
@@ -158,7 +157,7 @@ Parameters:
       <pubDate>Sat, 22 Apr 2017 15:10:23 +0300</pubDate>
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</guid>
-      <description>In this example project we will create an Arduino measuring station with a Liquid Crystal Display.
+      <description>In this example project we will create an Arduino measuring station with a Liquid Crystal Display. It&amp;rsquo;s recommended to try the Serial example first to make sure your sensor is working correctly.
 Required materials &amp;amp; software  An Arduino compatible board A supported sensor (see supported sensor list) An LCD screen (compatible with the Hitachi HD44780 driver) 10kΩ potentiometer 220Ω resistor Hook-up wires (jumpers) Breadboard The Arduino IDE with the hackAIR library installed  Assembling the hardware The sensor should be connected accoarding the it&amp;rsquo;s information page (sensor support).</description>
     </item>
     

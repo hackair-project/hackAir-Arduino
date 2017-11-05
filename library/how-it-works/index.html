@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.29" />
+    <meta name="generator" content="Hugo 0.30.2" />
     <meta name="description" content="hackAIR Arduino Documentation">
 <meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
 
@@ -13,19 +13,19 @@
     <title>How it works :: hackAIR-Arduino</title>
     
     
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1507113310" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/auto-complete.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1509903743" rel="stylesheet">
     
-      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1507113310" rel="stylesheet">
+      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1509903743" rel="stylesheet">
     
 
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1509903743"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1507113310"></script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/horsey.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1509903743"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/auto-complete.js?1509903743"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hackair-project.github.io\/hackAir-Arduino";
     
 </script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1509903743"></script>
 
     
   </div>
@@ -629,27 +629,26 @@
 
 
 
+
 <p>This article offers a general view on how the library works and on how to use it. Detailed information is available at the <a href="https://hackair-project.github.io/hackAir-Arduino/library/reference">Library Reference</a> article.</p>
 
 <h2 id="initialization">Initialization</h2>
 
 <p>To use the library you must first initialize the <code>hackAIR</code> class in your sketch with the sensor type you are using.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s1770">// Include the library in your sketch
-</span><span class="s1770"></span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&#34;hackair.h&#34;</span><span class="s1770">
-</span><span class="s1770"></span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">// Specify your sensor
-</span><span class="s1770"></span><span class="s7d0">hackAIR</span><span class="s1f40"> </span><span class="s7d9">sensor</span><span class="s1388">(</span><span class="s7d0">SENSOR_SDS011</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">setup</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">loop</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40"> </span><span class="s1388">}</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// Include the library in your sketch
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;hackair.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="c1">// Specify your sensor
+</span><span class="c1"></span><span class="n">hackAIR</span> <span class="nf">sensor</span><span class="p">(</span><span class="n">SENSOR_SDS011</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span></code></pre></div>
 <p>The code above is a minimal example, it includes the hackAIR library and creates an object called <code>sensor</code> for use with the SDS011 module. The first thing you should do afterwards is call <code>sensor.begin()</code> so the library takes care of any configuration your sensor might require. A good place to do this would be <code>init()</code> since we only have to do this once.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">init</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Setup the sensor
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">();</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Setup the sensor
+</span><span class="c1"></span>  <span class="n">sensor</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="p">}</span></code></pre></div>
 <div class="notices warning" ><p>While you can technically create two <code>hackAIR</code> objects, if the specified sensors use the same hardware pins (for example, trying to use two serial sensors) the library won&rsquo;t work correctly. We recommend avoiding using more than one sensor per Arduino unless you are an advanced user.</p>
 </div>
 
@@ -701,53 +700,51 @@
 </table>
 
 <p>While the two measurments and the error indicator (<code>pm25</code>, <code>pm10</code> and <code>error</code>) are filled by the library, <code>tamper</code> and <code>battery</code> are available for use if your project requires them. To make a measurment you must first allocate some place in the memory for the structure and then pass it to the library.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">loop</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Reserve some memory space for the readings
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">struct</span><span class="s1f40"> </span><span class="s7d0">hackAirData</span><span class="s1f40"> </span><span class="s7d0">data</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Read the data
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">refresh</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Check if there was an error
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">.</span><span class="s7d0">error</span><span class="s1f40"> </span><span class="sfa0">==</span><span class="s1f40"> </span><span class="sc80">0</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1770">// No error, the data is available now
-</span><span class="s1770"></span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">print</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;PM2.5 Reading: &#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">println</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">.</span><span class="s7d0">pm25</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Reserve some memory space for the readings
+</span><span class="c1"></span>  <span class="k">struct</span> <span class="n">hackAirData</span> <span class="n">data</span><span class="p">;</span>
+
+  <span class="c1">// Read the data
+</span><span class="c1"></span>  <span class="n">sensor</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+  <span class="c1">// Check if there was an error
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// No error, the data is available now
+</span><span class="c1"></span>    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;PM2.5 Reading: &#34;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pm25</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 <div class="notices info" ><p>The <code>hackAirData</code> struct is used by the Ethernet/WiFi shield libraries to send data to the hackAIR servers.</p>
 </div>
 
 
 <h2 id="the-full-sketch">The full sketch</h2>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="s1770">// Include the library in your sketch
-</span><span class="s1770"></span><span class="s1770">#include</span><span class="s1f40"> </span><span class="s1770">&#34;hackair.h&#34;</span><span class="s1770">
-</span><span class="s1770"></span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770">// Specify your sensor
-</span><span class="s1770"></span><span class="s7d0">hackAIR</span><span class="s1f40"> </span><span class="s7d9">sensor</span><span class="s1388">(</span><span class="s7d0">SENSOR_SDS011</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">setup</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Setup the sensor and the serial connection with the computer
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">();</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">begin</span><span class="s1388">(</span><span class="sc80">9600</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s3e8">void</span><span class="s1f40"> </span><span class="s7d9">loop</span><span class="s1388">()</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Reserve some memory space for the readings
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">struct</span><span class="s1f40"> </span><span class="s7d0">hackAirData</span><span class="s1f40"> </span><span class="s7d0">data</span><span class="s1388">;</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Read the data
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s7d0">sensor</span><span class="s1388">.</span><span class="s7d0">refresh</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1770">// Check if there was an error
-</span><span class="s1770"></span><span class="s1f40">  </span><span class="s3e8">if</span><span class="s1f40"> </span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">.</span><span class="s7d0">error</span><span class="s1f40"> </span><span class="sfa0">==</span><span class="s1f40"> </span><span class="sc80">0</span><span class="s1388">)</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s1770">// No error, the data is available now
-</span><span class="s1770"></span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">print</span><span class="s1388">(</span><span class="sc1c"></span><span class="sc1c">&#34;PM2.5 Reading: &#34;</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">    </span><span class="s7d0">Serial</span><span class="s1388">.</span><span class="s7d0">println</span><span class="s1388">(</span><span class="s7d0">data</span><span class="s1388">.</span><span class="s7d0">pm25</span><span class="s1388">);</span><span class="s1f40">
-</span><span class="s1f40">  </span><span class="s1388">}</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">// Include the library in your sketch
+</span><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&#34;hackair.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="c1">// Specify your sensor
+</span><span class="c1"></span><span class="n">hackAIR</span> <span class="nf">sensor</span><span class="p">(</span><span class="n">SENSOR_SDS011</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Setup the sensor and the serial connection with the computer
+</span><span class="c1"></span>  <span class="n">sensor</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Reserve some memory space for the readings
+</span><span class="c1"></span>  <span class="k">struct</span> <span class="n">hackAirData</span> <span class="n">data</span><span class="p">;</span>
+
+  <span class="c1">// Read the data
+</span><span class="c1"></span>  <span class="n">sensor</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+
+  <span class="c1">// Check if there was an error
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// No error, the data is available now
+</span><span class="c1"></span>    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;PM2.5 Reading: &#34;</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">pm25</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
 
 <footer class=" footline" >
 	
@@ -756,6 +753,8 @@
 
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -1160,20 +1159,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1509903743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1509903743"></script>
 
-    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1507113310" type="text/css" rel="stylesheet" />
-    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1507113310"></script>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1509903743" type="text/css" rel="stylesheet" />
+    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1509903743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

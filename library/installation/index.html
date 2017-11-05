@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.29" />
+    <meta name="generator" content="Hugo 0.30.2" />
     <meta name="description" content="hackAIR Arduino Documentation">
 <meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
 
@@ -13,19 +13,19 @@
     <title>Installation :: hackAIR-Arduino</title>
     
     
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1507113310" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/auto-complete.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1509903743" rel="stylesheet">
     
-      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1507113310" rel="stylesheet">
+      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1509903743" rel="stylesheet">
     
 
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1509903743"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1507113310"></script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/horsey.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1509903743"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/auto-complete.js?1509903743"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hackair-project.github.io\/hackAir-Arduino";
     
 </script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1509903743"></script>
 
     
   </div>
@@ -601,7 +601,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#arduino-ide">Arduino IDE</a></li>
+<li><a href="#hackair-library">hackAIR Library</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -618,9 +626,82 @@
 
         
 
-<p>The latest version of the hackAIR Arduino library is always available for download at the project&rsquo;s <a href="https://github.com/hackair-project/hackAIR-Arduino">Github page</a>. The easiest way to add the library to your Arduino IDE is by using the release .ZIP file. You can download this file from the &ldquo;<a href="https://github.com/hackair-project/hackAIR-Arduino/releases">Releases</a>&rdquo; page on Github. The file you need is called <code>hackAir-vX.Y.Z.zip</code>, always prefer the latest version.</p>
 
-<p>At the Arduino IDE, navigate to <code>Sketch → Include Library → Add .ZIP library</code> and select the file you just downloaded. The library and the example sketches should now be available.</p>
+
+
+<h2 id="arduino-ide">Arduino IDE</h2>
+
+<p>The open-source Arduino IDE (Integrated Development Environment) is an easy-to-use software used for writing and uploading code to the Arduino boards. It is available for Windows, Mac OSX and Linux. Windows 10 users can optionally download it from the Microsoft store.</p>
+
+<p><a  href="https://www.arduino.cc/en/Main/Software" target="_blank"  class="btn btn-default">
+  
+  
+  
+    
+  <i class="fa fa-download"></i>
+    
+  
+  Download Arduino IDE (All platforms)
+  
+</a>
+
+<a  href="https://www.microsoft.com/el-gr/store/p/arduino-ide/9nblggh4rsd8" target="_blank"  class="btn btn-default">
+  
+  
+  
+    
+  <i class="fa fa-windows"></i>
+    
+  
+  Microsoft Store (Windows 10)
+  
+</a>
+</p>
+
+<p>The Arduino website has a &ldquo;Getting Started&rdquo; guide on using the Arduino IDE <a href="https://www.arduino.cc/en/Guide/HomePage">here</a>. We recommend getting familiar with the Arduino software before creating your first hackAir node.</p>
+
+<h2 id="hackair-library">hackAIR Library</h2>
+
+<p>The latest version of the hackAIR Arduino library is always available for download at the project&rsquo;s <a href="https://github.com/hackair-project/hackAIR-Arduino">Github page</a>. The easiest way to add the library to your Arduino IDE is by using the latest release .ZIP file.</p>
+
+<p><a  href="https://github.com/hackair-project/hackAIR-Arduino/releases" target="_blank"  class="btn btn-default">
+  
+  
+  
+    
+  <i class="fa fa-download"></i>
+    
+  
+  Library downloads
+  
+</a>
+
+<a  href="https://github.com/hackair-project/hackAIR-Arduino" target="_blank"  class="btn btn-default">
+  
+  
+  
+    
+  <i class="fa fa-github"></i>
+    
+  
+  Code repository
+  
+</a>
+
+<a  href="https://github.com/hackair-project/hackAIR-Arduino/issues" target="_blank"  class="btn btn-default">
+  
+  
+  
+    
+  <i class="fa fa-bug"></i>
+    
+  
+  Issues &amp; Bugs
+  
+</a>
+</p>
+
+<p>At the Arduino IDE, navigate to <code>Sketch → Include Library → Add .ZIP library</code> and select the file you just downloaded from the above link. The library and the example sketches should now be available.</p>
 
 <p><img src="https://hackair-project.github.io/hackAir-Arduino/img/library/ide-add-zip.gif" alt="Add .ZIP library menu" /></p>
 
@@ -632,6 +713,8 @@
 
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -1033,20 +1116,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1509903743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1509903743"></script>
 
-    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1507113310" type="text/css" rel="stylesheet" />
-    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1507113310"></script>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1509903743" type="text/css" rel="stylesheet" />
+    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1509903743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

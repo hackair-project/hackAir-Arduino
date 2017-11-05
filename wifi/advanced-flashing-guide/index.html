@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="generator" content="Hugo 0.29" />
+    <meta name="generator" content="Hugo 0.30.2" />
     <meta name="description" content="hackAIR Arduino Documentation">
 <meta name="author" content="hackAIR Consortium, Thanasis Georgiou">
 
@@ -13,19 +13,19 @@
     <title>Advanced: Flashing Guide :: hackAIR-Arduino</title>
     
     
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/horsey.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1507113310" rel="stylesheet">
-    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1507113310" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/font-awesome.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hybrid.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/featherlight.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/perfect-scrollbar.min.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/auto-complete.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme.css?1509903743" rel="stylesheet">
+    <link href="https://hackair-project.github.io/hackAir-Arduino/css/hugo-theme.css?1509903743" rel="stylesheet">
     
-      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1507113310" rel="stylesheet">
+      <link href="https://hackair-project.github.io/hackAir-Arduino/css/theme-hackair.css?1509903743" rel="stylesheet">
     
 
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery-2.x.min.js?1509903743"></script>
     
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{ 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fa fa-close"></i></span>
 </div>
 
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1507113310"></script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/horsey.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/lunr.min.js?1509903743"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/auto-complete.js?1509903743"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/hackair-project.github.io\/hackAir-Arduino";
     
 </script>
-<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1507113310"></script>
+<script type="text/javascript" src="https://hackair-project.github.io/hackAir-Arduino/js/search.js?1509903743"></script>
 
     
   </div>
@@ -635,6 +635,7 @@
 
 
 
+
 <p>This guide is for users that own an assembled WiFi shield and want to flash the hackAIR firmware.</p>
 
 <h3 id="required-hardware">Required Hardware</h3>
@@ -658,25 +659,23 @@
 
 
 <p>After installing Python the ESP programming tool can be easily installed by running:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="s1770"># On some systems you might have to run this as administrator (sudo)
-</span><span class="s1770"></span><span class="s1f40">&gt; pip install esptool</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># On some systems you might have to run this as administrator (sudo)
+</span><span class="c1"></span>&gt; pip install esptool</code></pre></div>
 <p>On Windows, you can open a command line prompt by pressing Win+R and typing in <code>cmd</code>.</p>
 
 <h3 id="downloading-the-hackair-firmware-nodemcu">Downloading the hackAIR firmware (nodeMCU)</h3>
 
 <p>The hackAIR sketch for the WiFi shield runs on top of the <a href="http://nodemcu.readthedocs.io/en/master/">nodeMCU platform</a>. You can always find the latest hackAIR-tested release on the WiFi shield project&rsquo;s <a href="https://github.com/hackair-project/hackAir-ArduinoWiFi/releases">Github page</a> or you can supply your own firmware. In case of custom firmware make sure the following modules are present in the build:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">enduser_setup:</span><span class="s1f40"> </span><span class="ss4">Used</span><span class="s1f40"> </span><span class="ss4">for</span><span class="s1f40"> </span><span class="ss4">setting</span><span class="s1f40"> </span><span class="ss4">up</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">WiFi</span><span class="s1f40"> </span><span class="ss4">connection</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">file:</span><span class="s1f40"> </span><span class="ss4">Used</span><span class="s1f40"> </span><span class="ss4">for</span><span class="s1f40"> </span><span class="ss4">upgrading</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">firmware</span><span class="s1f40"> </span><span class="ss4">through</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">Arduino</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">gpio:</span><span class="s1f40"> </span><span class="ss4">General</span><span class="s1f40"> </span><span class="ss4">purpose</span><span class="s1f40"> </span><span class="ss4">module</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">http:</span><span class="s1f40"> </span><span class="ss4">Send</span><span class="s1f40"> </span><span class="ss4">data</span><span class="s1f40"> </span><span class="ss4">to</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">hackAir</span><span class="s1f40"> </span><span class="ss4">servers</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">net:</span><span class="s1f40"> </span><span class="ss4">Send</span><span class="s1f40"> </span><span class="ss4">data</span><span class="s1f40"> </span><span class="ss4">to</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">hackAir</span><span class="s1f40"> </span><span class="ss4">servers</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">node:</span><span class="s1f40"> </span><span class="ss4">Internal</span><span class="s1f40"> </span><span class="ss4">functions</span><span class="s1f40"> </span><span class="ss4">(restart,</span><span class="s1f40"> </span><span class="ss4">etc)</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">tmr:</span><span class="s1f40"> </span><span class="ss4">Used</span><span class="s1f40"> </span><span class="ss4">for</span><span class="s1f40"> </span><span class="ss4">measuring</span><span class="s1f40"> </span><span class="ss4">time</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">uart:</span><span class="s1f40"> </span><span class="ss4">Communication</span><span class="s1f40"> </span><span class="ss4">with</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">Arduino</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">wifi:</span><span class="s1f40"> </span><span class="ss4">WiFi</span><span class="s1f40"> </span><span class="ss4">functions</span><span class="s1f40"> </span><span class="ss4">(connect,</span><span class="s1f40"> </span><span class="ss4">etc)</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="ss4">-</span><span class="s1f40"> </span><span class="ss4">tls:</span><span class="s1f40"> </span><span class="ss4">Provides</span><span class="s1f40"> </span><span class="ss4">HTTPS</span><span class="s1f40"> </span><span class="ss4">support</span><span class="s1f40"> </span><span class="ss4">to</span><span class="s1f40"> </span><span class="ss4">the</span><span class="s1f40"> </span><span class="ss4">HTTP</span><span class="s1f40"> </span><span class="ss4">module</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="err">-</span> <span class="err">enduser_setup:</span> <span class="err">Used</span> <span class="err">for</span> <span class="err">setting</span> <span class="err">up</span> <span class="err">the</span> <span class="err">WiFi</span> <span class="err">connection</span>
+<span class="err">-</span> <span class="err">file:</span> <span class="err">Used</span> <span class="err">for</span> <span class="err">upgrading</span> <span class="err">the</span> <span class="err">firmware</span> <span class="err">through</span> <span class="err">the</span> <span class="err">Arduino</span>
+<span class="err">-</span> <span class="err">gpio:</span> <span class="err">General</span> <span class="err">purpose</span> <span class="err">module</span>
+<span class="err">-</span> <span class="err">http:</span> <span class="err">Send</span> <span class="err">data</span> <span class="err">to</span> <span class="err">the</span> <span class="err">hackAir</span> <span class="err">servers</span>
+<span class="err">-</span> <span class="err">net:</span> <span class="err">Send</span> <span class="err">data</span> <span class="err">to</span> <span class="err">the</span> <span class="err">hackAir</span> <span class="err">servers</span>
+<span class="err">-</span> <span class="err">node:</span> <span class="err">Internal</span> <span class="err">functions</span> <span class="err">(restart,</span> <span class="err">etc)</span>
+<span class="err">-</span> <span class="err">tmr:</span> <span class="err">Used</span> <span class="err">for</span> <span class="err">measuring</span> <span class="err">time</span>
+<span class="err">-</span> <span class="err">uart:</span> <span class="err">Communication</span> <span class="err">with</span> <span class="err">the</span> <span class="err">Arduino</span>
+<span class="err">-</span> <span class="err">wifi:</span> <span class="err">WiFi</span> <span class="err">functions</span> <span class="err">(connect,</span> <span class="err">etc)</span>
+<span class="err">-</span> <span class="err">tls:</span> <span class="err">Provides</span> <span class="err">HTTPS</span> <span class="err">support</span> <span class="err">to</span> <span class="err">the</span> <span class="err">HTTP</span> <span class="err">module</span></code></pre></div>
 <h3 id="preparing-the-hardware">Preparing the hardware</h3>
 
 <p>The programming header (P3) is located next to capacitor C2 and C4, near Arduino pins 7 and 8.</p>
@@ -739,12 +738,11 @@
 <h3 id="uploading-the-firmware">Uploading the firmware</h3>
 
 <p>We can now upload the firmware using <code>esptool</code>. After connecting the USB-serial module to the computer you can run:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="s1f40">&gt; esptool erase_flash
-</span><span class="s1f40">&gt; esptool write_flash 0x00 hackair-nodemcu.bin
-</span><span class="s1f40">
-</span><span class="s1f40"></span><span class="s1770"># In case the tool gets confused with the serial ports you can specify it like this
-</span><span class="s1770"></span><span class="s1f40">&gt; esptool --port /dev/ttyUSB0 write_flash 0x00 hackair-nodemcu.bin</span></code></pre>
-</div>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">&gt; esptool erase_flash
+&gt; esptool write_flash 0x00 hackair-nodemcu.bin
+
+<span class="c1"># In case the tool gets confused with the serial ports you can specify it like this
+</span><span class="c1"></span>&gt; esptool --port /dev/ttyUSB0 write_flash 0x00 hackair-nodemcu.bin</code></pre></div>
 <p>If at whatever point the process fails, restart from <code>erase_flash</code> to make sure it&rsquo;s programmed correctly. Finish by removing all the jumper wires.</p>
 
 <h3 id="adding-the-hackair-sketch">Adding the hackAIR sketch</h3>
@@ -759,6 +757,8 @@
 
         
         </div> 
+        
+
       </div>
 
     <div id="navigation">
@@ -1163,20 +1163,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/clipboard.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/perfect-scrollbar.jquery.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/jquery.sticky-kit.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/featherlight.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/html5shiv-printshiv.min.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/highlight.pack.js?1509903743"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1507113310"></script>
-    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1507113310"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/modernizr.custom.71422.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/learn.js?1509903743"></script>
+    <script src="https://hackair-project.github.io/hackAir-Arduino/js/hugo-learn.js?1509903743"></script>
 
-    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1507113310" type="text/css" rel="stylesheet" />
-    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1507113310"></script>
+    <link href="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.css?1509903743" type="text/css" rel="stylesheet" />
+    <script src="https://hackair-project.github.io/hackAir-Arduino/mermaid/mermaid.js?1509903743"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
