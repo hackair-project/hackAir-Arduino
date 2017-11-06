@@ -106,8 +106,8 @@ void hackAIR::refresh(hackAirData &data) {
                 data.error = 0;
 
                 // Set data
-                data.pm25 = ((_buff[3] << 8) + _buff[2]);
-                data.pm10 = ((_buff[5] << 8) + _buff[4]);
+                data.pm25 = ((_buff[3] << 8) + _buff[2]) / 10.0f;
+                data.pm10 = ((_buff[5] << 8) + _buff[4]) / 10.0f;
 
                 return;
             } else {
