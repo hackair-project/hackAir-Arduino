@@ -142,14 +142,14 @@ void hackAIR::clearData(hackAirData &data) {
     data.battery = 0;
 }
 
-void enablePowerControl() {
+void hackAIR::enablePowerControl() {
     pinMode(A2, OUTPUT);
 }
 
-void turnOn() {
+void hackAIR::turnOn() {
     digitalWrite(A2, HIGH);
 }
 
-void turnOff() {
+void hackAIR::turnOff() {
     digitalWrite(A2, LOW);
 }
