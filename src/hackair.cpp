@@ -147,9 +147,28 @@ void hackAIR::enablePowerControl() {
 }
 
 void hackAIR::turnOn() {
-    digitalWrite(A2, HIGH);
+    // SDS011 uses the built-in power saving function
+    if (_sensorType == SENSOR_SDS011) {
+        // Send anything to wake up the sensor
+        _serial.write(0x01);
+    } else {
+        digitalWrite(A2, HIGH);
+    }
 }
 
 void hackAIR::turnOff() {
-    digitalWrite(A2, LOW);
+    // SDS011 uses the built-in power saving function
+    if (_sensorType == SENSOR_SDS011) {
+        // Send sleep command
+        uint8_t sleep_command[] = {0xAA, 0xB4, 0x06, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x05, 0xAB};
+        for (uint8_t i = 0; i < 19; i++) {
+            _serial.write(sleep_command[i]);
+        }
+
+        // Discard response
+        _serial.flush();
+        while (_serial.read() != -1) {}
+    } else {
+        digitalWrite(A2, LOW);
+    }
 }
