@@ -31,8 +31,13 @@
 #define SENSOR_GROVE 3
 
 // Shield pins
+#ifdef ESP8266
+#define PIN_SERIAL_TX D7
+#define PIN_SERIAL_RX D8
+#else
 #define PIN_SERIAL_TX 7
 #define PIN_SERIAL_RX 8
+#endif
 
 #include "Arduino.h"
 #include <SoftwareSerial.h>
