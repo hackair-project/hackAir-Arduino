@@ -32,8 +32,8 @@
 
 // Shield pins
 #ifdef ESP8266
-#define PIN_SERIAL_TX D7
-#define PIN_SERIAL_RX D8
+#define PIN_SERIAL_TX D6
+#define PIN_SERIAL_RX D7
 #else
 #define PIN_SERIAL_TX 7
 #define PIN_SERIAL_RX 8
