@@ -105,6 +105,13 @@
 	"content": " General Information  Type: Laser Connection: Serial @ 3.3V Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_PMS5003 Datasheet: Chinese  This sensor is very similar to the DFRobot PM2.5 sensor.\nThis sensor communicates at 3.3V and does NOT include a level shifter. If you can\u0026rsquo;t use an external level shifter we don\u0026rsquo;t recommend this sensor.\n How to connect According to the datasheet, the pin closest to the sensor\u0026rsquo;s edge is Pin 8.\n   Sensor Pin Name Description Arduino Pin WiFi Shield Pin     Pin 1 VCC Power 5V 5V   Pin 2 GND Power Ground GND GND   Pin 3 Set Unused \u0026ndash; \u0026ndash;   Pin 4 Rx Receive data 7 STX   Pin 5 Tx Transmit data 8 SRX   Pin 6 Reset Unused \u0026ndash; \u0026ndash;   Pin 7 Not connected Unused \u0026ndash; \u0026ndash;   Pin 8 Not connected Unused \u0026ndash; \u0026ndash;    Do not connect this sensor directly to the Arduino. It communicates at 3.3V and the higher voltage of the Arduino might damage it.\n Specificiations  Operating Voltage: 4.95 - 5.05 V Maximum input current: 100mA Operating Temperature Range: -20 - 50 °C Operating Humidity Range: 0 - 99%  Data packet The data packet is identical to the DFRobot sensor.\n"
 },
 {
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/others/serial-ports-windows/",
+	"title": "Serial Ports (Windows)",
+	"tags": [],
+	"description": "",
+	"content": "On Windows serial ports are named COMx where x is a number unique to each port. This can become confusing since some computer include a number of internal ports and it can be hard to identify where an external device (such as an Arduino) is connected.\nTo identify which COM port corresponds to a device in Windows 7 and newer start by unplugging the device and opening Device Manager (type Device Manager in the start menu).\nAll serial devices appear under the Ports (COM \u0026amp; LPT) category. With the Device Manager window open, plug the external device to the computer. The Device Manager will refresh and the new COM port will appear on the list.\n"
+},
+{
 	"uri": "https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/",
 	"title": "Library Reference",
 	"tags": [],
@@ -159,6 +166,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Constructor hackAIR(int sensor)\nCreates a new hackAIR class for the given sensor type.\nParameters:\n-int sensor: Sensor type\nMethod void hackAIR::begin()\nInitializes the sensors. You should put this in your setup().\nMethod void hackAIR::refresh(hackAirData \u0026amp;data)\nReads data from the sensor to the given struct.\nParameters: -hackAirData \u0026amp;data: Struct used to store the data\nStruct hackAirData\nA structure used to store sensor readings and status information. It contains the following fields:\n   Type Name Content     float pm25 PM2.5 Measurement   float pm10 PM10 Measurement   int error Error code   int tamper Tamper indicator   int battery Battery level    The values error, tamper and battery and to be modified by the user in any way useful for their application.\n"
+},
+{
+	"uri": "https://hackair-project.github.io/hackAir-Arduino/others/",
+	"title": "Other guides",
+	"tags": [],
+	"description": "",
+	"content": "This section contains some guides that might be useful to users of the hackAIR library and hardware.\n"
 },
 {
 	"uri": "https://hackair-project.github.io/hackAir-Arduino/categories/",

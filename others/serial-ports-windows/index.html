@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 
-    <title>PMS5003 :: hackAIR-Arduino</title>
+    <title>Serial Ports (Windows) :: hackAIR-Arduino</title>
     
     
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1510672031" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/sensors/pms5003/">
+  <body class="" data-url="/others/serial-ports-windows/">
     <nav id="sidebar" class="">
 
 
@@ -422,7 +422,7 @@
   
     
     <li data-nav-id="/sensors/" title="Sensor Support" class="dd-item 
-        parent
+        
         
         
         ">
@@ -522,7 +522,7 @@
  
   
     
-      <li data-nav-id="/sensors/pms5003/" title="PMS5003" class="dd-item active">
+      <li data-nav-id="/sensors/pms5003/" title="PMS5003" class="dd-item ">
         <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/">
         PMS5003
         
@@ -568,7 +568,7 @@
   
     
     <li data-nav-id="/others/" title="Other guides" class="dd-item 
-        
+        parent
         
         
         ">
@@ -592,7 +592,7 @@
  
   
     
-      <li data-nav-id="/others/serial-ports-windows/" title="Serial Ports (Windows)" class="dd-item ">
+      <li data-nav-id="/others/serial-ports-windows/" title="Serial Ports (Windows)" class="dd-item active">
         <a href="https://hackair-project.github.io/hackAir-Arduino/others/serial-ports-windows/">
         Serial Ports (Windows)
         
@@ -659,7 +659,7 @@
             
           
           
-            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/sensors/'>Sensor Support</a> > PMS5003
+            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/others/'>Other guides</a> > Serial Ports (Windows)
           
          
           
@@ -671,17 +671,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#general-information">General Information</a></li>
-<li><a href="#how-to-connect">How to connect</a></li>
-<li><a href="#specificiations">Specificiations</a></li>
-<li><a href="#data-packet">Data packet</a></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -693,129 +683,21 @@
         
         <div id="body-inner">
           
-            <h1>PMS5003</h1>
+            <h1>Serial Ports (Windows)</h1>
           
 
         
 
 
+<p>On Windows serial ports are named <code>COMx</code> where <code>x</code> is a number unique to each port. This can become confusing since some computer include a number of internal ports and it can be hard to identify where an external device (such as an Arduino) is connected.</p>
 
+<p>To identify which COM port corresponds to a device in Windows 7 and newer start by unplugging the device and opening <code>Device Manager</code> (type <code>Device Manager</code> in the start menu).</p>
 
-<h2 id="general-information">General Information</h2>
+<p><img src="https://hackair-project.github.io/hackAir-Arduino/img/others/dev-manager-1.png" alt="Device Manager" /></p>
 
-<ul>
-<li><strong>Type</strong>: Laser</li>
-<li><strong>Connection</strong>: Serial @ 3.3V</li>
-<li><strong>Fan</strong>: Yes</li>
-<li><strong>Power saving</strong>: Yes, currently not supported</li>
-<li><strong>Library Reference</strong>: <code>SENSOR_PMS5003</code></li>
-<li><strong>Datasheet</strong>: <a href="http://aqicn.org/air/view/sensor/spec/pms5003.pdf">Chinese</a></li>
-</ul>
+<p>All serial devices appear under the <code>Ports (COM &amp; LPT)</code> category. With the <code>Device Manager</code> window open, plug the external device to the computer. The <code>Device Manager</code> will refresh and the new COM port will appear on the list.</p>
 
-<p>This sensor is very similar to the <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot">DFRobot PM2.5</a> sensor.</p>
-
-<div class="notices warning" ><p>This sensor communicates at 3.3V and does NOT include a level shifter. If you can&rsquo;t use an external level shifter we don&rsquo;t recommend this sensor.</p>
-</div>
-
-
-<h2 id="how-to-connect">How to connect</h2>
-
-<p>According to the datasheet, the pin closest to the sensor&rsquo;s edge is Pin 8.</p>
-
-<table>
-<thead>
-<tr>
-<th>Sensor Pin</th>
-<th>Name</th>
-<th>Description</th>
-<th>Arduino Pin</th>
-<th>WiFi Shield Pin</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Pin 1</td>
-<td>VCC</td>
-<td>Power</td>
-<td>5V</td>
-<td>5V</td>
-</tr>
-
-<tr>
-<td>Pin 2</td>
-<td>GND</td>
-<td>Power Ground</td>
-<td>GND</td>
-<td>GND</td>
-</tr>
-
-<tr>
-<td>Pin 3</td>
-<td>Set</td>
-<td>Unused</td>
-<td>&ndash;</td>
-<td>&ndash;</td>
-</tr>
-
-<tr>
-<td>Pin 4</td>
-<td>Rx</td>
-<td>Receive data</td>
-<td>7</td>
-<td>STX</td>
-</tr>
-
-<tr>
-<td>Pin 5</td>
-<td>Tx</td>
-<td>Transmit data</td>
-<td>8</td>
-<td>SRX</td>
-</tr>
-
-<tr>
-<td>Pin 6</td>
-<td>Reset</td>
-<td>Unused</td>
-<td>&ndash;</td>
-<td>&ndash;</td>
-</tr>
-
-<tr>
-<td>Pin 7</td>
-<td>Not connected</td>
-<td>Unused</td>
-<td>&ndash;</td>
-<td>&ndash;</td>
-</tr>
-
-<tr>
-<td>Pin 8</td>
-<td>Not connected</td>
-<td>Unused</td>
-<td>&ndash;</td>
-<td>&ndash;</td>
-</tr>
-</tbody>
-</table>
-
-<div class="notices warning" ><p>Do not connect this sensor directly to the Arduino. It communicates at 3.3V and the higher voltage of the Arduino might damage it.</p>
-</div>
-
-
-<h2 id="specificiations">Specificiations</h2>
-
-<ul>
-<li><strong>Operating Voltage</strong>: 4.95 - 5.05 V</li>
-<li><strong>Maximum input current</strong>: 100mA</li>
-<li><strong>Operating Temperature Range</strong>: -20 - 50 °C</li>
-<li><strong>Operating Humidity Range</strong>: 0 - 99%</li>
-</ul>
-
-<h2 id="data-packet">Data packet</h2>
-
-<p>The data packet is identical to the <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot">DFRobot sensor</a>.</p>
+<p><img src="https://hackair-project.github.io/hackAir-Arduino/img/others/dev-manager-2.png" alt="Device Manager with the newly plugged device" /></p>
 
 
 <footer class=" footline" >
@@ -1113,7 +995,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1121,25 +1002,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1194,7 +1056,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1211,9 +1072,6 @@
             
                 
                     
-                        
-                        
-                    
                 
                 
 
@@ -1224,22 +1082,6 @@
                     
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1260,6 +1102,40 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
             
         
         
@@ -1267,10 +1143,10 @@
 
 
         
-            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/" title="DFRobot PM2.5"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/others/" title="Other guides"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/sensors/grove/" title="PPD42NS (Grove)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/general/" title="About hackAIR" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

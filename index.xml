@@ -148,6 +148,16 @@ This sensor communicates at 3.3V and does NOT include a level shifter. If you ca
     </item>
     
     <item>
+      <title>Serial Ports (Windows)</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/others/serial-ports-windows/</link>
+      <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/others/serial-ports-windows/</guid>
+      <description>On Windows serial ports are named COMx where x is a number unique to each port. This can become confusing since some computer include a number of internal ports and it can be hard to identify where an external device (such as an Arduino) is connected.
+To identify which COM port corresponds to a device in Windows 7 and newer start by unplugging the device and opening Device Manager (type Device Manager in the start menu).</description>
+    </item>
+    
+    <item>
       <title>Library Reference</title>
       <link>https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/</link>
       <pubDate>Sat, 29 Apr 2017 15:05:15 +0300</pubDate>
