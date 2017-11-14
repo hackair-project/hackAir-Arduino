@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 
-    <title>Sensor Support :: hackAIR-Arduino</title>
+    <title>Power saving :: hackAIR-Arduino</title>
     
     
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1510660490" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/sensors/">
+  <body class="" data-url="/sensors/power-saving/">
     <nav id="sidebar" class="">
 
 
@@ -423,7 +423,7 @@
     
     <li data-nav-id="/sensors/" title="Sensor Support" class="dd-item 
         parent
-        active
+        
         
         ">
       <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/">
@@ -465,7 +465,7 @@
  
   
     
-      <li data-nav-id="/sensors/power-saving/" title="Power saving" class="dd-item ">
+      <li data-nav-id="/sensors/power-saving/" title="Power saving" class="dd-item active">
         <a href="https://hackair-project.github.io/hackAir-Arduino/sensors/power-saving/">
         Power saving
         
@@ -604,7 +604,13 @@
             
           
           
-            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > Sensor Support
+            
+            
+          
+          
+            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/sensors/'>Sensor Support</a> > Power saving
+          
+         
           
          
           
@@ -614,7 +620,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#native-sleep-modes">Native sleep modes</a></li>
+<li><a href="#switching-off-power">Switching off power</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -626,18 +643,35 @@
         
         <div id="body-inner">
           
-            <h1>Sensor Support</h1>
+            <h1>Power saving</h1>
           
 
         
 
 
-<p>This section contains information about every sensor we support in the Arduino library</p>
+
+
+<p>Turning off the sensor when not used saves power (especially important when using a battery) and can extend the sensor&rsquo;s lifespan since it&rsquo;s rated for a specified amount of hours. The hackAIR library has two functions, <code>turnOn()</code> and <code>turnOff()</code> that are related to the sensor&rsquo;s power. Depending on the sensor used the library uses different techniques to achieve the desired results.</p>
+
+<h3 id="native-sleep-modes">Native sleep modes</h3>
+
+<p>Some sensors can go to a sleep mode by sending them a command. When using such a sensor the library will send the correct command when using <code>turnOn()</code> and <code>turnOff()</code>.</p>
+
+<p>The sensors that support a sleep mode are marked with <code>Yes</code> on the <code>Power Saving Support</code> in our <a href="../support-matrix/">Support Matrix</a>.</p>
+
+<h3 id="switching-off-power">Switching off power</h3>
+
+<p>The hackAIR WiFi shield includes a transistor to switch the sensor&rsquo;s power. Specifically, by connecting the sensor to the <code>GND!</code> pin instead of <code>GND</code> you can control it&rsquo;s power state using <code>turnOn()</code> and <code>turnOff()</code>.</p>
+
+<div class="notices warning" ><p>The transistor exists only on the hackAIR WiFi shield. If you are not using the WiFi shield you cannot use this method to control the sensor&rsquo;s power.</p>
+</div>
+
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -962,6 +996,26 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -1021,22 +1075,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1047,10 +1085,10 @@
 
 
         
-            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/wifi/reference/" title="Advanced: Serial Commands"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/" title="Support matrix"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/" title="Support matrix" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/" title="SDS011" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 
@@ -1080,3 +1118,4 @@
 
   </body>
 </html>
+

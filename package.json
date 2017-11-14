@@ -1,0 +1,15 @@
+{
+  "name": "hackAIR-wiki",
+  "description": "Wiki website for the Arduino-hackAIR project",
+  "scripts": {
+    "watch-dev": "hugo server --watch --baseUrl=http://localhost/ -D -d dev",
+    "build-public": "hugo -D -d public",
+    "build-css": "node-sass --include-path css css/main.scss static/style.css",
+    "watch-css": "nodemon -e scss -x 'npm run build-css'"
+  },
+  "author": "Thanasis Georgiou",
+  "devDependencies": {
+    "node-sass": "^4.5.2",
+    "nodemon": "^1.11.0"
+  }
+}

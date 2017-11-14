@@ -38,13 +38,8 @@
   </url>
   
   <url>
-    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</loc>
-    <lastmod>2017-04-29T15:29:07+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</loc>
-    <lastmod>2017-04-29T15:29:07+03:00</lastmod>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/power-saving/</loc>
+    <lastmod>2017-04-29T15:16:11+03:00</lastmod>
   </url>
   
   <url>
@@ -70,6 +65,16 @@
   <url>
     <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/</loc>
     <lastmod>2017-04-29T15:55:54+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</loc>
+    <lastmod>2017-04-29T15:29:07+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</loc>
+    <lastmod>2017-04-29T15:29:07+03:00</lastmod>
   </url>
   
   <url>

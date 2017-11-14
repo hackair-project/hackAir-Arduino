@@ -39,7 +39,7 @@ The hackAir Arduino Library contains the support code for the various air qualit
       <pubDate>Sat, 29 Apr 2017 15:16:11 +0300</pubDate>
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/support-matrix/</guid>
-      <description>   Sensor Name Manufacturer Type Connection Supported Power Saving Support Page     DFRobot PM2.5 DFRobot Laser Serial Yes No Link   SDS011 Inovafit Laser Serial Yes No Link   PPD42NS (Grove) Shinyei LED Pulse Yes No Link   PMS5003 Plantower Laser Serial Yes No Link    </description>
+      <description>   Sensor Name Manufacturer Type Connection Supported Power Saving Support Page     DFRobot PM2.5 DFRobot Laser Serial Yes No Link   SDS011 Inovafit Laser Serial Yes Yes Link   PPD42NS (Grove) Shinyei LED Pulse Yes No Link   PMS5003 Plantower Laser Serial Yes No Link    </description>
     </item>
     
     <item>
@@ -73,26 +73,13 @@ Required Hardware  An assembled hackAIR WiFi Shield v.2 A 5V USB-to-Serial conve
     </item>
     
     <item>
-      <title>DFRobot PM2.5</title>
-      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</link>
-      <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
+      <title>Power saving</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/power-saving/</link>
+      <pubDate>Sat, 29 Apr 2017 15:16:11 +0300</pubDate>
       
-      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</guid>
-      <description>General Information Photo Source: DFRobot Store Page
- Type: Laser Connection: Serial Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_DFROBOT  The sensor comes with a breakout/level shifter board that can be used with the Arduino.
-How to connect First connect the sensor to it&amp;rsquo;s breakout daughterboard and then connect that to the Arduino using the following pin assignment:
-   Sensor Pin Description Arduino Pin WiFi Shield pin     GND Power Ground GND GND   VCC Power 5V 5V   RST Reset &amp;ndash; &amp;ndash;   RX Receive data 7 STX   TX Transmit data 8 SRX    The board has two more unmarked pins, you can leave those unconnected.</description>
-    </item>
-    
-    <item>
-      <title>PMS5003</title>
-      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</link>
-      <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
-      
-      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</guid>
-      <description>General Information  Type: Laser Connection: Serial @ 3.3V Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_PMS5003 Datasheet: Chinese  This sensor is very similar to the DFRobot PM2.5 sensor.
-This sensor communicates at 3.3V and does NOT include a level shifter. If you can&amp;rsquo;t use an external level shifter we don&amp;rsquo;t recommend this sensor.
- How to connect According to the datasheet, the pin closest to the sensor&amp;rsquo;s edge is Pin 8.</description>
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/power-saving/</guid>
+      <description>Turning off the sensor when not used saves power (especially important when using a battery) and can extend the sensor&amp;rsquo;s lifespan since it&amp;rsquo;s rated for a specified amount of hours. The hackAIR library has two functions, turnOn() and turnOff() that are related to the sensor&amp;rsquo;s power. Depending on the sensor used the library uses different techniques to achieve the desired results.
+Native sleep modes Some sensors can go to a sleep mode by sending them a command.</description>
     </item>
     
     <item>
@@ -133,8 +120,31 @@ Required materials &amp;amp; software For this project the following resources a
       <pubDate>Sat, 29 Apr 2017 15:55:54 +0300</pubDate>
       
       <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/</guid>
-      <description>General Information  Type: Laser Connection: Serial Fan: Yes Power saving: &amp;ndash; Library Reference: SENSOR_SDS011  Other sensors of the same family (SDSxxx) are potentially supported since most of them use the same data packet format.
+      <description>General Information  Type: Laser Connection: Serial Fan: Yes Power saving: Native Library Reference: SENSOR_SDS011  Other sensors of the same family (SDSxxx) are potentially supported since most of them use the same data packet format.
 How to connect This sensors comes with a USB-to-Serial adapter. To connect the sensor to the Arduino we recommend cutting the wire that goes to the serial adapter and connecting the wires to the Arduino as follows:</description>
+    </item>
+    
+    <item>
+      <title>DFRobot PM2.5</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</link>
+      <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/</guid>
+      <description>General Information Photo Source: DFRobot Store Page
+ Type: Laser Connection: Serial Fan: Yes Power saving: No Library Reference: SENSOR_DFROBOT  The sensor comes with a breakout/level shifter board that can be used with the Arduino.
+How to connect First connect the sensor to it&amp;rsquo;s breakout daughterboard and then connect that to the Arduino using the following pin assignment:
+   Sensor Pin Description Arduino Pin WiFi Shield pin     GND Power Ground GND GND   VCC Power 5V 5V   RST Reset &amp;ndash; &amp;ndash;   RX Receive data 7 STX   TX Transmit data 8 SRX    The board has two more unmarked pins, you can leave those unconnected.</description>
+    </item>
+    
+    <item>
+      <title>PMS5003</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</link>
+      <pubDate>Sat, 29 Apr 2017 15:29:07 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/</guid>
+      <description>General Information  Type: Laser Connection: Serial @ 3.3V Fan: Yes Power saving: Yes, currently not supported Library Reference: SENSOR_PMS5003 Datasheet: Chinese  This sensor is very similar to the DFRobot PM2.5 sensor.
+This sensor communicates at 3.3V and does NOT include a level shifter. If you can&amp;rsquo;t use an external level shifter we don&amp;rsquo;t recommend this sensor.
+ How to connect According to the datasheet, the pin closest to the sensor&amp;rsquo;s edge is Pin 8.</description>
     </item>
     
     <item>
