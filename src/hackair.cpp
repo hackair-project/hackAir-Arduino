@@ -143,7 +143,9 @@ void hackAIR::clearData(hackAirData &data) {
 }
 
 void hackAIR::enablePowerControl() {
+#ifndef ESP8266
     pinMode(A2, OUTPUT);
+#endif
 }
 
 void hackAIR::turnOn() {
@@ -152,7 +154,9 @@ void hackAIR::turnOn() {
         // Send anything to wake up the sensor
         _serial.write(0x01);
     } else {
+#ifndef ESP8266
         digitalWrite(A2, HIGH);
+#endif
     }
 }
 
@@ -169,6 +173,8 @@ void hackAIR::turnOff() {
         _serial.flush();
         while (_serial.read() != -1) {}
     } else {
+#ifndef ESP8266
         digitalWrite(A2, LOW);
+#endif
     }
 }
