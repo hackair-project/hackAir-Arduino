@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="https://hackair-project.github.io/hackAir-Arduino/images/favicon.png" type="image/x-icon" />
 
-    <title>Example: Ethernet Node :: hackAIR-Arduino</title>
+    <title>Resetting the saved WiFi password :: hackAIR-Arduino</title>
     
     
     <link href="https://hackair-project.github.io/hackAir-Arduino/css/nucleus.css?1511111368" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/ethernet/example-ethernet-node/">
+  <body class="" data-url="/wifi/reset-ap/">
     <nav id="sidebar" class="">
 
 
@@ -225,7 +225,7 @@
   
     
     <li data-nav-id="/ethernet/" title="Ethernet" class="dd-item 
-        parent
+        
         
         
         ">
@@ -268,7 +268,7 @@
  
   
     
-      <li data-nav-id="/ethernet/example-ethernet-node/" title="Example: Ethernet Node" class="dd-item active">
+      <li data-nav-id="/ethernet/example-ethernet-node/" title="Example: Ethernet Node" class="dd-item ">
         <a href="https://hackair-project.github.io/hackAir-Arduino/ethernet/example-ethernet-node/">
         Example: Ethernet Node
         
@@ -314,7 +314,7 @@
   
     
     <li data-nav-id="/wifi/" title="WiFi shield" class="dd-item 
-        
+        parent
         
         
         ">
@@ -395,7 +395,7 @@
  
   
     
-      <li data-nav-id="/wifi/reset-ap/" title="Resetting the saved WiFi password" class="dd-item ">
+      <li data-nav-id="/wifi/reset-ap/" title="Resetting the saved WiFi password" class="dd-item active">
         <a href="https://hackair-project.github.io/hackAir-Arduino/wifi/reset-ap/">
         Resetting the saved WiFi password
         
@@ -697,7 +697,7 @@
             
           
           
-            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/ethernet/'>Ethernet</a> > Example: Ethernet Node
+            <a href='https://hackair-project.github.io/hackAir-Arduino/'>hackAIR-Arduino</a> > <a href='https://hackair-project.github.io/hackAir-Arduino/wifi/'>WiFi shield</a> > Resetting the saved WiFi password
           
          
           
@@ -709,22 +709,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#required-hardware">Required hardware</a></li>
-<li><a href="#assembling-the-hardware">Assembling the hardware</a></li>
-<li><a href="#get-an-authentication-token">Get an authentication token</a></li>
-<li><a href="#programming-the-arduino">Programming the Arduino</a>
-<ul>
-<li><a href="#installing-the-libraries">Installing the libraries</a></li>
-<li><a href="#writing-the-sketch">Writing the sketch</a></li>
-<li><a href="#advanced-example">Advanced example</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -736,120 +721,27 @@
         
         <div id="body-inner">
           
-            <h1>Example: Ethernet Node</h1>
+            <h1>Resetting the saved WiFi password</h1>
           
 
         
 
 
+<p>The hackAIR WiFi shields stores your WiFi network&rsquo;s password so it can reconnect after being powered down. To change WiFi networks you can clear this stored password so the hackAIR WiFi shield goes through it&rsquo;s setup procedure again.</p>
 
-
-<p>In this example project we will create an Arduino measuring station with a Ethernet support. We recommend trying the <a href="../../library/example-serial">Serial example</a> first to make sure your sensor is working correctly.</p>
-
-<h2 id="required-hardware">Required hardware</h2>
-
-<ul>
-<li>An Arduino compatible board</li>
-<li>A supported sensor (see supported sensor list)</li>
-<li>A compatible Ethernet shield (see <a href="https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware">list</a>)</li>
-</ul>
-
-<h2 id="assembling-the-hardware">Assembling the hardware</h2>
-
-<p>The sensor should be connected according the it&rsquo;s information page (<a href="../../sensors">sensor support</a>) after stacking the Ethernet shield on top of your Arduino board.</p>
-
-<div class="notices warning" ><p>When inserting the Ethernet shield make sure that:<br />
-1. All pins are inserted on the correct headers and none are bent out of the way<br />
-2. The USB connector of the Arduino board doesn&rsquo;t touch the Ethernet shield. This can cause a short-circuit</p>
-</div>
-
-
-<h2 id="get-an-authentication-token">Get an authentication token</h2>
-
-<p>To send data each node has an <code>Authentication Token</code> that is used to identify it and store it&rsquo;s data. To get an authentication token each user must create an account on the hackAIR platform website and register their nodes.</p>
-
-<a  href="https://platform.hackair.eu/" target="_blank"  class="btn btn-default">
-  
-  
-  
-    
-  <i class="fa fa-globe"></i>
-    
-  
-  hackAIR Platform
-  
-</a>
-
-
-<h2 id="programming-the-arduino">Programming the Arduino</h2>
-
-<h3 id="installing-the-libraries">Installing the libraries</h3>
-
-<p>The hackAir library can be installed by following the instructions on the <a href="https://hackair-project.github.io/hackAir-Arduino/library/installation">Arduino Library → Installation</a> page. Since the Ethernet support depends on the official Ethernet library, you should make sure it&rsquo;s installed using the Library Manager (<code>Sketch → Libraries → Manage Libraries</code>).</p>
-
-<p><img src="https://hackair-project.github.io/hackAir-Arduino/img/ethernet/library-manager.png" alt="Library Manager Screenshot" /></p>
-
-<h3 id="writing-the-sketch">Writing the sketch</h3>
-
-<p>This example sketch is included with the hackAIR library and you can open it in the Arduino IDE by selecting <code>Files → Examples → hackAIR → Ethernet-Simple</code>. You can also copy paste the code from the box below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cm">/**
-</span><span class="cm"> * @file Ethernet node example sketch
-</span><span class="cm"> * This example is part of the hackAIR Arduino Library and is available
-</span><span class="cm"> * in the Public Domain.
-</span><span class="cm"> *
-</span><span class="cm"> * @author Thanasis Georgiou
-</span><span class="cm"> */</span>
-
-<span class="cp">#include</span> <span class="cpf">&lt;Ethernet.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;hackair.h&#34;</span><span class="cp">
-</span><span class="cp">#include</span> <span class="cpf">&#34;hackair_ethernet.h&#34;</span><span class="cp">
+<p>The hackAIR library includes a helper function that clears the saved settings, <code>wifi_clearAPs()</code>. Usage is very simple as detailed in the <code>WiFiShield-ResetAP</code> example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&#34;hackair.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;hackair_wifi.h&#34;</span><span class="cp">
 </span><span class="cp"></span>
-<span class="c1">// MAC Address of the Ethernet Shield
-</span><span class="c1">// Nnewer shields should have a MAC address printed on a sticker
-</span><span class="c1"></span><span class="n">byte</span> <span class="n">mac</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0xDE</span><span class="p">,</span> <span class="mh">0xAD</span><span class="p">,</span> <span class="mh">0xBE</span><span class="p">,</span> <span class="mh">0xEF</span><span class="p">,</span> <span class="mh">0xFE</span><span class="p">,</span> <span class="mh">0xED</span> <span class="p">};</span>
-
-<span class="c1">// Initialize the Ethernet client library and the hackAir helper class
-</span><span class="c1"></span><span class="n">EthernetClient</span> <span class="n">client</span><span class="p">;</span>
-<span class="n">hackAirEthernet</span> <span class="nf">hackAirNet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="sa"></span><span class="s">&#34;AUTHORIZATION TOKEN&#34;</span><span class="p">);</span> <span class="c1">// Write your API key here
-</span><span class="c1"></span>
-<span class="c1">// Specify your sensor
-</span><span class="c1"></span><span class="n">hackAIR</span> <span class="nf">sensor</span><span class="p">(</span><span class="n">SENSOR_SDS011</span><span class="p">);</span>
-
 <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// Open serial communications and wait for port to open
-</span><span class="c1"></span>  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
-  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">Serial</span><span class="p">)</span> <span class="p">{;}</span>
-
-  <span class="c1">// Start the ethernet connection
-</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">Ethernet</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">mac</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="sa"></span><span class="s">&#34;Failed to configure Ethernet using DHCP&#34;</span><span class="p">);</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{;}</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Give the Ethernet shield a second to initialize
-</span><span class="c1"></span>  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-
-  <span class="c1">// Initialize the sensor
-</span><span class="c1"></span>  <span class="n">sensor</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+  <span class="n">wifi_begin</span><span class="p">();</span>
+  <span class="n">wifi_clearAPs</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// Check DHCP lease
-</span><span class="c1"></span>  <span class="n">Ethernet</span><span class="p">.</span><span class="n">maintain</span><span class="p">();</span>
-
-  <span class="c1">// Collect data
-</span><span class="c1"></span>  <span class="k">struct</span> <span class="n">hackAirData</span> <span class="n">data</span><span class="p">;</span>
-  <span class="n">sensor</span><span class="p">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-
-  <span class="c1">// Send with ethernet shield
-</span><span class="c1"></span>  <span class="n">hackAirNet</span><span class="p">.</span><span class="n">sendData</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-
-  <span class="c1">// Wait a bit (1 minute)
-</span><span class="c1"></span>  <span class="n">delay</span><span class="p">(</span><span class="mi">60000</span><span class="p">);</span>
-<span class="p">}</span></code></pre></div>
-<h3 id="advanced-example">Advanced example</h3>
-
-<p>There is a second example included, <code>Ethernet-Advanced</code>, which is based on this one but includes sensor sleep modes to extend the lifespan of the sensor.</p>
+  <span class="c1">// Do nothing
+</span><span class="c1"></span><span class="p">}</span></code></pre></div>
+<p>You can upload the above sketch to your Arduino once to reset the access point, setup your new network and then reupload your original sketch.</p>
 
 
 <footer class=" footline" >
@@ -1003,7 +895,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -1011,125 +902,6 @@
                     
                     
 
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1187,6 +959,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1194,6 +967,25 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -1210,6 +1002,90 @@
                     
             
         
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
                     
                         
             
@@ -1291,6 +1167,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1333,10 +1225,10 @@
 
 
         
-            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/ethernet/supported-hardware/" title="Supported Hardware"> <i class="fa fa-chevron-left"></i></a>
+            <a class="nav nav-prev" href="https://hackair-project.github.io/hackAir-Arduino/wifi/example-wifi-node/" title="Example: WiFi Node"> <i class="fa fa-chevron-left"></i></a>
         
         
-            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/ethernet/library-reference/" title="Library Reference" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+            <a class="nav nav-next" href="https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/" title="Advanced: Flashing Guide" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
         
     </div>
 

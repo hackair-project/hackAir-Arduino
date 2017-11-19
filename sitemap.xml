@@ -33,11 +33,6 @@
   </url>
   
   <url>
-    <loc>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</loc>
-    <lastmod>2017-09-28T14:26:46+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://hackair-project.github.io/hackAir-Arduino/sensors/power-saving/</loc>
     <lastmod>2017-04-29T15:16:11+03:00</lastmod>
   </url>
@@ -88,8 +83,18 @@
   </url>
   
   <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/wifi/example-wifi-node/</loc>
+    <lastmod>2017-04-27T16:12:10+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://hackair-project.github.io/hackAir-Arduino/ethernet/</loc>
     <lastmod>2017-04-27T15:27:35+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/wifi/reset-ap/</loc>
+    <lastmod>2017-04-27T16:12:10+03:00</lastmod>
   </url>
   
   <url>
@@ -100,6 +105,11 @@
   <url>
     <loc>https://hackair-project.github.io/hackAir-Arduino/wifi/</loc>
     <lastmod>2017-07-09T14:26:46+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</loc>
+    <lastmod>2017-09-28T14:26:46+03:00</lastmod>
   </url>
   
   <url>

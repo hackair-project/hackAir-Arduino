@@ -63,16 +63,6 @@ The hackAir Arduino Library contains the support code for the various air qualit
     </item>
     
     <item>
-      <title>Advanced: Flashing Guide</title>
-      <link>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</link>
-      <pubDate>Thu, 28 Sep 2017 14:26:46 +0300</pubDate>
-      
-      <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</guid>
-      <description>This guide is for users that own an assembled WiFi shield and want to flash the hackAIR firmware.
-Required Hardware  An assembled hackAIR WiFi Shield v.2 A 5V USB-to-Serial converter Example Jumper Wires  Setting up the software The official ESP8622 flashing tool, esptool, runs on the Python interpreter. On Windows system you can download Python from the official website (3.6.2 or newer). On Linux, python should be already installed and ready to use.</description>
-    </item>
-    
-    <item>
       <title>Power saving</title>
       <link>https://hackair-project.github.io/hackAir-Arduino/sensors/power-saving/</link>
       <pubDate>Sat, 29 Apr 2017 15:16:11 +0300</pubDate>
@@ -172,6 +162,27 @@ Parameters:
     </item>
     
     <item>
+      <title>Example: WiFi Node</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/wifi/example-wifi-node/</link>
+      <pubDate>Thu, 27 Apr 2017 16:12:10 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/example-wifi-node/</guid>
+      <description>In this example project we will create a hackAIR node using the hackAIR WiFi shield. We recommend trying the Serial example first to familiarise yourself with the environment and to make sure your sensor is working correctly.
+Required hardware  An Arduino compatible board A supported sensor - (supported sensor list) An assembled and programmed hackAIR WiFi shield (see list)  Assembling the hardware The sensor should be connected according the it&amp;rsquo;s information page (sensor support) after stacking the hackAIR WiFi shield on top of your Arduino board.</description>
+    </item>
+    
+    <item>
+      <title>Resetting the saved WiFi password</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/wifi/reset-ap/</link>
+      <pubDate>Thu, 27 Apr 2017 16:12:10 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/reset-ap/</guid>
+      <description>The hackAIR WiFi shields stores your WiFi network&amp;rsquo;s password so it can reconnect after being powered down. To change WiFi networks you can clear this stored password so the hackAIR WiFi shield goes through it&amp;rsquo;s setup procedure again.
+The hackAIR library includes a helper function that clears the saved settings, wifi_clearAPs(). Usage is very simple as detailed in the WiFiShield-ResetAP example:
+#include &amp;#34;hackair.h&amp;#34;#include &amp;#34;hackair_wifi.h&amp;#34; void setup() { wifi_begin(); wifi_clearAPs(); } void loop() { // Do nothing } You can upload the above sketch to your Arduino once to reset the access point, setup your new network and then reupload your original sketch.</description>
+    </item>
+    
+    <item>
       <title>Example: LCD</title>
       <link>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</link>
       <pubDate>Sat, 22 Apr 2017 15:10:23 +0300</pubDate>
@@ -179,6 +190,16 @@ Parameters:
       <guid>https://hackair-project.github.io/hackAir-Arduino/library/example-lcd/</guid>
       <description>In this example project we will create an Arduino measuring station with a Liquid Crystal Display. It&amp;rsquo;s recommended to try the Serial example first to make sure your sensor is working correctly.
 Required materials &amp;amp; software  An Arduino compatible board A supported sensor (see supported sensor list) An LCD screen (compatible with the Hitachi HD44780 driver) 10kΩ potentiometer 220Ω resistor Hook-up wires (jumpers) Breadboard The Arduino IDE with the hackAIR library installed  Assembling the hardware The sensor should be connected accoarding the it&amp;rsquo;s information page (sensor support).</description>
+    </item>
+    
+    <item>
+      <title>Advanced: Flashing Guide</title>
+      <link>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</link>
+      <pubDate>Thu, 28 Sep 2017 14:26:46 +0300</pubDate>
+      
+      <guid>https://hackair-project.github.io/hackAir-Arduino/wifi/advanced-flashing-guide/</guid>
+      <description>This guide is for users that own an assembled WiFi shield and want to flash the hackAIR firmware.
+Required Hardware  An assembled hackAIR WiFi Shield v.2 A 5V USB-to-Serial converter Example Jumper Wires  Setting up the software The official ESP8622 flashing tool, esptool, runs on the Python interpreter. On Windows system you can download Python from the official website (3.6.2 or newer). On Linux, python should be already installed and ready to use.</description>
     </item>
     
     <item>
