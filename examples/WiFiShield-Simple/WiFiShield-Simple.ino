@@ -1,7 +1,9 @@
 /**
- * @file WiFi Sensor example
+ * @file hackAIR WiFi Shield - Simple Example
  * This example reads data from a sensor (default choice is the serial SDS011)
- * and sends it to the hackAIR servers using the hackAIR WiFi Shield.
+ * and sends it to the hackAIR servers using the hackAIR WiFi Shield every 10 minutes.
+ * 
+ * @author Thanasis Georgiou
  *
  * This example is part of the hackAIR Arduino Library and is available
  * in the Public Domain.
@@ -25,11 +27,12 @@ void setup() {
   // Wait for WiFi connection
   // At this point you should use your mobile phone to setup the WiFi connection
   wifi_waitForReady();
-  // Set authentication token
-  wifi_setToken("REPLACE WITH AUTHENTICATION TOKEN");
+  // Set the authorization token
+  wifi_setToken("AUTHORIZATION TOKEN");
 }
 
 void loop() {
+  sensor.clearData(data);
   sensor.refresh(data);
 
   // Average readings
@@ -60,4 +63,7 @@ void loop() {
   data.pm10 = pm10;
   data.error = error;
   wifi_sendData(data);
+
+  // Wait 10 minutes
+  delay(10 * 60 * 1000UL);
 }
