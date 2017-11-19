@@ -1,24 +1,12 @@
-/*
- * hackAIR Arduino Library
- * Copyright © 2016-2017 hackAir Consortium
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 /**
- * @file Ethernet node example sketch
+ * @file Ethernet - Simple Example
+ * This example sets up the Ethernet shield and sends data to the hackAIR
+ * platform every one minute.
+ * 
  * @author Thanasis Georgiou
+ * 
+ * This example is part of the hackAIR Arduino Library and is available
+ * in the Public Domain.
  */
 
 #include <Ethernet.h>
@@ -26,7 +14,7 @@
 #include "hackair_ethernet.h"
 
 // MAC Address of the Ethernet Shield
-// Nnewer shields should have a MAC address printed on a sticker
+// Shields have a MAC address printed on a sticker
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 
 // Initialize the Ethernet client library and the hackAir helper class
@@ -56,6 +44,7 @@ void setup() {
 
 void loop() {
   // Check DHCP lease
+  // This is required to maintain the internet connection for long periods of time
   Ethernet.maintain();
 
   // Collect data
