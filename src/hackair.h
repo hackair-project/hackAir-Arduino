@@ -90,6 +90,11 @@ public:
      */
     void turnOff();
 
+    /**
+     * Compensates the measurements for the given humidity
+     */
+    void humidityCompensation(hackAirData &data, float humidity);
+
 private:
     int _sensorType;
     long _lastTime;

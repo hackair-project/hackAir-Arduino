@@ -178,3 +178,8 @@ void hackAIR::turnOff() {
 #endif
     }
 }
+
+void humidityCompensation(hackAirData &data, float humidity) {
+    data.pm25 = data.pm25 / (3.72f * (1 + 7 * (humidity / 100.0f)));
+    data.pm10 = data.pm10 / (3.72f * (1 + 7 * (humidity / 100.0f)));
+}
