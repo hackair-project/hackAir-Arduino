@@ -179,7 +179,9 @@ void hackAIR::turnOff() {
     }
 }
 
+// Normalization function written by Zbyszek Kiliański, Piotr Paul
+// https://github.com/piotrkpaul/esp8266-sds011
 void humidityCompensation(hackAirData &data, float humidity) {
-    data.pm25 = data.pm25 / (3.72f * (1 + 7 * (humidity / 100.0f)));
-    data.pm10 = data.pm10 / (3.72f * (1 + 7 * (humidity / 100.0f)));
+  data.pm25 = data.pm25 / (1.0 + 0.48756 * pow((humidity / 100.0), 8.60068));
+  data.pm10 = data.pm10 / (1.0 + 0.81559 * pow((humidity / 100.0), 5.83411));
 }
