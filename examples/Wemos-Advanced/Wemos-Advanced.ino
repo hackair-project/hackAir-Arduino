@@ -1,10 +1,10 @@
 /**
  * @file Wemos - Advanced Example
  * This example reads data from a sensor and sends it to the hackAIR platform
- * using the Wemos integrated WiFi on a configurable frequency. This code
- * assumes a DHT11 humidity sensor connected to pin 2.
+ * using the Wemos integrated WiFi . This code
+ * assumes a DHT11 humidity sensor connected to pin D4.
  *
- * @author Ilias Stavrakas
+ * @author LoRAthens Air Quality team
  * @author Thanasis Georgiou (Cleanup)
  *
  * This example is part of the hackAIR Arduino Library and is available
@@ -12,28 +12,28 @@
  */
 
 #include <Arduino.h>
-#include <DHT.h>
+#include <DHT.h>  // Adafruit's DHT sensor library https://github.com/adafruit/DHT-sensor-library
 #include <DHT_U.h>
-#include <DNSServer.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266WiFi.h>
-#include <FS.h>
-#include <WiFiClientSecure.h>
-#include <WiFiManager.h>  //https://github.com/tzapu/WiFiManager
-#include <hackair.h>
+#include <DNSServer.h>  // Local DNS Server used for redirecting all requests to the configuration portal
+#include <ESP8266WebServer.h>  // Local WebServer used to serve the configuration portal
+#include <ESP8266WiFi.h>  // ESP8266 Core WiFi Library (you most likely already have this in your sketch)
+#include <FS.h>  //this needs to be 2nd. Don't change it...
+#include <WiFiClientSecure.h>  // Variant of WiFiClient with TLS support (from ESP82266 core wifi)
+#include <WiFiManager.h>  // https://github.com/tzapu/WiFiManager
+#include <hackair.h>      // https://github.com/hackair-project/hackAir-Arduino
 
 // Replace the string below with your Authorization Token from the hackAIR
 // platform
-#define AUTHORIZATION "AUTHORIZATION TOKEN HERE"
+#define AUTHORIZATION "AUTHORIZATION TOKEN"
 
 // Sensor initialization
 hackAIR sensor(SENSOR_SDS011);
 
-// Setup the humidity sensor (pin 2)
-DHT dht(2, DHT11);
+// Setup the humidity sensor (pin D4)
+DHT dht(D4, DHT11);
 
 // How often to measure (in minutes)
-const unsigned long minutes_time_interval = 120;
+const unsigned long minutes_time_interval = 5;
 
 // Setup ADC to measure Vcc (battery voltage)
 ADC_MODE(ADC_VCC);
@@ -61,7 +61,7 @@ void setup() {
 
   // Initialize the WiFi connection
   WiFiManager wifiManager;
-  if (!wifiManager.autoConnect("hackAIR-AP")) {
+  if (!wifiManager.autoConnect("ESP-wemos")) {
     Serial.println("failed to connect, please push reset button and try again");
     delay(3000);
     ESP.reset();
@@ -110,7 +110,7 @@ void loop() {
   float humidity = dht.readHumidity();
   // Read temperature as Celsius (the default)
   float temperature = dht.readTemperature();
-  
+
   // Send the data to the hackAIR server
   String dataJson = "{\"reading\":{\"PM2.5_AirPollutantValue\":\"";
   dataJson += pm25;
@@ -129,7 +129,7 @@ void loop() {
     client.print("Host: api.hackair.eu\r\n");
     client.print("Connection: close\r\n");
     client.print("Authorization: ");
-    client.println(Authorization);
+    client.println(AUTHORIZATION);
     client.print("Accept: application/vnd.hackair.v1+json\r\n");
     client.print("Cache-Control: no-cache\r\n");
     client.print("Content-Type: application/json\r\n");
