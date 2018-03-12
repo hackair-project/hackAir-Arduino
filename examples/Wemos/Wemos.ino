@@ -82,40 +82,17 @@ void loop() {
 
   // Measure data
   sensor.clearData(data);
-  sensor.refresh(data);
+  sensor.readAverageData(data, 60); // 60 averages
 
-  // Average readings (60 measurments)
-  double pm25 = data.pm25;
-  double pm10 = data.pm10;
-  int error = 0;
-  for (int i = 0; i < 59; i++) {
-    // Read from the sensor
-    sensor.refresh(data);
-
-    // If error is not zero something went wrong with this measurment
-    // and we should not send it.
-    if (data.error == 0) {
-      pm25 = (pm25 + data.pm25) / 2;
-      pm10 = (pm10 + data.pm10) / 2;
-    } else {
-      error++;
-    }
-    delay(1000);  // Wait one second
-  }
-  data.pm25 = pm25;
-  data.pm10 = pm10;
-  data.error = error;
-
-  // Measure humidity and temperature
+  // Compensate for humidity
   float humidity = dht.readHumidity();
-  // Read temperature as Celsius (the default)
-  float temperature = dht.readTemperature();
+  sensor.humidityCompensation(data, humidity);
 
   // Send the data to the hackAIR server
   String dataJson = "{\"reading\":{\"PM2.5_AirPollutantValue\":\"";
-  dataJson += pm25;
+  dataJson += data.pm25;
   dataJson += "\",\"PM10_AirPollutantValue\":\"";
-  dataJson += pm10;
+  dataJson += data.pm10;
   dataJson += "\"},\"battery\":\"";
   dataJson += vdd;
   dataJson += "\",\"tamper\":\"";

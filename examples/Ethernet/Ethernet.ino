@@ -1,10 +1,12 @@
 /**
- * @file Ethernet - Simple Example
+ * @file Ethernet - Advanced Example
  * This example sets up the Ethernet shield and sends data to the hackAIR
- * platform every one minute.
- * 
+ * platform on a configurable frequency. The sensor is turned off while not
+ * measuring to extend lifespan. For a simpler example check out
+ * `Ethernet-Simple`.
+ *
  * @author Thanasis Georgiou
- * 
+ *
  * This example is part of the hackAIR Arduino Library and is available
  * in the Public Domain.
  */
@@ -13,13 +15,17 @@
 #include "hackair.h"
 #include "hackair_ethernet.h"
 
+// How often to measure (in minutes)
+#define MEASURING_DELAY 60
+
 // MAC Address of the Ethernet Shield
-// Shields have a MAC address printed on a sticker
-byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+// Newer shields should have a MAC address printed on a sticker
+byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
 
 // Initialize the Ethernet client library and the hackAir helper class
 EthernetClient client;
-hackAirEthernet hackAirNet(client, "AUTHORIZATION TOKEN"); // Write your API key here
+// Write your API key here
+hackAirEthernet hackAirNet(client, "AUTHORIZATION TOKEN");
 
 // Specify your sensor
 hackAIR sensor(SENSOR_SDS011);
@@ -39,10 +45,16 @@ void setup() {
   delay(1000);
 
   // Initialize the sensor
+  sensor.enablePowerControl();
+  sensor.turnOn();
   sensor.begin();
 }
 
 void loop() {
+  // At this point, we are either booting or after the sleep period
+  // Wait for the sensor to settle
+  delay(1000 * 10);
+
   // Check DHCP lease
   // This is required to maintain the internet connection for long periods of time
   Ethernet.maintain();
@@ -50,11 +62,13 @@ void loop() {
   // Collect data
   struct hackAirData data;
   sensor.clearData(data);
-  sensor.refresh(data);
+  sensor.readAverageData(data, 60);
 
-  // Send with ethernet shield
+  // Send data to the hackAIR platform
   hackAirNet.sendData(data);
 
-  // Wait a bit (1 minute)
-  delay(60000);
+  // Turn off sensor while we wait the specified time
+  sensor.turnOff();
+  delay(MEASURING_DELAY * 60UL * 1000UL);
+  sensor.turnOn();
 }
