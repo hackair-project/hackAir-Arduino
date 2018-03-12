@@ -65,10 +65,14 @@ public:
     void begin();
 
     /**
-     * Read data from the sensor and process packages. Mainly used for digital/serial
-     * sensors.
+     * Read data from the sensor.
      */
-    void refresh(hackAirData &data);
+    void readData(hackAirData &data);
+
+    /**
+     * Read data from the sensor n times and return the average reading.
+     */
+    void readAverageData(hackAirData &data, uint8_t n);
 
     /**
      * Empties a hackAir data structure

@@ -41,7 +41,7 @@ void hackAIR::begin() {
     }
 }
 
-void hackAIR::refresh(hackAirData &data) {
+void hackAIR::readData(hackAirData &data) {
     if (_sensorType == SENSOR_DFROBOT) {
         // DFRobot
         char index = 0;
@@ -132,6 +132,32 @@ void hackAIR::refresh(hackAirData &data) {
 
     // Invalid sensor ID means something surely went wrong
     data.error = 1;
+}
+
+void hackAIR::readAverageData(hackAirData &data, uint8_t n) {
+    float sum_pm25 = 0.0f;
+    float sum_pm10 = 0.0f;
+    uint8_t successes = 0;
+
+    for (uint8_t i = 0; i < n; i++) {
+        readData(data);
+
+        if (data.error == 0) {
+            sum_pm25 += data.pm25;
+            sum_pm10 += data.pm10;
+
+            successes += 1;
+        }
+    }
+
+    data.pm25 = sum_pm25 / successes;
+    data.pm10 = sum_pm10 / successes;
+
+    if (successes != n) {
+        data.error = 1;
+    } else {
+        data.error = 0;
+    }
 }
 
 void hackAIR::clearData(hackAirData &data) {
