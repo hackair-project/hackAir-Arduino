@@ -23,7 +23,7 @@ void setup() {
 void loop() {
   // Take a reading
   struct hackAirData data;
-  sensor.refresh(data);
+  sensor.readData(data);
 
   // If it was invalid, print error
   if (data.error != 0) {

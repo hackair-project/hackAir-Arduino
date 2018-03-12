@@ -26,7 +26,7 @@ void setup() {
 void loop() {
   // Take a reading
   struct hackAirData data;
-  sensor.refresh(data);
+  sensor.readData(data);
 
   // Clear screen and move cursor to the top left
   lcd.clear();
