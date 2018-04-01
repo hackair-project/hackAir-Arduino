@@ -33,7 +33,10 @@ hackAIR sensor(SENSOR_SDS011);
 DHT dht(D4, DHT11);
 
 // How often to measure (in minutes)
-const unsigned long minutes_time_interval = 5;
+const unsigned long minutes_time_interval = 5; // minutes
+
+// How long to try for a valid measurement
+const unsigned long retry_period_s = 10; // s
 
 // Setup ADC to measure Vcc (battery voltage)
 ADC_MODE(ADC_VCC);
@@ -80,13 +83,24 @@ void loop() {
     Serial.print(".");
   }
 
-  // Measure data
-  sensor.clearData(data);
-  sensor.readAverageData(data, 60); // 60 averages
+  Serial.println("Doing measurement");
+  unsigned long timestamp = millis();
+  while (data.error != 0) {
+    if(millis() > timestamp + (retry_period_s * 1000)) {
+      Serial.println("Tried too long, giving up.");
+      break;
+    }
+    sensor.turnOn();
+    delay(100);
+    sensor.readAverageData(data, 60); // 60 averages
+    yield();
+  }
 
   // Compensate for humidity
-  float humidity = dht.readHumidity();
-  sensor.humidityCompensation(data, humidity);
+  if (data.error == 0) {  
+    float humidity = dht.readHumidity();
+    sensor.humidityCompensation(data, humidity);
+  }
 
   // Send the data to the hackAIR server
   String dataJson = "{\"reading\":{\"PM2.5_AirPollutantValue\":\"";
@@ -122,17 +136,17 @@ void loop() {
     }
     client.stop();
   }
-  delay(1000);
-
+  
   // Turn off sensor and go to sleep
   sensor.turnOff();
+  Serial.println("");
+  Serial.println("Sensor Off");
   unsigned long current_millis = millis();
   while (current_millis <
          (previous_millis + (minutes_time_interval * 60 * 1000))) {
     delay(10000);
     current_millis = millis();
-    Serial.println(current_millis);
+    Serial.print(".");
   }
   previous_millis = current_millis;
-  sensor.turnOn();
 }
