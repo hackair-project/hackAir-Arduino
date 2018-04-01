@@ -96,9 +96,9 @@ void loop() {
   dataJson += "\"},\"battery\":\"";
   dataJson += vdd;
   dataJson += "\",\"tamper\":\"";
-  dataJson += "0";
+  dataJson += data.tamper;
   dataJson += "\",\"error\":\"";
-  dataJson += "0";
+  dataJson += data.error;
   dataJson += "\"}";
   if (client.connect("api.hackair.eu", 443)) {
     Serial.println("connected");
