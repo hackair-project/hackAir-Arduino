@@ -84,6 +84,7 @@ void loop() {
   }
 
   Serial.println("Doing measurement");
+  sensor.clearData(data);
   unsigned long timestamp = millis();
   while (data.error != 0) {
     if(millis() > timestamp + (retry_period_s * 1000)) {
