@@ -163,7 +163,7 @@ void hackAIR::readAverageData(hackAirData &data, uint8_t n) {
 void hackAIR::clearData(hackAirData &data) {
     data.pm25 = 0;
     data.pm10 = 0;
-    data.error = 0;
+    data.error = 1;
     data.tamper = 0;
     data.battery = 0;
 }
