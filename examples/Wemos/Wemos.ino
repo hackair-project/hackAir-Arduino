@@ -98,8 +98,8 @@ void loop() {
   }
 
   // Compensate for humidity
-  if (data.error == 0) {  
-    float humidity = dht.readHumidity();
+  float humidity = dht.readHumidity();
+  if (data.error == 0 && !isnan(humidity)) {
     sensor.humidityCompensation(data, humidity);
   }
 
