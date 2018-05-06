@@ -179,6 +179,7 @@ void hackAIR::turnOn() {
     if (_sensorType == SENSOR_SDS011) {
         // Send anything to wake up the sensor
         _serial.write(0x01);
+        delay(2000);
     } else {
 #ifndef ESP8266
         digitalWrite(A2, HIGH);
