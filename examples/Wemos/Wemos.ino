@@ -12,6 +12,7 @@
  */
 
 #include <Arduino.h>
+#include <math.h>
 #include <DHT.h>  // Adafruit's DHT sensor library https://github.com/adafruit/DHT-sensor-library
 #include <DHT_U.h>
 #include <DNSServer.h>  // Local DNS Server used for redirecting all requests to the configuration portal
@@ -86,7 +87,11 @@ void loop() {
 
   // Compensate for humidity
   float humidity = dht.readHumidity();
+  if (isnan(humidity)) {
+    data.error |= H_ERROR_HUMIDITY;
+  } else {
   sensor.humidityCompensation(data, humidity);
+  }
 
   // Send the data to the hackAIR server
   String dataJson = "{\"reading\":{\"PM2.5_AirPollutantValue\":\"";
@@ -98,7 +103,7 @@ void loop() {
   dataJson += "\",\"tamper\":\"";
   dataJson += "0";
   dataJson += "\",\"error\":\"";
-  dataJson += "0";
+  dataJson += data.error;
   dataJson += "\"}";
   if (client.connect("api.hackair.eu", 443)) {
     Serial.println("connected");
