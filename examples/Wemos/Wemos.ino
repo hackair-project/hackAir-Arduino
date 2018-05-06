@@ -77,8 +77,8 @@ void setup() {
 void loop() {
   float vdd = ESP.getVcc() / 500.0;
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
+    Serial.println("Waiting for WiFi...");
+    delay(1000);
   }
 
   // Measure data
@@ -127,7 +127,6 @@ void loop() {
     }
     client.stop();
   }
-  delay(1000);
 
   // Turn off sensor and go to sleep
   sensor.turnOff();
@@ -136,7 +135,6 @@ void loop() {
          (previous_millis + (minutes_time_interval * 60 * 1000))) {
     delay(10000);
     current_millis = millis();
-    Serial.println(current_millis);
   }
   previous_millis = current_millis;
   sensor.turnOn();
