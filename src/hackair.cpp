@@ -157,6 +157,8 @@ void hackAIR::readAverageData(hackAirData &data, uint8_t n) {
 
     if (successes != n) {
         data.error = H_ERROR_SENSOR_ONCE;
+    } else if (successes == 0) {
+        data.error = H_ERROR_SENSOR;
     } else {
         data.error = H_NO_ERROR;
     }

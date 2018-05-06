@@ -85,12 +85,14 @@ void loop() {
   sensor.clearData(data);
   sensor.readAverageData(data, 60); // 60 averages
 
+  if (data.error != H_ERROR_SENSOR) {
   // Compensate for humidity
   float humidity = dht.readHumidity();
   if (isnan(humidity)) {
     data.error |= H_ERROR_HUMIDITY;
   } else {
   sensor.humidityCompensation(data, humidity);
+  }
   }
 
   // Send the data to the hackAIR server
