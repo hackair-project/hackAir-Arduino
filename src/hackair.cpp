@@ -140,6 +140,8 @@ void hackAIR::readAverageData(hackAirData &data, uint8_t n) {
     uint8_t successes = 0;
 
     for (uint8_t i = 0; i < n; i++) {
+        delay(1000); // Wait for a new reading, all sensors have a maximum
+                     // 1Hz sampling rate
         readData(data);
 
         if (data.error == 0) {
