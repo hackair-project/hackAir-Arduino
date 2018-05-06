@@ -5,7 +5,7 @@
  * assumes a DHT11 humidity sensor connected to pin D4.
  *
  * @author LoRAthens Air Quality team
- * @author Thanasis Georgiou (Cleanup)
+ * @author Thanasis Georgiou
  *
  * This example is part of the hackAIR Arduino Library and is available
  * in the Public Domain.
