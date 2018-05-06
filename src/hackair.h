@@ -40,6 +40,7 @@
 #endif
 
 #include "Arduino.h"
+#include "hackair_errors.h"
 #include <SoftwareSerial.h>
 
 /**

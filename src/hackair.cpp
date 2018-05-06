@@ -68,7 +68,7 @@ void hackAIR::readData(hackAirData &data) {
             // If package is valid
             if (receiveflag > 0) {
                 // Set the error flag
-                data.error = 0;
+                data.error = H_NO_ERROR;
 
                 // Set data
                 data.pm25 = ((_buff[8] << 8) + _buff[9]);
@@ -80,7 +80,7 @@ void hackAIR::readData(hackAirData &data) {
                 return;
             } else {
                 // Set the error flag and exit
-                data.error = 1;
+                data.error = H_ERROR_SENSOR;
                 return;
             }
         }
@@ -103,7 +103,7 @@ void hackAIR::readData(hackAirData &data) {
 
             if ((receiveSum & 0xFF) == _buff[8]) {
                 // Set the error flag
-                data.error = 0;
+                data.error = H_NO_ERROR;
 
                 // Set data
                 data.pm25 = ((_buff[3] << 8) + _buff[2]) / 10.0f;
@@ -112,7 +112,7 @@ void hackAIR::readData(hackAirData &data) {
                 return;
             } else {
                 // Invalid package, set the error flag
-                data.error = 1;
+                data.error = H_ERROR_SENSOR;
                 return;
             }
         }
@@ -126,7 +126,7 @@ void hackAIR::readData(hackAirData &data) {
 
         int ratio = _pulseDuration / 20000.0;
         data.pm10 = 1.1 * pow(ratio, 3) - 3.8 * pow(ratio, 2) + 520 * ratio + 0.62; // From manual
-        data.error = 0;
+        data.error = H_NO_ERROR;
         return;
     }
 
@@ -144,7 +144,7 @@ void hackAIR::readAverageData(hackAirData &data, uint8_t n) {
                      // 1Hz sampling rate
         readData(data);
 
-        if (data.error == 0) {
+        if (data.error == H_NO_ERROR) {
             sum_pm25 += data.pm25;
             sum_pm10 += data.pm10;
 
@@ -156,16 +156,16 @@ void hackAIR::readAverageData(hackAirData &data, uint8_t n) {
     data.pm10 = sum_pm10 / successes;
 
     if (successes != n) {
-        data.error = 1;
+        data.error = H_ERROR_SENSOR_ONCE;
     } else {
-        data.error = 0;
+        data.error = H_NO_ERROR;
     }
 }
 
 void hackAIR::clearData(hackAirData &data) {
     data.pm25 = 0;
     data.pm10 = 0;
-    data.error = 0;
+    data.error = H_NO_ERROR;
     data.tamper = 0;
     data.battery = 0;
 }
