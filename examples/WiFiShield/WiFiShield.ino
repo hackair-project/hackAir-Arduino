@@ -45,6 +45,11 @@ void loop() {
 
   // Make 60 measurements and return the mean values
   sensor.readAverageData(data, 60);
+  if (data.error == 1) {
+    // no valid data to send. Therefore retry
+    // immediately without turning off the sensor.
+    return;
+  }
 
   // Send data to the hackAIR platform
   wifi_sendData(data);
