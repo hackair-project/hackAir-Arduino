@@ -24,6 +24,9 @@
 #ifndef hackAIR_h
 #define hackAIR_h
 
+// Library version
+#define HACKAIR_VERSION "0.6.1"
+
 // Sensors
 #define SENSOR_DFROBOT 1
 #define SENSOR_PMS5003 1 // Rebrand of DFRobot sensor (or DFRobot is a rebrand of this one?)

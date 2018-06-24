@@ -106,7 +106,9 @@ void loop() {
   dataJson += "0";
   dataJson += "\",\"error\":\"";
   dataJson += data.error;
-  dataJson += "\"}";
+  dataJson += "\",\"version\":\"";
+  dataJson += HACKAIR_VERSION;
+  dataJson += "\",\"platform\":\"wemos\"}";
   if (client.connect("api.hackair.eu", 443)) {
     Serial.println("connected");
     client.print("POST /sensors/arduino/measurements HTTP/1.1\r\n");
@@ -133,8 +135,7 @@ void loop() {
   // Turn off sensor and go to sleep
   sensor.turnOff();
   unsigned long current_millis = millis();
-  while (current_millis <
-         (previous_millis + (minutes_time_interval * 60 * 1000))) {
+  while (current_millis < (previous_millis + (minutes_time_interval * 60 * 1000))) {
     delay(10000);
     current_millis = millis();
   }
