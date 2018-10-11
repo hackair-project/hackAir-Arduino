@@ -19,14 +19,14 @@ While not mandatory, the library provides helpers to send air quality data over 
 ### Supported Sensors
 
 The following sensors are currently supported by the library:
- * [DFRobot PM2.5 Air Quality sensor](https://hackair-project.github.io/hackAir-Arduino/sensors/dfrobot/)
- * [PMS5003](https://hackair-project.github.io/hackAir-Arduino/sensors/pms5003/)
- * [SDS011](https://hackair-project.github.io/hackAir-Arduino/sensors/sds011/)
- * [PPD42NS - Grove sensor by SEEDSTUDIO](https://hackair-project.github.io/hackAir-Arduino/sensors/grove/)
+ * [DFRobot PM2.5 Air Quality sensor](http://www.hackair.eu/docs/sensor-support/dfrobot/)
+ * [PMS5003](http://www.hackair.eu/docs/pms5003/)
+ * [SDS011](http://www.hackair.eu/docs/sds011/)
+ * [PPD42NS - Grove sensor by SEEDSTUDIO](http://www.hackair.eu/docs/ppd42ns/)
 
 ### Documentation
 
-Official documentation is available at the [hackAIR-Arduino wiki](https://hackair-project.github.io/hackAir-Arduino/general/). The website is continiously updated with more examples and helpful info.
+Official documentation is available at [hackair.eu/docs/](http://www.hackair.eu/docs/). The website is continiously updated with more examples and helpful info.
 
 ### Licensing
 
