@@ -25,7 +25,7 @@
 #define hackAIR_h
 
 // Library version
-#define HACKAIR_VERSION "0.6.1"
+#define HACKAIR_VERSION "1.0.0"
 
 // Sensors
 #define SENSOR_DFROBOT 1
