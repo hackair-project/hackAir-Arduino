@@ -24,9 +24,15 @@
 #include "Arduino.h"
 #include "hackair.h"
 
-SoftwareSerial _serial(PIN_SERIAL_RX, PIN_SERIAL_TX);
 
 /* Constructors */
+
+hackAIR::hackAIR(int sensorType, int rxpin, int txpin) {
+    _rxPin = rxpin;
+    _txPin = txpin;
+    _sensorType = sensorType;
+}
+
 hackAIR::hackAIR(int sensorType) {
     // Initialize last reading
     _sensorType = sensorType;
@@ -35,7 +41,8 @@ hackAIR::hackAIR(int sensorType) {
 void hackAIR::begin() {
     if (_sensorType == SENSOR_DFROBOT || _sensorType == SENSOR_SDS011 || _sensorType == SENSOR_PMS5003) {
         // Serial sensors just need a software serial port
-        _serial.begin(9600);
+        _serial = new SoftwareSerial(_rxPin,_txPin);
+        _serial->begin(9600);
     } else if (_sensorType == SENSOR_GROVE) {
         pinMode(8, INPUT);
     }
@@ -45,11 +52,11 @@ void hackAIR::readData(hackAirData &data) {
     if (_sensorType == SENSOR_DFROBOT) {
         // DFRobot
         char index = 0;
-        while (_serial.available() && index != 32) {
-            _buff[index] = _serial.read();
+        while (_serial->available() && index != 32) {
+            _buff[index] = _serial->read();
             index++;
         }
-        while (_serial.read() != -1) {}
+        while (_serial->read() != -1) {}
 
         // Check the package integrity
         if (_buff[0] == 0x42 && _buff[1] == 0x4d) {
@@ -87,11 +94,11 @@ void hackAIR::readData(hackAirData &data) {
     } else if (_sensorType == SENSOR_SDS011) {
         // SDS011
         char index = 0;
-        while (_serial.available() && index != 10) {
-            _buff[index] = _serial.read();
+        while (_serial->available() && index != 10) {
+            _buff[index] = _serial->read();
             index++;
         }
-        while (_serial.read() != -1) {}
+        while (_serial->read() != -1) {}
 
         // Check package integrity
         if (_buff[0] == 0xAA && _buff[1] == 0xC0 && _buff[9] == 0xAB) {
@@ -133,6 +140,9 @@ void hackAIR::readData(hackAirData &data) {
     // Invalid sensor ID means something surely went wrong
     data.error = 1;
 }
+
+  
+
 
 void hackAIR::readAverageData(hackAirData &data, uint8_t n) {
     float sum_pm25 = 0.0f;
@@ -181,9 +191,15 @@ void hackAIR::enablePowerControl() {
 void hackAIR::turnOn() {
     // SDS011 uses the built-in power saving function
     if (_sensorType == SENSOR_SDS011) {
-        // Send anything to wake up the sensor
-        _serial.write(0x01);
-        delay(2000);
+        // Send wake-up command to wake up the sensor
+        uint8_t wakeup_command[] = {0xAA, 0xB4, 0x06, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA1, 0x60, 0x09, 0xAB};
+        for (uint8_t i = 0; i < 19; i++) {
+            _serial->write(wakeup_command[i]);
+        }
+        // Discard response
+        _serial->flush();
+        while (_serial->read() != -1) {}
+        delay(500);
     } else {
 #ifndef ESP8266
         digitalWrite(A2, HIGH);
@@ -197,12 +213,12 @@ void hackAIR::turnOff() {
         // Send sleep command
         uint8_t sleep_command[] = {0xAA, 0xB4, 0x06, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0x05, 0xAB};
         for (uint8_t i = 0; i < 19; i++) {
-            _serial.write(sleep_command[i]);
+            _serial->write(sleep_command[i]);
         }
 
         // Discard response
-        _serial.flush();
-        while (_serial.read() != -1) {}
+        _serial->flush();
+        while (_serial->read() != -1) {}
     } else {
 #ifndef ESP8266
         digitalWrite(A2, LOW);
