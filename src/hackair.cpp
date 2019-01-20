@@ -181,9 +181,15 @@ void hackAIR::enablePowerControl() {
 void hackAIR::turnOn() {
     // SDS011 uses the built-in power saving function
     if (_sensorType == SENSOR_SDS011) {
-        // Send anything to wake up the sensor
-        _serial.write(0x01);
-        delay(2000);
+        // Send wake-up command to wake up the sensor
+        uint8_t wakeup_command[] = {0xAA, 0xB4, 0x06, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xA1, 0x60, 0x09, 0xAB};
+        for (uint8_t i = 0; i < 19; i++) {
+            _serial.write(wakeup_command[i]);
+        }
+        // Discard response
+        _serial.flush();
+        while (_serial.read() != -1) {}
+        delay(500);
     } else {
 #ifndef ESP8266
         digitalWrite(A2, HIGH);
