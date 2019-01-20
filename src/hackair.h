@@ -62,6 +62,7 @@ class hackAIR {
 public:
     // Constructors
     hackAIR(int sensor);
+    hackAIR(int sensor, int _rxpin, int _txpin);
 
     /**
      * Initialize the sensor (pin modes, buses, etc)
@@ -104,7 +105,10 @@ public:
     void humidityCompensation(hackAirData &data, float humidity);
 
 private:
+    SoftwareSerial* _serial;
     int _sensorType;
+    int _rxPin = PIN_SERIAL_RX;
+    int _txPin = PIN_SERIAL_TX;
     long _lastTime;
     long _pulseDuration;
     unsigned char _buff[32];
